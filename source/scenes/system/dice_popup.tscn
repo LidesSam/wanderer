@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://csddgb304nyvr"]
+
+[ext_resource type="Script" path="res://source/scenes/system/dice_popup.gd" id="1_085f5"]
+[ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="2_qxinn"]
+
+[node name="dicePopup" type="ColorRect"]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 192.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+script = ExtResource("1_085f5")
+
+[node name="dice" parent="." instance=ExtResource("2_qxinn")]
+position = Vector2(73, 81)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 48.0

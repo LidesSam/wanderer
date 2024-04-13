@@ -22,6 +22,7 @@ anchor_mode = 0
 enabled = false
 
 [node name="battle" parent="top" instance=ExtResource("3_kx475")]
+visible = false
 
 [node name="Label2" type="Label" parent="top/battle"]
 layout_mode = 0

@@ -6,6 +6,7 @@ var maxValue=6
 var rollRange=6
 var currentValue=0
 
+@export var endRollCallback:Callable 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 func _process(delta):
 	if(onRoll):
 		currentValue=randi()%maxValue+minValue
+		$Label.text=str(currentValue)
 	pass
 func set_dice_range(MinValue=1,MaxValue=6):
 	minValue=MinValue
@@ -24,6 +26,8 @@ func set_dice_range(MinValue=1,MaxValue=6):
 func stop():
 	onRoll=false
 	$Timer.stop()
+	if(endRollCallback):
+		endRollCallback.call()
 	pass
 	
 func roll():

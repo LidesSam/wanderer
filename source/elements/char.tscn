@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkl3toqmq2u5s"]
+[gd_scene load_steps=11 format=3 uid="uid://bkl3toqmq2u5s"]
 
 [ext_resource type="Script" path="res://source/elements/char.gd" id="1_6p35w"]
 [ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_56oo2"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="3_jv5q6"]
+[ext_resource type="PackedScene" uid="uid://csddgb304nyvr" path="res://source/scenes/system/dice_popup.tscn" id="4_0ji8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clli2"]
 atlas = ExtResource("1_56oo2")
@@ -75,14 +76,7 @@ shape = SubResource("CircleShape2D_fevmp")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="msg" type="Label" parent="Camera2D"]
-offset_left = -128.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = -38.0
-text = "find"
-
-[node name="msg" type="Label" parent="Camera2D/msg"]
-layout_mode = 0
+visible = false
 offset_left = -128.0
 offset_top = -64.0
 offset_right = 64.0
@@ -105,6 +99,13 @@ offset_top = 64.0
 offset_right = 280.0
 offset_bottom = 144.0
 text = "!"
+
+[node name="dicePopup" parent="Camera2D" instance=ExtResource("4_0ji8d")]
+visible = false
+offset_left = -256.0
+offset_top = -128.0
+offset_right = -96.0
+offset_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

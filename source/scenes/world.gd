@@ -1,16 +1,23 @@
 extends Node2D
 
 var player=null
-
+var dicePopup =null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player=load("res://source/elements/char.tscn").instantiate()
+
+
 	$gen.gen_linear_map(5,10)
 	player.set_current_loc($gen.startLoc)
 	
 	$actors.add_child(player)
 	player.world=self
+	
+	dicePopup = player.dicePopup 
+	dicePopup.goodResult=player.go_to_next_loc
+	dicePopup.badResult=start_random_battle
+	
 	pass # Replace with function body.
 
 
@@ -37,7 +44,9 @@ func start_random_battle():
 	$top/battle.show()
 	$top/battle.onBattle=true
 
-		
+func scape_roll():
+	dicePopup.roll()	
+	
 func out_of_battle():
 	$top.hide()
 	$top/Camera2D.hide()
