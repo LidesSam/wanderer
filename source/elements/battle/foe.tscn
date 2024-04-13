@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://r4eqdsxw6k4t"]
+
+[ext_resource type="Texture2D" uid="uid://c71oxm286n832" path="res://assets/sprites/foes/foes.png" id="1_hnrjv"]
+[ext_resource type="Script" path="res://source/elements/battle/foe.gd" id="1_nujxv"]
+[ext_resource type="Texture2D" uid="uid://e5ql36xbnlac" path="res://assets/sprites/map/map-dot/map_dot_0.png" id="3_ocl6l"]
+[ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_5w5ue"]
+[ext_resource type="SpriteFrames" uid="uid://bmpohyhj4yaa4" path="res://assets/sprites/effects/battle_char_effect_sprr.tres" id="5_v72su"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8vqj"]
+atlas = ExtResource("1_hnrjv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yprj1"]
+atlas = ExtResource("1_hnrjv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n1bt"]
+atlas = ExtResource("1_hnrjv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k04m5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8vqj")
+}],
+"loop": true,
+"name": &"board",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yprj1")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n1bt")
+}],
+"loop": true,
+"name": &"slime",
+"speed": 5.0
+}]
+
+[node name="foe" type="Node2D"]
+script = ExtResource("1_nujxv")
+
+[node name="spr" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k04m5")
+animation = &"slime"
+
+[node name="lpLabel" type="Label" parent="."]
+offset_left = -16.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 39.0
+
+[node name="select" type="TextureButton" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = 32.0
+offset_right = 16.0
+offset_bottom = 64.0
+texture_normal = ExtResource("3_ocl6l")
+texture_pressed = ExtResource("4_5w5ue")
+
+[node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("5_v72su")
+
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]

@@ -1,0 +1,52 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfw22j60uh028"]
+
+[sub_resource type="Shader" id="2"]
+code = "shader_type canvas_item;
+uniform vec4 light : source_color;
+uniform vec4 normal : source_color;
+uniform vec4 shade : source_color;
+uniform vec4 outline : source_color;
+
+uniform vec4 swapLight : source_color;
+uniform vec4 swapNormal : source_color;
+uniform vec4 swapShade : source_color;
+uniform vec4 swapOutline : source_color;
+
+const float precision = 0.3;
+
+
+void fragment(){
+	vec4 current_color = texture(TEXTURE,UV);
+		if(distance(current_color,light)<=precision){
+			COLOR = swapLight;
+		}
+		else if(distance(current_color,normal)<=precision){
+			COLOR = swapNormal;
+		}
+		
+		else if(distance(current_color,shade)<=precision){
+			COLOR = swapShade;
+		}
+		else if(distance(current_color,outline)<=precision){
+			COLOR = swapOutline;
+		}
+		else{
+			COLOR = current_color;
+		}
+		
+		
+}
+
+"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource("2")
+shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
+shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
+shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)
+shader_parameter/outline = Color(0.12549, 0.12549, 0.12549, 1)
+shader_parameter/swapLight = Color(1, 0.890196, 0.607843, 1)
+shader_parameter/swapNormal = Color(1, 0.666667, 0.290196, 1)
+shader_parameter/swapShade = Color(0.984314, 0.317647, 0.235294, 1)
+shader_parameter/swapOutline = Color(0.521569, 0.0509804, 0.0313726, 1)

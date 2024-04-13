@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyj61yybit3hc"]
+
+[ext_resource type="Script" path="res://source/elements/battle/command.gd" id="1_r8ej6"]
+
+[node name="Command" type="Button"]
+text = "Atacar"
+script = ExtResource("1_r8ej6")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

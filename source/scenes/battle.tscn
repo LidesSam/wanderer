@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnfw1epyp28ra"]
+
+[ext_resource type="Script" path="res://source/scenes/battle.gd" id="1_sayp3"]
+[ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="2_1asjr"]
+[ext_resource type="Script" path="res://addons/fsmgear/source/FsmState.gd" id="2_8vnh0"]
+[ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="2_biw0w"]
+[ext_resource type="Script" path="res://source/battle/StartBattleState.gd" id="3_36856"]
+[ext_resource type="Script" path="res://source/battle/FoeActionState.gd" id="4_rwdoe"]
+[ext_resource type="Script" path="res://source/battle/AwaitBattleState.gd" id="4_th2kj"]
+[ext_resource type="Texture2D" uid="uid://cqgobfpwedcyt" path="res://addons/fsmgear/assets/fsm-icons/fsmState.png" id="6_8d8kp"]
+[ext_resource type="Script" path="res://source/battle/PlayerTurnState.gd" id="6_lq740"]
+[ext_resource type="Script" path="res://source/battle/TargetSelectState.gd" id="7_abill"]
+[ext_resource type="Script" path="res://source/battle/execute_action.gd" id="10_88630"]
+[ext_resource type="Script" path="res://source/battle/battleEndState.gd" id="10_dhpa6"]
+
+[node name="battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+script = ExtResource("1_sayp3")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="counterLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 512.0
+offset_bottom = 48.0
+text = "Encounter"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="stateDebug" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 576.0
+offset_bottom = 160.0
+text = "Debug"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TurnLbl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 96.0
+text = "TURN:"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="foes" type="Node2D" parent="."]
+position = Vector2(129, 64)
+
+[node name="party" type="Node2D" parent="."]
+position = Vector2(192, 192)
+
+[node name="char" parent="party" instance=ExtResource("2_biw0w")]
+
+[node name="comands" type="Node2D" parent="."]
+position = Vector2(192, 256)
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("2_1asjr")
+
+[node name="await_battle" type="Node" parent="fsm"]
+script = ExtResource("4_th2kj")
+
+[node name="battle_start" type="Node" parent="fsm"]
+script = ExtResource("3_36856")
+
+[node name="player_turn" type="Node" parent="fsm"]
+script = ExtResource("6_lq740")
+
+[node name="target_select" type="Node" parent="fsm"]
+script = ExtResource("7_abill")
+
+[node name="foe_turn" type="Node" parent="fsm"]
+script = ExtResource("4_rwdoe")
+
+[node name="item_select" type="Node" parent="fsm"]
+script = ExtResource("2_8vnh0")
+
+[node name="execute_action" type="Node" parent="fsm"]
+script = ExtResource("10_88630")
+
+[node name="battle_end" type="Node" parent="fsm"]
+script = ExtResource("10_dhpa6")
+
+[node name="cursor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(224, 168)
+texture = ExtResource("6_8d8kp")
+
+[node name="actleft" type="Label" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 232.0
+offset_right = 384.0
+offset_bottom = 255.0

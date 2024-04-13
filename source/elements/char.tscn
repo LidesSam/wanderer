@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkl3toqmq2u5s"]
+
+[ext_resource type="Script" path="res://source/elements/char.gd" id="1_6p35w"]
+[ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_56oo2"]
+[ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="3_jv5q6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clli2"]
+atlas = ExtResource("1_56oo2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovcx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clli2")
+}],
+"loop": true,
+"name": &"wanderer",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fevmp"]
+
+[sub_resource type="Animation" id="Animation_jj4i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xbiwl"]
+resource_name = "msgShowAndFade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 0.287175, 2.63902),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvyfb"]
+_data = {
+"RESET": SubResource("Animation_jj4i4"),
+"msgShowAndFade": SubResource("Animation_xbiwl")
+}
+
+[node name="mapchar" type="Area2D"]
+script = ExtResource("1_6p35w")
+
+[node name="spr" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ovcx1")
+animation = &"wanderer"
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("3_jv5q6")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fevmp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="msg" type="Label" parent="Camera2D"]
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = -38.0
+text = "find"
+
+[node name="msg" type="Label" parent="Camera2D/msg"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = -38.0
+text = "find"
+
+[node name="controls" type="Node2D" parent="Camera2D"]
+
+[node name="moveBtn" type="Button" parent="Camera2D/controls"]
+offset_left = 32.0
+offset_top = -16.0
+offset_right = 280.0
+offset_bottom = 56.0
+text = "Go!"
+
+[node name="inspectBtn" type="Button" parent="Camera2D/controls"]
+visible = false
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 144.0
+text = "!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lvyfb")
+}
+
+[connection signal="pressed" from="Camera2D/controls/moveBtn" to="." method="_on_move_btn_pressed"]
+[connection signal="pressed" from="Camera2D/controls/inspectBtn" to="." method="_on_inspect_btn_pressed"]
