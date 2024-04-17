@@ -38,6 +38,7 @@ func inspect_loc(loc):
 		start_random_battle()
 		
 func start_random_battle():
+	player.on_battle()
 	$top.show()
 	$top/Camera2D.show()
 	$top/Camera2D.enabled=true
@@ -54,6 +55,7 @@ func out_of_battle():
 	$top/battle.hide()
 	$top/battle.onBattle=false
 	player.reacivate()
+	player.go_to_next_loc()
 		
 func _on_main_menu_btn_pressed():
 	ScreenTransition.change_scene_to_file("res://source/scenes/main_menu.tscn")

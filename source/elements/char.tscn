@@ -104,7 +104,7 @@ text = "!"
 visible = false
 offset_left = -256.0
 offset_top = -128.0
-offset_right = -96.0
+offset_right = -128.0
 offset_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

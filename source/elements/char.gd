@@ -23,6 +23,10 @@ func _on_go_btn_pressed():
 	pass # Replace with function body.
 
 
+func on_battle():
+	$Camera2D.enabled=false
+	$Camera2D.hide()
+	
 func _on_move_btn_pressed():
 	$Camera2D/controls/inspectBtn.hide()
 	$Camera2D/controls.hide()
@@ -36,6 +40,9 @@ func _on_move_btn_pressed():
 	else:
 		$Camera2D/controls.show()
 		if (currentLoc.hasEvent):
+			$Camera2D/controls/moveBtn.hide()
+			$Camera2D/controls/inspectBtn.hide()
+			
 			world.scape_roll()
 		else:
 			go_to_next_loc()
