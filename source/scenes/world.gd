@@ -5,12 +5,11 @@ var dicePopup =null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player=load("res://source/elements/char.tscn").instantiate()
-
-
-	$gen.gen_linear_map(5,10)
-	player.set_current_loc($gen.startLoc)
 	
+	$gen.gen_linear_map(5,10)
+	
+	player=load("res://source/elements/char.tscn").instantiate()
+	player.set_current_loc($gen.startLoc)
 	$actors.add_child(player)
 	player.world=self
 	
@@ -20,11 +19,9 @@ func _ready():
 	
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
 
 func gameover(win=false):
 	$top.show()

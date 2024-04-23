@@ -11,6 +11,11 @@ func enter(actowner):
 	super(actowner)
 	actowner.get_node("counterLbl").text=str(actowner.action_targets.size())
 	endstate=true
+	if(actowner.quickAction):
+		actowner.quickAction=false
+		actowner.next_turn(actowner.FOE_TURN)
+		actowner.hide_player_commands()
+	
 	action.call()
 	pass
 		

@@ -20,6 +20,8 @@ var foes
 
 var action_targets=[]
 
+var quickAction=false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fsm.autoload(self)
@@ -34,8 +36,11 @@ func _ready():
 	fsm.addStateTransition("player_turn","foe_turn",next_turn_is_foe)
 	
 	fsm.addStateTransition("player_turn","target_select",on_target_select)
+	
 	fsm.addStateTransition("target_select","execute_action",all_selected)
 	fsm.addStateTransition("execute_action","foe_turn",next_turn_is_foe)
+	
+	fsm.addStateTransition("player_turn","execute_action",execute_action_now)
 	
 	fsm.addStateTransition("foe_turn","battle_end",victory)
 	fsm.addStateTransition("player_turn","battle_end",victory)
@@ -44,6 +49,8 @@ func _ready():
 	fsm.startState()
 	pass # Replace with function body.
 	
+func execute_action_now():
+	return quickAction 
 func victory():
 	var foeDefeated=true
 	for foe in $foes.get_children():
@@ -93,6 +100,9 @@ func next_turn_is_foe():
 #replace for:
 ## "load_commands"(load all party commands pre-batte.
 ## show_partymember_commands
+func hide_player_commands():
+	$comands.hide()
+	
 func set_commands():
 	$comands.show()
 	$comands.get_children().clear()
@@ -128,7 +138,9 @@ func char_command(cmd):
 			#$fsm/execute_action.exitaction = hurt_foe
 			onTargetSelect=true
 		_:
-			cmd.execute_quick_action()
+			print("cmd:quick action. ",cmd.action)
+			quickAction=true
+			$fsm/execute_action.action =cmd.execute_quick_action
 	partyActions-=1;
 	
 	pass
@@ -166,6 +178,10 @@ func gen_single_foe():
 
 func hurt_player(point =1):
 	$party/char.hurt(1)
+	
+func char_start_turn(char=null):
+	$party/char.start_turn(9)
+	
 func out_of_battle():
 	if(visible):
 		self.hide()

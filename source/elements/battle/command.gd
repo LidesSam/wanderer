@@ -1,15 +1,14 @@
 extends Button
 
-
 var battleRoom
 var charOwner
 var action
 var actFunc:Callable
 var quickFunc:Callable
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,6 +34,7 @@ func set_battle_room(battleroom):
 	
 func set_char_owner(charowner):
 	charOwner=charowner
+	
 func execute_quick_action():
 	match action:
 		"def":

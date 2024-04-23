@@ -9,9 +9,6 @@ var maxlp=10
 var actionEnd=false
 var commands=["hit","def"]#"item"
 
-
-
-
 var items=[]
 
 var onDef=false
@@ -35,6 +32,8 @@ func set_on_def():
 	
 func set_on_wait():
 	pass
+func start_turn():
+	onDef=false
 	
 func atk_target(target):
 	target.hurt(atk)

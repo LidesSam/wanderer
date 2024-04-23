@@ -49,6 +49,7 @@ func _on_move_btn_pressed():
 	pass # Replace with function body.
 
 func go_to_next_loc():
+	$Camera2D/controls/moveBtn.show()
 	set_current_loc(currentLoc.conectedLocs[currentLoc.conectedLocs.size()-1]) 
 	if (currentLoc.hasEvent):
 		$Camera2D/controls/inspectBtn.show()
