@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkl3toqmq2u5s"]
+[gd_scene load_steps=13 format=3 uid="uid://bkl3toqmq2u5s"]
 
 [ext_resource type="Script" path="res://source/elements/char.gd" id="1_6p35w"]
 [ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_56oo2"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="3_jv5q6"]
 [ext_resource type="PackedScene" uid="uid://csddgb304nyvr" path="res://source/scenes/system/dice_popup.tscn" id="4_0ji8d"]
+[ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="5_o61wv"]
+[ext_resource type="Script" path="res://source/elements/player_menu.gd" id="6_nyrsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clli2"]
 atlas = ExtResource("1_56oo2")
@@ -107,6 +109,65 @@ offset_top = -128.0
 offset_right = -128.0
 offset_bottom = 0.0
 
+[node name="menuBtn" type="Button" parent="Camera2D"]
+offset_left = 224.0
+offset_top = -152.0
+offset_right = 256.0
+offset_bottom = -120.0
+text = "!"
+
+[node name="playerMenu" type="TextureRect" parent="Camera2D"]
+visible = false
+offset_left = -304.0
+offset_top = -176.0
+offset_right = 304.0
+offset_bottom = 176.0
+texture = ExtResource("5_o61wv")
+stretch_mode = 1
+script = ExtResource("6_nyrsd")
+
+[node name="header" type="ColorRect" parent="Camera2D/playerMenu"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 1)
+
+[node name="gold" type="Label" parent="Camera2D/playerMenu/header"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 528.0
+offset_bottom = 48.0
+text = "GOLD:0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main" type="ColorRect" parent="Camera2D/playerMenu"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 576.0
+offset_bottom = 320.0
+color = Color(0, 0, 0, 1)
+
+[node name="btn" type="ColorRect" parent="Camera2D/playerMenu/main"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[node name="closeBtn" type="Button" parent="Camera2D/playerMenu/main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 144.0
+offset_right = 528.0
+offset_bottom = 208.0
+text = "close"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lvyfb")
@@ -114,3 +175,5 @@ libraries = {
 
 [connection signal="pressed" from="Camera2D/controls/moveBtn" to="." method="_on_move_btn_pressed"]
 [connection signal="pressed" from="Camera2D/controls/inspectBtn" to="." method="_on_inspect_btn_pressed"]
+[connection signal="pressed" from="Camera2D/menuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="Camera2D/playerMenu/main/closeBtn" to="Camera2D/playerMenu" method="_on_close_btn_pressed"]

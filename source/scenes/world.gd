@@ -46,6 +46,7 @@ func scape_roll():
 	dicePopup.roll()	
 	
 func out_of_battle():
+	player.add_gold(100)
 	$top.hide()
 	$top/Camera2D.hide()
 	$top/Camera2D.enabled=false

@@ -180,7 +180,7 @@ func hurt_player(point =1):
 	$party/char.hurt(1)
 	
 func char_start_turn(char=null):
-	$party/char.start_turn(9)
+	$party/char.start_turn()
 	
 func out_of_battle():
 	if(visible):

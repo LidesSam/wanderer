@@ -12,13 +12,14 @@ var commands=["hit","def"]#"item"
 var items=[]
 
 var onDef=false
-
+var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func start__turn():
 	onDef=false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$lpLabel.text=str(lp,"/",maxlp)
@@ -32,6 +33,7 @@ func set_on_def():
 	
 func set_on_wait():
 	pass
+	
 func start_turn():
 	onDef=false
 	

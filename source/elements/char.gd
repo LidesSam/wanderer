@@ -4,6 +4,8 @@ extends Area2D
 var world=null
 var currentLoc=null
 @onready var dicePopup=$Camera2D/dicePopup
+var party=[]
+var gold=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dicePopup=$Camera2D/dicePopup
@@ -42,7 +44,6 @@ func _on_move_btn_pressed():
 		if (currentLoc.hasEvent):
 			$Camera2D/controls/moveBtn.hide()
 			$Camera2D/controls/inspectBtn.hide()
-			
 			world.scape_roll()
 		else:
 			go_to_next_loc()
@@ -53,6 +54,7 @@ func go_to_next_loc():
 	set_current_loc(currentLoc.conectedLocs[currentLoc.conectedLocs.size()-1]) 
 	if (currentLoc.hasEvent):
 		$Camera2D/controls/inspectBtn.show()
+		
 func _on_inspect_btn_pressed():
 	world.inspect_loc(currentLoc)
 	pass # Replace with function body.
@@ -65,4 +67,12 @@ func reacivate():
 	$Camera2D.enabled=true
 	$Camera2D.show()
 	currentLoc.hasEvent=false
-	
+
+func add_gold(g):
+		gold+=g
+
+
+func _on_menu_btn_pressed():
+	$Camera2D/playerMenu.show()
+	$Camera2D/playerMenu.update_gold(gold)
+	pass # Replace with function body.
