@@ -135,6 +135,7 @@ func char_command(cmd):
 			#$fsm/target_select.exitaction = execute_action()
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
+			$fsm/execute_action.rollcrit = true
 			#$fsm/execute_action.exitaction = hurt_foe
 			onTargetSelect=true
 		_:
@@ -149,8 +150,19 @@ func char_command(cmd):
 func hurt_foe():
 	for at in action_targets:
 		at.hurt(1)
+		if($critDice.currentValue>=5):
+			at.hurt(1+$critDice.currentValue-4)
+		else:
+			at.hurt(1)
+		
 	next_turn(FOE_TURN)
 	
+	
+func roll_crit_dice(callback):
+	$critDice.endRollCallback=callback
+	$critDice.roll()
+	$critDice.show()
+
 func set_party(party):
 	
 	pass

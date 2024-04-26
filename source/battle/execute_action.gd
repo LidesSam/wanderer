@@ -2,6 +2,7 @@ extends "res://addons/fsmgear/source/FsmState.gd"
 
 var action=null
 var endstate= false
+var rollcrit = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -15,8 +16,16 @@ func enter(actowner):
 		actowner.quickAction=false
 		actowner.next_turn(actowner.FOE_TURN)
 		actowner.hide_player_commands()
+		action.call()
+	else:
+		if(rollcrit):
+			print("exe")
+			actowner.roll_crit_dice(trigger_action.bind(actowner))
+			
+		else:
+			action.call()
 	
-	action.call()
+	rollcrit = false
 	pass
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,3 +34,7 @@ func _process(delta):
 	pass
 func state_ended():
 	return endstate
+func trigger_action(actowner):
+	actowner.get_node("critDice").hide()
+	action.call()
+	

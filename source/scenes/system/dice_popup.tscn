@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://csddgb304nyvr"]
+[gd_scene load_steps=3 format=3 uid="uid://csddgb304nyvr"]
 
 [ext_resource type="Script" path="res://source/scenes/system/dice_popup.gd" id="1_085f5"]
-[ext_resource type="Texture2D" uid="uid://bts1sp0lp2ncs" path="res://assets/sprites/system/dices/dice_back_32.png" id="2_64y4u"]
 [ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="2_qxinn"]
 
 [node name="dicePopup" type="ColorRect"]
@@ -9,13 +8,6 @@ offset_right = 128.0
 offset_bottom = 128.0
 color = Color(0.164706, 0.164706, 0.164706, 1)
 script = ExtResource("1_085f5")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(65, 64)
-texture = ExtResource("2_64y4u")
-hframes = 4
-vframes = 2
-frame = 7
 
 [node name="dice" parent="." instance=ExtResource("2_qxinn")]
 position = Vector2(65, 65)

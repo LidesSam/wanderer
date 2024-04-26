@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnfw1epyp28ra"]
+[gd_scene load_steps=14 format=3 uid="uid://dnfw1epyp28ra"]
 
 [ext_resource type="Script" path="res://source/scenes/battle.gd" id="1_sayp3"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="2_1asjr"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://source/battle/TargetSelectState.gd" id="7_abill"]
 [ext_resource type="Script" path="res://source/battle/execute_action.gd" id="10_88630"]
 [ext_resource type="Script" path="res://source/battle/battleEndState.gd" id="10_dhpa6"]
+[ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="14_w5aya"]
 
 [node name="battle" type="Control"]
 layout_mode = 3
@@ -114,3 +115,7 @@ offset_left = 320.0
 offset_top = 232.0
 offset_right = 384.0
 offset_bottom = 255.0
+
+[node name="critDice" parent="." instance=ExtResource("14_w5aya")]
+visible = false
+position = Vector2(192, 128)

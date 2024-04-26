@@ -32,13 +32,15 @@ func stop():
 	
 func roll():
 	onRoll=true
+	$Timer.start()
 	pass
 	
 func autoroll():
 	roll()
 	$Timer.wait_time=randi()%3+3
-	$Timer.start()
+	
 
 func _on_timer_timeout():
+	print("timeOut")
 	stop()
 	pass # Replace with function body.

@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://fanqjawhj3cp"]
+[gd_scene load_steps=3 format=3 uid="uid://fanqjawhj3cp"]
 
 [ext_resource type="Script" path="res://source/elements/components/dice.gd" id="1_qnbtj"]
+[ext_resource type="Texture2D" uid="uid://bts1sp0lp2ncs" path="res://assets/sprites/system/dices/dice_back_32.png" id="2_lsklx"]
 
 [node name="dice" type="Node2D"]
 script = ExtResource("1_qnbtj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lsklx")
+hframes = 4
+vframes = 2
+frame = 7
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0
@@ -15,5 +22,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
