@@ -51,6 +51,7 @@ func _ready():
 	
 func execute_action_now():
 	return quickAction 
+
 func victory():
 	var foeDefeated=true
 	for foe in $foes.get_children():
@@ -183,7 +184,7 @@ func gen_single_foe():
 		
 	foes=[]
 	var f = foeTemp.instantiate()
-	
+	f.set_rand_foe()
 	f.selectCallback= act_on_foe.bind(f)
 	foes.push_back(f)
 	$foes.add_child(f)

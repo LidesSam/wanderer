@@ -7,38 +7,46 @@ var maxlp=3
 var actionEnd=false
 var selectCallback
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_lp()
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 func  update_lp():
 	$lpLabel.text=str(lp,"/",maxlp)
-func rand_foe():
-	match (randi()%4):
-		1:
+	
+func set_rand_foe():
+	var r=randi()%6
+	print("rfope:",r)
+	match (r):
+		1, 2: #33.5 
 			$spr.play("board")
 			maxlp=4
 			atk=2
-		2:
+			print("board")
+		3:#16.5
 			
 			$spr.play("eye")
 			maxlp=3
 			atk=3
-		_:
+			print("eye")
+		_:#50%
 			
 			$spr.play("slime")
 			maxlp=3
 			atk=1
-	
+			print("slime")
+		
 	lp=maxlp
 	update_lp()
 	
 func atk_target(target):
+	print("foe atk(",atk,")")
 	target.hurt(atk)
 	actionEnd=true
 			
@@ -60,8 +68,6 @@ func hurt(points):
 	
 	if(lp<=0):
 		lp=0
-		
-		
 		hide()
 	update_lp()
 

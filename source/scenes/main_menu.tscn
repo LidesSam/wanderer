@@ -11,41 +11,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3qlpw")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 76.0
+offset_bottom = 128.0
 grow_horizontal = 2
 text = "Wanderer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Label"]
+[node name="version" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 64.0
-offset_bottom = 90.0
+offset_top = 128.0
+offset_bottom = 192.0
 grow_horizontal = 2
-text = "v0.2.0"
+text = "v0.3.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="newgameBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 165.0
+offset_top = 192.0
 offset_right = 384.0
-offset_bottom = 229.0
+offset_bottom = 256.0
 text = "New Game"
 
 [node name="continueBtn" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 213.0
-offset_top = 199.0
-offset_right = 364.0
-offset_bottom = 263.0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 384.0
+offset_bottom = 320.0
+
+[node name="exitBtn" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 528.0
+offset_top = 16.0
+offset_right = 560.0
+offset_bottom = 48.0
+text = "X"
 
 [connection signal="pressed" from="newgameBtn" to="." method="_on_newgame_btn_pressed"]

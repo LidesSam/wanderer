@@ -27,6 +27,7 @@ func add_conection(loc):
 func land_in():
 	for mapLoc in conectedLocs:
 		mapLoc.show_cursor()
+		
 func set_foe():
 	hasEvent=true
 	hasFoe=true
