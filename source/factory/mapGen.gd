@@ -25,6 +25,8 @@ func gen_linear_map(min=5, max=10):
 		
 		loc.position=Vector2(0,0-step*i)
 		chunk.add_location(loc)
+		
+	chunk.add_sidepath_sub_bifurcation(locTemp,step,3)
 	chunk.add_rand_foe_encounters(2,4)
 	
 		
