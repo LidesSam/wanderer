@@ -6,12 +6,6 @@
 [node name="location" type="Marker2D"]
 script = ExtResource("1_6pi5f")
 
-[node name="cursor" type="AnimatedSprite2D" parent="."]
-visible = false
-modulate = Color(1, 0.992157, 0, 1)
-sprite_frames = ExtResource("2_bru2v")
-animation = &"main"
-
 [node name="spr" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_bru2v")
 animation = &"path"

@@ -20,6 +20,9 @@ func _process(delta):
 func set_current_loc(loc):
 	currentLoc=loc
 	global_position=currentLoc.global_position
+	world.cursorIndex=0
+	world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
+	
 	
 func _on_go_btn_pressed():
 	pass # Replace with function body.
@@ -51,7 +54,7 @@ func _on_move_btn_pressed():
 
 func go_to_next_loc():
 	$Camera2D/controls/moveBtn.show()
-	set_current_loc(currentLoc.conectedLocs[currentLoc.conectedLocs.size()-1]) 
+	set_current_loc(currentLoc.connectedLocs[world.cursorIndex]) 
 	if (currentLoc.hasEvent):
 		$Camera2D/controls/inspectBtn.show()
 		
@@ -75,4 +78,13 @@ func add_gold(g):
 func _on_menu_btn_pressed():
 	$Camera2D/playerMenu.show()
 	$Camera2D/playerMenu.update_gold(gold)
+	pass # Replace with function body.
+
+
+func _on_next_loc_btn_pressed():
+	world.cursorIndex+=1
+	if(world.cursorIndex>=currentLoc.connectedLocs.size()):
+		world.cursorIndex=0
+	world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
+	print("windex:",world.cursorIndex)
 	pass # Replace with function body.

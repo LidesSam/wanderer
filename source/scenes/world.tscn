@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://hoxggrtkn87q"]
+[gd_scene load_steps=5 format=3 uid="uid://hoxggrtkn87q"]
 
 [ext_resource type="Script" path="res://source/factory/mapGen.gd" id="1_dsx84"]
 [ext_resource type="Script" path="res://source/scenes/world.gd" id="1_m07vj"]
 [ext_resource type="PackedScene" uid="uid://dnfw1epyp28ra" path="res://source/scenes/battle.tscn" id="3_kx475"]
+[ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_x345q"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_m07vj")
@@ -66,5 +67,9 @@ offset_top = 169.0
 offset_right = 448.0
 offset_bottom = 233.0
 text = "Go to Title"
+
+[node name="cursorLoc" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.341176, 1)
+texture = ExtResource("4_x345q")
 
 [connection signal="pressed" from="top/popup/gameover/mainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
