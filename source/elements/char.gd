@@ -5,6 +5,7 @@ var world=null
 var currentLoc=null
 @onready var dicePopup=$Camera2D/dicePopup
 var party=[]
+var visitedLocs=[]
 var gold=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,9 +21,20 @@ func _process(delta):
 func set_current_loc(loc):
 	currentLoc=loc
 	global_position=currentLoc.global_position
-	world.cursorIndex=0
-	world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
-	
+	if(currentLoc.roadend):
+		$Camera2D.enabled=false
+		$Camera2D.hide()
+		world.gameover(true)
+		return 0
+	else:
+		world.cursorIndex=0
+		if(visitedLocs.size()==0):
+			world.set_cursor_on_loc(currentLoc.connectedLocs[0])
+		else:
+			seach_and_set_next_loc()
+			world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
+	currentLoc=loc
+
 	
 func _on_go_btn_pressed():
 	pass # Replace with function body.
@@ -35,22 +47,13 @@ func on_battle():
 func _on_move_btn_pressed():
 	$Camera2D/controls/inspectBtn.hide()
 	$Camera2D/controls.hide()
-	
-	
-	if(currentLoc.roadend):
-		$Camera2D.enabled=false
-		$Camera2D.hide()
-		world.gameover(true)
-		return 0
+	$Camera2D/controls.show()
+	if (currentLoc.hasEvent):
+		$Camera2D/controls/moveBtn.hide()
+		$Camera2D/controls/inspectBtn.hide()
+		world.scape_roll()
 	else:
-		$Camera2D/controls.show()
-		if (currentLoc.hasEvent):
-			$Camera2D/controls/moveBtn.hide()
-			$Camera2D/controls/inspectBtn.hide()
-			world.scape_roll()
-		else:
-			go_to_next_loc()
-	pass # Replace with function body.
+		go_to_next_loc()
 
 func go_to_next_loc():
 	$Camera2D/controls/moveBtn.show()
@@ -82,9 +85,15 @@ func _on_menu_btn_pressed():
 
 
 func _on_next_loc_btn_pressed():
-	world.cursorIndex+=1
-	if(world.cursorIndex>=currentLoc.connectedLocs.size()):
-		world.cursorIndex=0
+	seach_and_set_next_loc()
 	world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
 	print("windex:",world.cursorIndex)
 	pass # Replace with function body.
+	
+func seach_and_set_next_loc():
+	world.cursorIndex+=1
+	if(world.cursorIndex>=currentLoc.connectedLocs.size()):
+			world.cursorIndex=0
+	while(visitedLocs.has(currentLoc.connectedLocs[world.cursorIndex])):
+		if(world.cursorIndex>=currentLoc.connectedLocs.size()):
+			world.cursorIndex=0
