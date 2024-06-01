@@ -4,26 +4,27 @@ var player=null
 var dicePopup =null
 var cursorIndex=0
 
+@onready var fsm=$fsm
+@onready var mapGen=$mapGen
+@onready var actors = $actors
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	$gen.gen_linear_map(5,10)
 	
 	player=load("res://source/elements/char.tscn").instantiate()
 	player.world=self
-	player.set_current_loc($gen.startLoc)
-	$actors.add_child(player)
+
+	fsm.autoload(self)
+	fsm.addStateTransition("genworld","idle",$fsm/genworld.state_ended)
+	fsm.addStateTransition("idle","movechar",player.moving)
+	fsm.addStateTransition("movechar","idle",player.still)
 	
-	
-	dicePopup = player.dicePopup 
-	dicePopup.goodResult=player.go_to_next_loc
-	dicePopup.badResult=start_random_battle
-	
+	fsm.startState()
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	fsm.fsmUpdate(delta)
 
 func gameover(win=false):
 	$top.show()

@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://hoxggrtkn87q"]
+[gd_scene load_steps=10 format=3 uid="uid://hoxggrtkn87q"]
 
 [ext_resource type="Script" path="res://source/factory/mapGen.gd" id="1_dsx84"]
 [ext_resource type="Script" path="res://source/scenes/world.gd" id="1_m07vj"]
 [ext_resource type="PackedScene" uid="uid://dnfw1epyp28ra" path="res://source/scenes/battle.tscn" id="3_kx475"]
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_x345q"]
+[ext_resource type="Script" path="res://source/scenes/states/world/idleWorldState.gd" id="5_1nbhs"]
+[ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="5_557a5"]
+[ext_resource type="Script" path="res://source/scenes/states/world/worldGenState.gd" id="5_xnjlr"]
+[ext_resource type="Script" path="res://addons/fsmgear/source/FsmState.gd" id="6_fqkfx"]
+[ext_resource type="Script" path="res://source/scenes/states/world/moveCharWorldState.gd" id="8_at16l"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_m07vj")
 
-[node name="gen" type="Node2D" parent="." node_paths=PackedStringArray("locations")]
+[node name="mapGen" type="Node2D" parent="." node_paths=PackedStringArray("locations")]
 script = ExtResource("1_dsx84")
 locations = NodePath("../locations")
 
@@ -71,5 +76,23 @@ text = "Go to Title"
 [node name="cursorLoc" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0.341176, 1)
 texture = ExtResource("4_x345q")
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("5_557a5")
+
+[node name="genworld" type="Node" parent="fsm"]
+script = ExtResource("5_xnjlr")
+
+[node name="idle" type="Node" parent="fsm"]
+script = ExtResource("5_1nbhs")
+
+[node name="movechar" type="Node" parent="fsm"]
+script = ExtResource("8_at16l")
+
+[node name="battle" type="Node" parent="fsm"]
+script = ExtResource("6_fqkfx")
+
+[node name="roll" type="Node" parent="fsm"]
+script = ExtResource("6_fqkfx")
 
 [connection signal="pressed" from="top/popup/gameover/mainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
