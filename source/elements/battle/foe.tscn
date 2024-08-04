@@ -1,22 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://r4eqdsxw6k4t"]
+[gd_scene load_steps=22 format=3 uid="uid://r4eqdsxw6k4t"]
 
 [ext_resource type="Texture2D" uid="uid://c71oxm286n832" path="res://assets/sprites/foes/foes.png" id="1_hnrjv"]
 [ext_resource type="Script" path="res://source/elements/battle/foe.gd" id="1_nujxv"]
+[ext_resource type="Texture2D" uid="uid://cy74p4twnfcc3" path="res://assets/sprites/foes/board-foe.png" id="3_gs117"]
 [ext_resource type="Texture2D" uid="uid://e5ql36xbnlac" path="res://assets/sprites/map/map-dot/map_dot_0.png" id="3_ocl6l"]
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_5w5ue"]
+[ext_resource type="Texture2D" uid="uid://pbwjqsrwxils" path="res://assets/sprites/foes/evil-eye-foe.png" id="4_niof5"]
+[ext_resource type="Texture2D" uid="uid://bjx134h3e3vk0" path="res://assets/sprites/foes/slime-foe.png" id="5_idwmg"]
 [ext_resource type="SpriteFrames" uid="uid://bmpohyhj4yaa4" path="res://assets/sprites/effects/battle_char_effect_sprr.tres" id="5_v72su"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8vqj"]
 atlas = ExtResource("1_hnrjv")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pg65"]
+atlas = ExtResource("3_gs117")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stiyp"]
+atlas = ExtResource("3_gs117")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r85m4"]
+atlas = ExtResource("3_gs117")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yprj1"]
 atlas = ExtResource("1_hnrjv")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1n1bt"]
-atlas = ExtResource("1_hnrjv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqp5h"]
+atlas = ExtResource("4_niof5")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjgvk"]
+atlas = ExtResource("4_niof5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sdoa"]
+atlas = ExtResource("4_niof5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_socsy"]
+atlas = ExtResource("5_idwmg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0aog"]
+atlas = ExtResource("5_idwmg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs0lv"]
+atlas = ExtResource("5_idwmg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kdjw"]
+atlas = ExtResource("5_idwmg")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k04m5"]
 animations = [{
@@ -24,25 +63,91 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m8vqj")
 }],
-"loop": true,
+"loop": false,
 "name": &"board",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pg65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stiyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pg65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stiyp")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_r85m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r85m4")
+}],
+"loop": false,
+"name": &"board-die",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yprj1")
 }],
-"loop": true,
+"loop": false,
 "name": &"eye",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1n1bt")
+"texture": SubResource("AtlasTexture_sqp5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjgvk")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8sdoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjgvk")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_8sdoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sdoa")
 }],
-"loop": true,
+"loop": false,
+"name": &"eye-die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_socsy")
+}],
+"loop": false,
 "name": &"slime",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0aog")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_qs0lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0aog")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_6kdjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kdjw")
+}],
+"loop": false,
+"name": &"slime-die",
+"speed": 10.0
 }]
 
 [node name="foe" type="Node2D"]
@@ -50,7 +155,7 @@ script = ExtResource("1_nujxv")
 
 [node name="spr" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k04m5")
-animation = &"slime"
+animation = &"slime-die"
 
 [node name="lpLabel" type="Label" parent="."]
 offset_left = -16.0
@@ -67,7 +172,7 @@ offset_bottom = 64.0
 texture_normal = ExtResource("3_ocl6l")
 texture_pressed = ExtResource("4_5w5ue")
 
-[node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
+[node name="AnimEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("5_v72su")
 
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]

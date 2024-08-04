@@ -50,3 +50,6 @@ func hurt(point):
 	lp-=point
 	if(point>0):	
 		$AnimEffect.play("lp_shake")
+		
+func animation_is_running():
+	return $AnimEffect.is_playing()

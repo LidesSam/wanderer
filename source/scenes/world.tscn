@@ -19,6 +19,10 @@ locations = NodePath("../locations")
 
 [node name="locations" type="Node2D" parent="."]
 
+[node name="cursorLoc" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.341176, 1)
+texture = ExtResource("4_x345q")
+
 [node name="actors" type="Node2D" parent="."]
 
 [node name="top" type="Node2D" parent="."]
@@ -72,10 +76,6 @@ offset_top = 169.0
 offset_right = 448.0
 offset_bottom = 233.0
 text = "Go to Title"
-
-[node name="cursorLoc" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0.341176, 1)
-texture = ExtResource("4_x345q")
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("5_557a5")
