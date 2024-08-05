@@ -21,21 +21,29 @@ func add_location(loc):
 ##gen a small bifurcation inside of the chunk
 func add_sidepath_sub_bifurcation(locTemp,step:int = 64,size:int=3):
 	
-	if(mapLocs.size()<3):
+	if(mapLocs.size()<size):
 		print("to small to bifurcation")
 		return false
 		
 	if(size>mapLocs.size()-2):
 		size=mapLocs.size()-2
 	var lastLoc=mapLocs[0]
-	var displazament= Vector2(step,0)
-	for i in range(size):
-		var pos= 1+i
+	var side= [-1].pick_random()
+	var displacement= Vector2(0,0)
+	var peakDeviation = roundi(size/2)
+	var a = -4.0 / (size * size)  # Adjusted parabolic coefficient for inverted bend
+
+	for y in range(size):
+		var deviation = round(a * (y - peakDeviation) * (y - peakDeviation))  # Parabolic deviation
+		var xDisplacement = deviation * step  # Apply step factor
+		displacement = Vector2(xDisplacement * side+step*2*side, 0)  # Apply direction
+		
+		var pos= 1+y
 		var loc=locTemp.instantiate()
 		lastLoc.add_conection(loc)
 		loc.add_conection(lastLoc)
 		add_location(loc)
-		loc.position=mapLocs[pos].position+displazament
+		loc.position=mapLocs[pos].position-displacement
 		lastLoc=loc
 	lastLoc.add_conection(mapLocs[size+1])
 	

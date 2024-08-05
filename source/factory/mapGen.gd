@@ -57,7 +57,7 @@ func gen_chunk(chunksize, lastLoc):
 		loc.position = Vector2(0, 0 - step * i) + stepOffset  # Position the location
 		chunk.add_location(loc)  # Add the location to the chunk
 	
-	chunk.add_sidepath_sub_bifurcation(locTemp, step, 3)  # Add side paths
+	chunk.add_sidepath_sub_bifurcation(locTemp, step, 5)  # Add side paths
 	chunk.add_rand_foe_encounters(2, 4)  # Add random foe encounters
 	chunks.push_back(chunk)  # Add the chunk to the chunks list
 	locations.add_child(chunk)  # Add the chunk to the locations node
