@@ -41,6 +41,7 @@ func set_cursor_on_loc(loc):
 	$cursorLoc.global_position=loc.global_position
 
 func start_random_battle():
+	Musicbox.enter_battle()
 	player.on_battle()
 	$top.show()
 	$top/Camera2D.show()
@@ -52,6 +53,7 @@ func scape_roll():
 	dicePopup.roll()	
 	
 func out_of_battle():
+	Musicbox.out_battle()
 	player.add_gold(100)
 	$top.hide()
 	$top/Camera2D.hide()

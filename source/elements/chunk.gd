@@ -25,7 +25,7 @@ func add_sidepath_sub_bifurcation(locTemp,step:int = 64,size:int=3):
 	if(mapLocs.size()<3):
 		print("to small to bifurcation")
 		return false
-	size=8
+
 	if(size>mapLocs.size()-2):
 		size=mapLocs.size()-2
 	var lastLoc=mapLocs[0]

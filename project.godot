@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ScreenTransition="*res://source/global/screenTransition.tscn"
+Musicbox="*res://source/global/musicbox.tscn"
 
 [display]
 

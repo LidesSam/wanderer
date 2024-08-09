@@ -186,8 +186,9 @@ libraries = {
 
 [node name="blackout" type="TextureRect" parent="anim"]
 modulate = Color(1, 1, 1, 0)
-offset_right = 856.0
-offset_bottom = 536.0
+offset_top = 480.0
+offset_right = 592.0
+offset_bottom = 920.0
 mouse_filter = 2
 texture = ExtResource("2_7nxdg")
 stretch_mode = 1
