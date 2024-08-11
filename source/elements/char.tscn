@@ -88,17 +88,24 @@ text = "find"
 [node name="controls" type="Node2D" parent="Camera2D"]
 
 [node name="moveBtn" type="Button" parent="Camera2D/controls"]
-offset_left = 32.0
+offset_left = 40.0
 offset_top = -16.0
 offset_right = 280.0
 offset_bottom = 56.0
 text = "Go!"
 
-[node name="inspectBtn" type="Button" parent="Camera2D/controls"]
-visible = false
-offset_left = 32.0
+[node name="nextLocBtn" type="Button" parent="Camera2D/controls"]
+offset_left = 168.0
 offset_top = 64.0
 offset_right = 280.0
+offset_bottom = 144.0
+text = "NEXT"
+
+[node name="inspectBtn" type="Button" parent="Camera2D/controls"]
+visible = false
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 152.0
 offset_bottom = 144.0
 text = "!"
 
@@ -174,6 +181,7 @@ libraries = {
 }
 
 [connection signal="pressed" from="Camera2D/controls/moveBtn" to="." method="_on_move_btn_pressed"]
+[connection signal="pressed" from="Camera2D/controls/nextLocBtn" to="." method="_on_next_loc_btn_pressed"]
 [connection signal="pressed" from="Camera2D/controls/inspectBtn" to="." method="_on_inspect_btn_pressed"]
 [connection signal="pressed" from="Camera2D/menuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="pressed" from="Camera2D/playerMenu/main/closeBtn" to="Camera2D/playerMenu" method="_on_close_btn_pressed"]

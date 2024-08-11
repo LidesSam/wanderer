@@ -2,26 +2,29 @@ extends Node2D
 
 var player=null
 var dicePopup =null
+var cursorIndex=0
+
+@onready var fsm=$fsm
+@onready var mapGen=$mapGen
+@onready var actors = $actors
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	$gen.gen_linear_map(5,10)
 	
 	player=load("res://source/elements/char.tscn").instantiate()
-	player.set_current_loc($gen.startLoc)
-	$actors.add_child(player)
 	player.world=self
+
+	fsm.autoload(self)
+	fsm.addStateTransition("genworld","idle",$fsm/genworld.state_ended)
+	fsm.addStateTransition("idle","movechar",player.moving)
+	fsm.addStateTransition("movechar","idle",player.still)
 	
-	dicePopup = player.dicePopup 
-	dicePopup.goodResult=player.go_to_next_loc
-	dicePopup.badResult=start_random_battle
-	
+	fsm.startState()
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	fsm.fsmUpdate(delta)
 
 func gameover(win=false):
 	$top.show()
@@ -34,7 +37,11 @@ func inspect_loc(loc):
 		player.wait()
 		start_random_battle()
 		
+func set_cursor_on_loc(loc):
+	$cursorLoc.global_position=loc.global_position
+
 func start_random_battle():
+	Musicbox.enter_battle()
 	player.on_battle()
 	$top.show()
 	$top/Camera2D.show()
@@ -46,6 +53,7 @@ func scape_roll():
 	dicePopup.roll()	
 	
 func out_of_battle():
+	Musicbox.out_battle()
 	player.add_gold(100)
 	$top.hide()
 	$top/Camera2D.hide()

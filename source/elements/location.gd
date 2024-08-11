@@ -7,10 +7,9 @@ var locType =0
 var hasEvent=false
 var hasFoe=false
 
+var connectedLocs=[]
 
-
-var conectedLocs=[]
-
+#indicate the end of the game
 var roadend=false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,11 +21,11 @@ func _process(delta):
 	pass
 	
 func add_conection(loc):
-	conectedLocs.push_back(loc)
+	connectedLocs.push_back(loc)
 
 func land_in():
-	for mapLoc in conectedLocs:
-		mapLoc.show_cursor()
+	pass
+			
 func set_foe():
 	hasEvent=true
 	hasFoe=true

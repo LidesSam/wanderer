@@ -49,14 +49,35 @@ func _ready():
 	fsm.startState()
 	pass # Replace with function body.
 	
+
+
+	
+func start_battle():
+	$actleft.text="0"
+	show()
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	fsm.fsmUpdate(delta)
+	pass
+
+
+#fsm conditions
+
 func execute_action_now():
 	return quickAction 
+
 func victory():
 	var foeDefeated=true
+	var animation_ended=true
 	for foe in $foes.get_children():
 		if  foe.lp>=1:
 			foeDefeated=false
-	return foeDefeated and onBattle
+		if foe.animation_is_running():
+			animation_ended=false
+	return animation_ended and foeDefeated and onBattle
 	
 func no_action_left():
 	return partyActions<=0
@@ -69,23 +90,12 @@ func out_target_select():
 	
 func all_selected():
 	return $fsm/target_select.toSelect <= action_targets.size()		
+
 func on_battle():
 	return onBattle
 	
 func out_battle():
 	return !onBattle
-	
-func start_battle():
-	$actleft.text="0"
-	show()
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	fsm.fsmUpdate(delta)
-	pass
-	
 func next_turn(nextTurn):
 	turn=nextTurn
 	
@@ -94,7 +104,11 @@ func next_turn_is_player():
 	pass
 	
 func next_turn_is_foe():
-	return  turn== FOE_TURN
+	var animation_ended=true
+	for foe in $foes.get_children():
+		if foe.animation_is_running():
+			animation_ended=false
+	return animation_ended  and turn== FOE_TURN
 	
 	
 #replace for:
@@ -183,7 +197,7 @@ func gen_single_foe():
 		
 	foes=[]
 	var f = foeTemp.instantiate()
-	
+	f.set_rand_foe()
 	f.selectCallback= act_on_foe.bind(f)
 	foes.push_back(f)
 	$foes.add_child(f)

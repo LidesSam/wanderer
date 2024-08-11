@@ -21,12 +21,9 @@ func enter(actowner):
 		if(rollcrit):
 			print("exe")
 			actowner.roll_crit_dice(trigger_action.bind(actowner))
-			
 		else:
 			action.call()
-	
 	rollcrit = false
-	pass
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
