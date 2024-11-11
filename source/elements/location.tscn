@@ -9,3 +9,10 @@ script = ExtResource("1_6pi5f")
 [node name="spr" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_bru2v")
 animation = &"path"
+
+[node name="type" type="Label" parent="."]
+visible = false
+offset_top = -31.0
+offset_right = 13.0
+offset_bottom = -8.0
+text = "FOE"

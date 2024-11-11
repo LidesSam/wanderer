@@ -10,11 +10,9 @@ var cursorIndex=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
 	player=load("res://source/elements/char.tscn").instantiate()
 	player.world=self
-
+	$tavern.outCallback = self.back_to_player
 	fsm.autoload(self)
 	fsm.addStateTransition("genworld","idle",$fsm/genworld.state_ended)
 	fsm.addStateTransition("idle","movechar",player.moving)
@@ -36,6 +34,9 @@ func inspect_loc(loc):
 	if(loc.hasFoe):
 		player.wait()
 		start_random_battle()
+	else:
+		player.wait()
+		$tavern.go_in()
 		
 func set_cursor_on_loc(loc):
 	$cursorLoc.global_position=loc.global_position
@@ -60,9 +61,12 @@ func out_of_battle():
 	$top/Camera2D.enabled=false
 	$top/battle.hide()
 	$top/battle.onBattle=false
+	back_to_player()
+	
+func back_to_player():		
 	player.reacivate()
 	player.go_to_next_loc()
-		
+	
 func _on_main_menu_btn_pressed():
 	ScreenTransition.change_scene_to_file("res://source/scenes/main_menu.tscn")
 	pass # Replace with function body.

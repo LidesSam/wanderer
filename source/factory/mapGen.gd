@@ -24,7 +24,7 @@ func gen_linear_map(min=5, max=10):
 	for i in range(maxChunks):
 		lastLoc = gen_chunk(chunksize, lastLoc)
 		chunksize = randi() % (max - min) + min
-
+		
 	# Create the end location and connect it to the last location
 	var endloc = locTemp.instantiate()
 	endloc.position = lastLoc.position - Vector2(0, step)
@@ -38,6 +38,7 @@ func gen_linear_map(min=5, max=10):
 
 # Function to generate a chunk with a specified number of locations
 func gen_chunk(chunksize, lastLoc):
+
 	var stepOffset = Vector2(0, 0)
 	if lastLoc:
 		stepOffset = lastLoc.position + Vector2(0, -64)  # Offset for the new chunk based on last location's position
@@ -45,7 +46,7 @@ func gen_chunk(chunksize, lastLoc):
 	var chunk = chunkTemp.instantiate()  # Instance a new chunk
 	if not starChunk:
 		starChunk = chunk  # Set the first chunk
-	
+		
 	# Generate locations within the chunk
 	for i in range(chunksize):
 		var loc = locTemp.instantiate()
@@ -56,7 +57,7 @@ func gen_chunk(chunksize, lastLoc):
 		
 		loc.position = Vector2(0, 0 - step * i) + stepOffset  # Position the location
 		chunk.add_location(loc)  # Add the location to the chunk
-	
+	chunk.add_rand_encounter()#add tavern
 	chunk.add_sidepath_sub_bifurcation(locTemp, step, randi()%(chunksize-2)+3 ) # Add side paths
 	chunk.add_rand_foe_encounters(2, 4)  # Add random foe encounters
 	chunks.push_back(chunk)  # Add the chunk to the chunks list

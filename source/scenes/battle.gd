@@ -134,6 +134,12 @@ func set_commands():
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner($party/char)
 		command.def_as(cmd)
+		if cmd=="item":
+			if $party/char.has_items():
+				command.disabled=false
+			else:
+				command.disabled=true
+				
 		command.set_battle_room(self)
 		command.position.x=i*64
 		$comands.add_child(command)

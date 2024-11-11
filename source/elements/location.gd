@@ -7,6 +7,7 @@ var locType =0
 var hasEvent=false
 var hasFoe=false
 
+
 var connectedLocs=[]
 
 #indicate the end of the game
@@ -29,7 +30,14 @@ func land_in():
 func set_foe():
 	hasEvent=true
 	hasFoe=true
-		
+	$type.text="foe"
+	$type.show()
+	
+func set_as_tavern():
+	hasEvent=true	
+	$type.text="tavern"
+	$type.show()
+	
 func show_cursor():
 	$cursor.visible=true
 	

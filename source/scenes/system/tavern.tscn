@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://5huq0pyf3is7"]
+
+[ext_resource type="Script" path="res://source/scenes/system/tavern.gd" id="1_jv2lc"]
+[ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_wjlrd"]
+
+[node name="tavern" type="Node2D"]
+visible = false
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_jv2lc")
+
+[node name="popup" type="ColorRect" parent="."]
+top_level = true
+offset_right = 576.0
+offset_bottom = 324.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
+
+[node name="gold" type="Label" parent="."]
+offset_left = 429.0
+offset_top = 211.0
+offset_right = 543.0
+offset_bottom = 256.0
+text = "0000"
+
+[node name="choices" type="Node2D" parent="."]
+
+[node name="buyItem" type="Node2D" parent="choices"]
+
+[node name="Sprite2D" type="Sprite2D" parent="choices/buyItem"]
+position = Vector2(96, 112)
+texture = ExtResource("1_wjlrd")
+
+[node name="buybtn" type="Button" parent="choices/buyItem"]
+offset_left = 48.0
+offset_top = 172.0
+offset_right = 158.0
+offset_bottom = 216.0
+text = "hire"
+
+[node name="costlbl" type="Label" parent="choices/buyItem"]
+offset_left = 48.0
+offset_top = 144.0
+offset_right = 158.0
+offset_bottom = 167.0
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exitBtn" type="Button" parent="."]
+offset_left = 455.0
+offset_top = 262.0
+offset_right = 556.0
+offset_bottom = 307.0
+text = "go out"
+
+[connection signal="pressed" from="exitBtn" to="." method="_on_exit_btn_pressed"]

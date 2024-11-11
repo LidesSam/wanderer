@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://hoxggrtkn87q"]
+[gd_scene load_steps=11 format=3 uid="uid://hoxggrtkn87q"]
 
 [ext_resource type="Script" path="res://source/factory/mapGen.gd" id="1_dsx84"]
 [ext_resource type="Script" path="res://source/scenes/world.gd" id="1_m07vj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_x345q"]
 [ext_resource type="Script" path="res://source/scenes/states/world/idleWorldState.gd" id="5_1nbhs"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="5_557a5"]
+[ext_resource type="PackedScene" uid="uid://5huq0pyf3is7" path="res://source/scenes/system/tavern.tscn" id="5_u0vmh"]
 [ext_resource type="Script" path="res://source/scenes/states/world/worldGenState.gd" id="5_xnjlr"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/FsmState.gd" id="6_fqkfx"]
 [ext_resource type="Script" path="res://source/scenes/states/world/moveCharWorldState.gd" id="8_at16l"]
@@ -76,6 +77,8 @@ offset_top = 169.0
 offset_right = 448.0
 offset_bottom = 233.0
 text = "Go to Title"
+
+[node name="tavern" parent="." instance=ExtResource("5_u0vmh")]
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("5_557a5")

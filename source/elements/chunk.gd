@@ -49,6 +49,7 @@ func add_sidepath_sub_bifurcation(locTemp,step:int = 64,size:int=3):
 		lastLoc=loc
 	lastLoc.add_conection(mapLocs[size+1])
 	print("------0>")
+	
 func add_rand_foe_encounters( min:int=1, max:int=2):
 	if(max<=min):
 		max= min+1
@@ -57,3 +58,8 @@ func add_rand_foe_encounters( min:int=1, max:int=2):
 		freeLocs.shuffle()
 		var loc =  freeLocs.pop_front()
 		loc.set_foe()
+		
+func add_rand_encounter( ):
+	freeLocs.shuffle()
+	var loc =  freeLocs.pop_front()
+	loc.set_as_tavern()

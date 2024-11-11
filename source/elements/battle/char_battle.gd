@@ -7,7 +7,7 @@ var def=1
 var lp=10
 var maxlp=10
 var actionEnd=false
-var commands=["hit","def"]#"item"
+var commands=["hit","def","item"]#
 
 var items=[]
 
