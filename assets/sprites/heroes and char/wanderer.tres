@@ -1,9 +1,14 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://br5j16ovov2p6"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://br5j16ovov2p6"]
 
 [ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_ew26b"]
+[ext_resource type="Texture2D" uid="uid://cy74p4twnfcc3" path="res://assets/sprites/foes/board-foe.png" id="2_gkb8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clli2"]
 atlas = ExtResource("1_ew26b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uylj1"]
+atlas = ExtResource("2_gkb8n")
 region = Rect2(0, 0, 32, 32)
 
 [resource]
@@ -14,5 +19,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"wanderer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uylj1")
+}],
+"loop": true,
+"name": &"warrior",
 "speed": 5.0
 }]

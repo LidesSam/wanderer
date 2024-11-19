@@ -4,7 +4,7 @@ extends Area2D
 var world=null
 var currentLoc=null
 @onready var dicePopup=$Camera2D/dicePopup
-var party=[]
+@onready var party=$Camera2D/playerMenu/party
 var visitedLocs=[]
 var gold=0
 var onMove=false
@@ -12,6 +12,9 @@ var moveSpeed=50
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dicePopup=$Camera2D/dicePopup
+	party.get_node("lchar").define_as("wanderer")
+	party.get_node("mchar").define_as("warrior")
+	party.get_node("rchar").define_as("free")
 	pass # Replace with function body.
 
 
