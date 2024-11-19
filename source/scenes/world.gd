@@ -12,6 +12,8 @@ var cursorIndex=0
 func _ready():
 	player=load("res://source/elements/char.tscn").instantiate()
 	player.world=self
+	player.gold=100
+	$tavern.buyer=player
 	$tavern.outCallback = self.back_to_player
 	fsm.autoload(self)
 	fsm.addStateTransition("genworld","idle",$fsm/genworld.state_ended)

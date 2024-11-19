@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b24gqclc4i5rq"]
+
+[ext_resource type="Script" path="res://source/elements/components/buyoption.gd" id="1_52j0a"]
+[ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_nktrq"]
+
+[node name="buyop" type="Node2D"]
+script = ExtResource("1_52j0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 40)
+texture = ExtResource("1_nktrq")
+
+[node name="costlbl" type="Label" parent="."]
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 87.0
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="namelbl" type="Label" parent="."]
+offset_right = 64.0
+offset_bottom = 23.0
+text = "aloha"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="buybtn" type="Button" parent="."]
+offset_top = 88.0
+offset_right = 64.0
+offset_bottom = 128.0
+text = "hire"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="buybtn" to="." method="_on_buybtn_pressed"]
