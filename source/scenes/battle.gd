@@ -1,5 +1,6 @@
 extends Control
 
+var charTemp=load("res://source/elements/battle/char_battle.tscn")
 var foeTemp=load("res://source/elements/battle/foe.tscn")
 var cmdTemp=load("res://source/elements/battle/command.tscn")
 @onready var fsm = $fsm
@@ -9,7 +10,7 @@ var onBattle=false
 var turn=-1
 var PLAYER_TURN=0
 var FOE_TURN=1
-var party=null
+var party=[null,null,null]
 
 var onTargetSelect = false
 var partyActions  =0
@@ -121,21 +122,25 @@ func set_commands():
 	$comands.show()
 	$comands.get_children().clear()
 	var i =0
-	#$party/char: replace for active partymember
-	for cmd in $party/char.commands:
+	#party[0]: replace for active partymember
+	
+	print(party )
+	
+	print(party[0])
+	for cmd in party[0].commands:
 		var command = cmdTemp.instantiate()
 		match cmd:
 			"item":
-				if($party/char.has_items()):
+				if(party[0].has_items()):
 					command.visible=false
 					pass
 			_:
 				pass
 		command.actFunc=char_command.bind(command)
-		command.set_char_owner($party/char)
+		command.set_char_owner(party[0])
 		command.def_as(cmd)
 		if cmd=="item":
-			if $party/char.has_items():
+			if party[0].has_items():
 				command.disabled=false
 			else:
 				command.disabled=true
@@ -177,14 +182,31 @@ func hurt_foe():
 		
 	next_turn(FOE_TURN)
 	
-	
+
 func roll_crit_dice(callback):
 	$critDice.endRollCallback=callback
 	$critDice.roll()
 	$critDice.show()
 
-func set_party(party):
+func set_party(cparty):
+	for c in $party.get_children():
+		$party.remove_child(c)
 	
+	var i =0
+	print(cparty)
+	for pchar in cparty.get_children() :
+		var charTemp = charTemp.instantiate()
+		
+		if(pchar.wanderclass!="free"):
+			party[i]=charTemp
+			party[i].global_position.x+=i*64
+			party[i].define_as(pchar.wanderclass)
+			party[i].lp = pchar.lp
+			party[i].maxlp = pchar.maxlp
+			$party.add_child(charTemp)
+		else:
+			party[i]=null
+		i+=1
 	pass
 	
 func  act_on_foe(foe):
@@ -209,10 +231,10 @@ func gen_single_foe():
 	$foes.add_child(f)
 
 func hurt_player(point =1):
-	$party/char.hurt(1)
+	party[0].hurt(1)
 	
 func char_start_turn(char=null):
-	$party/char.start_turn()
+	party[0].start_turn()
 	
 func out_of_battle():
 	if(visible):
