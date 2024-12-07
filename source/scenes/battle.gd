@@ -46,7 +46,7 @@ func _ready():
 	
 	fsm.addStateTransition("target_select","execute_action",all_selected)
 	fsm.addStateTransition("execute_action","foe_turn",next_turn_is_foe)
-	
+	fsm.addStateTransition("execute_action","player_turn",$fsm/execute_action.state_ended)
 	fsm.addStateTransition("player_turn","execute_action",execute_action_now)
 	
 	fsm.addStateTransition("foe_turn","battle_end",victory)
@@ -63,6 +63,7 @@ func start_battle():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	fsm.fsmUpdate(delta)
+	$TurnLbl/at.text=str("Act:",activeChar)
 	pass
 
 
@@ -117,15 +118,17 @@ func hide_player_commands():
 	$comands.hide()
 	
 func set_commands():
+	for cmd in $comands.get_children():
+		$comands.remove_child(cmd)
 	$comands.show()
-	$comands.get_children().clear()
 	var i =0
 	#party[0]: replace for active partymember
 	
 	print(party )
 	
 	print(party[0])
-	for cmd in party[0].commands:
+	
+	for cmd in party[activeChar].commands:
 		var command = cmdTemp.instantiate()
 		match cmd:
 			"item":
@@ -148,8 +151,6 @@ func set_commands():
 		$comands.add_child(command)
 		i+=1
 		
-func hide_command():
-	$comands.hide()
 	
 func char_command(cmd):
 	
@@ -242,7 +243,7 @@ func hurt_player(dmp =1):
 	party[t].hurt(dmp)
 	
 func char_start_turn(char=null):
-	party[0].start_turn()
+	party[activeChar].start_turn()
 	
 func out_of_battle():
 	if(visible):

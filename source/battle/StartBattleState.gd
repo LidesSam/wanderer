@@ -12,6 +12,7 @@ func enter(actowner):
 	
 	actowner.gen_single_foe()
 	endstate=true
+	actowner.activeChar =0
 	actowner.turn = actowner.PLAYER_TURN
 	pass
 

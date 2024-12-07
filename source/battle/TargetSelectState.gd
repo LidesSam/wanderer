@@ -11,7 +11,7 @@ func _ready():
 
 func enter(actowner):
 	super(actowner)
-	actowner.hide_command()
+	actowner.hide_player_commands()
 	actowner.action_targets=[]
 	for foe in actowner.foes:
 		foe.selection_mode()
