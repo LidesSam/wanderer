@@ -9,7 +9,6 @@ func _ready():
 
 func enter(actowner):
 	super(actowner)
-	actowner.partyActions = 1
 	actowner.set_commands()
 	actowner.char_start_turn()
 	pass

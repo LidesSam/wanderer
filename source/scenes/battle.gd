@@ -1,24 +1,30 @@
 extends Control
 
+#instance element templates
 var charTemp=load("res://source/elements/battle/char_battle.tscn")
 var foeTemp=load("res://source/elements/battle/foe.tscn")
 var cmdTemp=load("res://source/elements/battle/command.tscn")
 @onready var fsm = $fsm
 
-var onBattle=false
-
+#hold the current turn index
 var turn=-1
+
+#turn iterators
 var PLAYER_TURN=0
 var FOE_TURN=1
+
+#hold the party pointers null mean "free"
 var party=[null,null,null]
-
+var activeChar=-1
+#flag 
+#to entere in target selection
 var onTargetSelect = false
-var partyActions  =0
+#if is on battle 
+var onBattle=false
 
+var foes=[]
 
-
-var foes
-
+#used to select a target
 var action_targets=[]
 
 var quickAction=false
@@ -50,15 +56,10 @@ func _ready():
 	fsm.startState()
 	pass # Replace with function body.
 	
-
-
-	
 func start_battle():
 	$actleft.text="0"
 	show()
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	fsm.fsmUpdate(delta)
@@ -66,7 +67,6 @@ func _process(delta):
 
 
 #fsm conditions
-
 func execute_action_now():
 	return quickAction 
 
@@ -80,9 +80,6 @@ func victory():
 			animation_ended=false
 	return animation_ended and foeDefeated and onBattle
 	
-func no_action_left():
-	return partyActions<=0
-
 func on_target_select():
 	return onTargetSelect
 	
@@ -97,12 +94,11 @@ func on_battle():
 	
 func out_battle():
 	return !onBattle
-func next_turn(nextTurn):
-	turn=nextTurn
+
+
 	
 func next_turn_is_player():
 	return  turn==PLAYER_TURN
-	pass
 	
 func next_turn_is_foe():
 	var animation_ended=true
@@ -111,7 +107,9 @@ func next_turn_is_foe():
 			animation_ended=false
 	return animation_ended  and turn== FOE_TURN
 	
-	
+
+func next_turn(nextTurn):
+	turn=nextTurn	
 #replace for:
 ## "load_commands"(load all party commands pre-batte.
 ## show_partymember_commands
@@ -167,8 +165,7 @@ func char_command(cmd):
 			print("cmd:quick action. ",cmd.action)
 			quickAction=true
 			$fsm/execute_action.action =cmd.execute_quick_action
-	partyActions-=1;
-	
+
 	pass
 	
 	
@@ -212,7 +209,6 @@ func set_party(cparty):
 func  act_on_foe(foe):
 	action_targets.push_back(foe)
 	onTargetSelect=false
-	partyActions-=1
 	
 	
 	
