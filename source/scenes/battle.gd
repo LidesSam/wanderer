@@ -230,8 +230,20 @@ func gen_single_foe():
 	foes.push_back(f)
 	$foes.add_child(f)
 
-func hurt_player(point =1):
-	party[0].hurt(1)
+func hurt_player(dmp =1):
+	var targets = []
+	var i=0
+	for target in party:
+		if(party[i]!=null):
+			if(target.can_be_targeted()):
+					targets.push_back(i) 
+		i+=1
+		
+	print("tgs",targets)
+	var t = targets.pick_random()
+	print("i",i)
+	print("i",party[t])
+	party[t].hurt(dmp)
 	
 func char_start_turn(char=null):
 	party[0].start_turn()

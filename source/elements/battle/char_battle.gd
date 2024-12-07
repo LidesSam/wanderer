@@ -85,3 +85,7 @@ func hurt(point):
 		
 func animation_is_running():
 	return $AnimEffect.is_playing()
+	
+func can_be_targeted():
+	return wanderclass!="free" and lp>0
+	
