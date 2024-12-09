@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc44vfu6qldjc"]
+[gd_scene load_steps=8 format=3 uid="uid://dc44vfu6qldjc"]
 
 [ext_resource type="SpriteFrames" uid="uid://br5j16ovov2p6" path="res://assets/sprites/heroes and char/wanderer.tres" id="1_1km75"]
 [ext_resource type="Script" path="res://source/elements/battle/char_battle.gd" id="1_u5c7p"]
 [ext_resource type="SpriteFrames" uid="uid://bmpohyhj4yaa4" path="res://assets/sprites/effects/battle_char_effect_sprr.tres" id="3_vmud0"]
+[ext_resource type="Texture2D" uid="uid://e5ql36xbnlac" path="res://assets/sprites/map/map-dot/map_dot_0.png" id="4_b1v83"]
 
 [sub_resource type="Animation" id="Animation_7xigi"]
 length = 0.001
@@ -71,3 +72,8 @@ offset_top = 24.0
 offset_right = 40.0
 offset_bottom = 50.0
 text = "0/0"
+
+[node name="selected" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("4_b1v83")

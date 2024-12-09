@@ -124,15 +124,11 @@ func set_commands():
 	var i =0
 	#party[0]: replace for active partymember
 	
-	print(party )
-	
-	print(party[0])
-	
 	for cmd in party[activeChar].commands:
 		var command = cmdTemp.instantiate()
 		match cmd:
 			"item":
-				if(party[0].has_items()):
+				if(party[activeChar].has_items()):
 					command.visible=false
 					pass
 			_:
@@ -141,7 +137,7 @@ func set_commands():
 		command.set_char_owner(party[0])
 		command.def_as(cmd)
 		if cmd=="item":
-			if party[0].has_items():
+			if party[activeChar].has_items():
 				command.disabled=false
 			else:
 				command.disabled=true

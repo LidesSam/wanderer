@@ -11,6 +11,7 @@ func enter(actowner):
 	super(actowner)
 	actowner.set_commands()
 	actowner.char_start_turn()
+	actowner.party[actowner.activeChar].get_node("selected").show()
 	pass
 
 func update(actowner,delta):
@@ -18,3 +19,6 @@ func update(actowner,delta):
 
 func state_ended():
 	return endstate;
+func exit(actowner):
+	actowner.party[actowner.activeChar].get_node("selected").hide()
+	super(actowner)
