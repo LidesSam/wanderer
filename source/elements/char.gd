@@ -117,3 +117,14 @@ func search_and_set_next_loc():
 		world.cursorIndex+=1
 		if(world.cursorIndex>=currentLoc.connectedLocs.size()):
 			world.cursorIndex=0
+
+func free_party_spot():
+	for char in party.get_children():
+		if char.wanderclass=="free":
+			return true
+	return false
+	
+func add_to_party(opname):
+	for char in party.get_children():
+		if char.wanderclass=="free":
+			char.define_as(opname)

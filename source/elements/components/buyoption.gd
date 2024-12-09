@@ -48,24 +48,33 @@ func define_as_service():
 	opname = "restore"
 	cost = 50
 	update_ui()
-
 # Called when the buy button is pressed
 func _on_buybtn_pressed():
-	print("Attempting to:", opact, opname, "with cost:", cost)
-	if can_afford(cost):
-		handle_purchase()
+	if(get_parent().get_parent().buyer!=null):
+		print("Attempting to:", opact, opname, "with cost:", cost)
+		if can_afford(cost):
+			handle_purchase(get_parent().get_parent().buyer)
+		else:
+			print("Not enough funds to", opact)
 	else:
-		print("Not enough funds to", opact)
+		print("no buyer!!!")
 
 # Function to check if the player can afford the cost
-func can_afford(amount: int) -> bool:
-	return player_money >= amount
+func can_afford(price: int) -> bool:
+	var finalprice =price
+	return get_parent().get_parent().buyer.gold >= finalprice
 
 # Function to handle the purchase logic
-func handle_purchase():
+func handle_purchase(buyer):
 	print(opact, opname, "completed successfully!")
+	match opact:
+		"hire" :
+			if buyer.free_party_spot():
+				buyer.add_to_party(opname)
+				get_parent().get_parent().buyer.gold  -= cost
+				player_money=get_parent().get_parent().buyer.gold
 	# Deduct the cost from the player's money
-	player_money -= cost
-	print("Remaining funds:", player_money)
+	
+	print("Remaining funds:", get_parent().buyer.gold)
 	# Optional: Provide feedback to the player (e.g., show a message or update UI)
 	update_ui()

@@ -2,7 +2,7 @@ extends Node2D
 
 @export var outCallback: Callable
 @export var optiontemp = preload("res://source/elements/components/buyoption.tscn")
-var buyer=null
+@export var buyer=null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide() # Ensure the menu is hidden initially
