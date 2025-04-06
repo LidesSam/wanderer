@@ -125,6 +125,7 @@ offset_bottom = -120.0
 text = "!"
 
 [node name="playerMenu" type="TextureRect" parent="Camera2D"]
+visible = false
 offset_left = -304.0
 offset_top = -176.0
 offset_right = 304.0

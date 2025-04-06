@@ -10,18 +10,21 @@ var cursorIndex=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	player=load("res://source/elements/char.tscn").instantiate()
 	player.world=self
 	player.gold=100
+
 	$tavern.buyer=player
 	$tavern.outCallback = self.back_to_player
+	
 	fsm.autoload(self)
+	
 	fsm.addStateTransition("genworld","idle",$fsm/genworld.state_ended)
 	fsm.addStateTransition("idle","movechar",player.moving)
 	fsm.addStateTransition("movechar","idle",player.still)
 	
 	fsm.startState()
-	pass # Replace with function body.
 
 func _process(delta):
 	fsm.fsmUpdate(delta)
@@ -73,4 +76,3 @@ func back_to_player():
 	
 func _on_main_menu_btn_pressed():
 	ScreenTransition.change_scene_to_file("res://source/scenes/main_menu.tscn")
-	pass # Replace with function body.

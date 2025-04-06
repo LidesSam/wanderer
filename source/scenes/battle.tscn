@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://source/scenes/battle.gd" id="1_sayp3"]
 [ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="2_1asjr"]
-[ext_resource type="Script" path="res://addons/fsmgear/source/FsmState.gd" id="2_8vnh0"]
 [ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="2_biw0w"]
 [ext_resource type="Script" path="res://source/battle/StartBattleState.gd" id="3_36856"]
 [ext_resource type="Script" path="res://source/battle/FoeActionState.gd" id="4_rwdoe"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgobfpwedcyt" path="res://addons/fsmgear/assets/fsm-icons/fsmState.png" id="6_8d8kp"]
 [ext_resource type="Script" path="res://source/battle/PlayerTurnState.gd" id="6_lq740"]
 [ext_resource type="Script" path="res://source/battle/TargetSelectState.gd" id="7_abill"]
+[ext_resource type="Script" path="res://source/battle/item_select.gd" id="9_4l7wh"]
 [ext_resource type="Script" path="res://source/battle/execute_action.gd" id="10_88630"]
 [ext_resource type="Script" path="res://source/battle/battleEndState.gd" id="10_dhpa6"]
 [ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="14_w5aya"]
@@ -102,7 +102,7 @@ script = ExtResource("7_abill")
 script = ExtResource("4_rwdoe")
 
 [node name="item_select" type="Node" parent="fsm"]
-script = ExtResource("2_8vnh0")
+script = ExtResource("9_4l7wh")
 
 [node name="execute_action" type="Node" parent="fsm"]
 script = ExtResource("10_88630")

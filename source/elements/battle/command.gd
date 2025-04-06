@@ -28,6 +28,25 @@ func def_as(action_type="hit"):
 			pass
 	action= action_type;
 	text=action_type
+
+func def_as_item(action_type="potion"):
+	
+	action= action_type;
+	match action_type:
+		"potion":
+			action= "heal";
+		"bomb":
+			action= "bomb";
+		"SODA":
+			action= "heal";	
+
+	text=action_type
+	
+func heal():
+	pass
+	
+func damage():
+	pass
 	
 func set_battle_room(battleroom):
 	battleRoom=battleroom
@@ -39,11 +58,8 @@ func execute_quick_action():
 	match action:
 		"def":
 			charOwner.set_on_def()
-			pass
 		"wait":
 			charOwner.set_on_wait()
-			pass
-
 
 func _on_pressed():
 	actFunc.call()

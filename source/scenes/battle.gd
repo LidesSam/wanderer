@@ -28,7 +28,7 @@ var foes=[]
 var action_targets=[]
 
 var quickAction=false
-
+var submenu=""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fsm.autoload(self)
@@ -42,6 +42,9 @@ func _ready():
 	fsm.addStateTransition("foe_turn","player_turn",next_turn_is_player)
 	fsm.addStateTransition("player_turn","foe_turn",next_turn_is_foe)
 	
+	fsm.addStateTransition("player_turn","item_select",on_item_select)
+
+	fsm.addStateTransition("item_select","target_select",on_target_select)
 	fsm.addStateTransition("player_turn","target_select",on_target_select)
 	
 	fsm.addStateTransition("target_select","execute_action",all_selected)
@@ -96,7 +99,8 @@ func on_battle():
 func out_battle():
 	return !onBattle
 
-
+func on_item_select():
+	return submenu=="item"
 	
 func next_turn_is_player():
 	return  turn==PLAYER_TURN
@@ -129,7 +133,6 @@ func set_commands():
 		match cmd:
 			"item":
 				if(party[activeChar].has_items()):
-					command.visible=false
 					pass
 			_:
 				pass
@@ -147,6 +150,22 @@ func set_commands():
 		$comands.add_child(command)
 		i+=1
 		
+func set_commands_submenu():
+	for cmd in $comands.get_children():
+		$comands.remove_child(cmd)
+	$comands.show()
+	var i =0
+	#party[0]: replace for active partymember
+	
+	for cmd in party[activeChar].items:
+		var command = cmdTemp.instantiate()
+		command.actFunc=char_command.bind(command)
+		command.set_char_owner(party[0])
+		command.def_as_item(cmd)
+		command.set_battle_room(self)
+		command.position.x=i*64
+		$comands.add_child(command)
+		i+=1
 	
 func char_command(cmd):
 	
@@ -156,6 +175,17 @@ func char_command(cmd):
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
+			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
+		"item":
+			submenu="item"
+		
+		"bomb":
+			#$fsm/target_select.exitaction = execute_action()
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_SELECT_ALL
+			$fsm/execute_action.action = hurt_foe
+			$fsm/execute_action.rollcrit = false
 			#$fsm/execute_action.exitaction = hurt_foe
 			onTargetSelect=true
 		_:

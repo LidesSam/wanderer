@@ -9,7 +9,7 @@ var maxlp=10
 var actionEnd=false
 var commands=["hit","def","item"]#
 
-var items=[]
+var items=["potion","bomb","SODA"]
 
 var onDef=false
 var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()
