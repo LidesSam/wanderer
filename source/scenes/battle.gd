@@ -168,14 +168,18 @@ func set_commands_submenu():
 		i+=1
 	
 func char_command(cmd):
-	
+	$fsm/target_select.targetScope=$fsm/target_select.FOE_SCOPE
 	match cmd.action:
 		"hit":
-			#$fsm/target_select.exitaction = execute_action()
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
-			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
+		"heal":
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetScope=$fsm/target_select.PARTY_SCOPE
+			$fsm/execute_action.action = heal_target
+			$fsm/execute_action.rollcrit = false
 			onTargetSelect=true
 		"item":
 			submenu="item"
@@ -195,6 +199,10 @@ func char_command(cmd):
 
 	pass
 	
+func heal_target():
+	for at in action_targets:
+		at.heal(1)
+	next_turn(FOE_TURN)
 	
 func hurt_foe():
 	for at in action_targets:
@@ -203,7 +211,6 @@ func hurt_foe():
 			at.hurt(1+$critDice.currentValue-4)
 		else:
 			at.hurt(1)
-		
 	next_turn(FOE_TURN)
 	
 
@@ -228,13 +235,14 @@ func set_party(cparty):
 			party[i].lp = pchar.lp
 			party[i].maxlp = pchar.maxlp
 			$party.add_child(charTemp)
+			party[i].selectCallback= act_on_target.bind(party[i])
 		else:
 			party[i]=null
 		i+=1
 	pass
 	
-func  act_on_foe(foe):
-	action_targets.push_back(foe)
+func  act_on_target(target):
+	action_targets.push_back(target)
 	onTargetSelect=false
 	
 	
@@ -249,7 +257,7 @@ func gen_single_foe():
 	foes=[]
 	var f = foeTemp.instantiate()
 	f.set_rand_foe()
-	f.selectCallback= act_on_foe.bind(f)
+	f.selectCallback= act_on_target.bind(f)
 	foes.push_back(f)
 	$foes.add_child(f)
 

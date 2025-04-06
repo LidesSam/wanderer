@@ -79,7 +79,6 @@ func hurt(points):
 func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()
-	pass # Replace with function body.
 
 func animation_is_running():
 	if(lp<=0):

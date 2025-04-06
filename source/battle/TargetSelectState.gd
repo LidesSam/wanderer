@@ -30,8 +30,20 @@ func enter(actowner):
 	match targetSelectMode:
 		MANUAL_SELECT:
 			#enable selection of foes so the player manually select the targets
-			for foe in actowner.foes:
-				foe.selection_mode()
+			match targetScope:
+				PARTY_SCOPE:
+					for char in actowner.party:
+						if(char):
+							char.selection_mode()
+				FOE_SCOPE:
+					for foe in actowner.foes:
+						foe.selection_mode()
+				ALL_SCOPE:
+					for char in actowner.party:
+						if(char):
+							char.selection_mode()
+					for foe in actowner.foes:
+						foe.selection_mode()
 		AUTO_RANDOM_SELECT:
 			#enable selection of foes so the player manually select the targets
 			var i =0

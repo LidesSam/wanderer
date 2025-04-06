@@ -15,6 +15,9 @@ var onDef=false
 var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()
 
 var wanderclass="free"
+
+var selectCallback
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -88,4 +91,22 @@ func animation_is_running():
 	
 func can_be_targeted():
 	return wanderclass!="free" and lp>0
+	
+func selection_mode(lpcon=0):
+	match lpcon:
+		0:#select to healt
+			if(lp>0):
+				$select.show()
+		1:#for revive
+			if(lp<0):
+				$select.show()
+		2:
+			$select.show()
+func heal(points):
+	lp+=points
+	if lp>maxlp:
+		lp=maxlp
+func _on_select_pressed():
+	$select.hide()
+	selectCallback.call()
 	
