@@ -46,10 +46,29 @@ func define_as(charname="wanderer"):
 			$spr.play("warrior")
 			$spr.show()
 			atk=2
-			def=2
+			def=3
 			lp=15
 			maxlp=15
 			commands=["hit","item"]
+			update_life()
+		"healer":
+			$spr.play("warrior")
+			$spr.show()
+			atk=1
+			def=1
+			lp=8
+			maxlp=8
+			commands=["heal","def","item"]
+			update_life()
+			
+		"mage":
+			$spr.play("warrior")
+			$spr.show()
+			atk=1
+			def=1
+			lp=8
+			maxlp=8
+			commands=["hit","thunder","item"]
 			update_life()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,6 +125,7 @@ func heal(points):
 	lp+=points
 	if lp>maxlp:
 		lp=maxlp
+		
 func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()

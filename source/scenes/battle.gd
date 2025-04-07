@@ -192,6 +192,31 @@ func char_command(cmd):
 			$fsm/execute_action.rollcrit = false
 			#$fsm/execute_action.exitaction = hurt_foe
 			onTargetSelect=true
+		
+		"thunder":
+			#$fsm/target_select.exitaction = execute_action()
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_RANDOM_SELECT
+			$fsm/execute_action.action = atk_spell_on_foe.bind("thunder",1, 3)
+			$fsm/execute_action.rollcrit = false
+			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
+		"fire":
+			#$fsm/target_select.exitaction = execute_action()
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_RANDOM_SELECT
+			$fsm/execute_action.action = atk_spell_on_foe.bind("fire",1, 3)
+			$fsm/execute_action.rollcrit = false
+			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
+		"ice":
+			#$fsm/target_select.exitaction = execute_action()
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_RANDOM_SELECT
+			$fsm/execute_action.action = atk_spell_on_foe.bind("ice",1, 3)
+			$fsm/execute_action.rollcrit = false
+			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
 		_:
 			print("cmd:quick action. ",cmd.action)
 			quickAction=true
@@ -213,6 +238,23 @@ func hurt_foe():
 			at.hurt(1)
 	next_turn(FOE_TURN)
 	
+func atk_spell_on_foe(atrib="none",base=1, modifier=1):
+	var dmg=0
+	for at in action_targets:
+		at.hurt(base*modifier)
+		match atrib:
+			"none":
+				dmg= base + modifier
+				break
+			"thunder": 
+				dmg= 1+randi()%(base+modifier)*0.5
+			"fire":
+				dmg=  base *randi()%modifier*0.5
+			"ice":
+				dmg= base + modifier*0.5
+			
+		at.hurt(round(dmg))
+	next_turn(FOE_TURN)
 
 func roll_crit_dice(callback):
 	$critDice.endRollCallback=callback

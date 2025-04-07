@@ -75,7 +75,10 @@ func hurt(points):
 		$spr.play(str(foename,"-die"))
 	update_lp()
 
-
+func heal(points):
+	lp+=points
+	if lp>maxlp:
+		lp=maxlp
 func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()

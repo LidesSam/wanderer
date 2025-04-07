@@ -13,8 +13,8 @@ var moveSpeed=50
 func _ready():
 	dicePopup=$Camera2D/dicePopup
 	party.get_node("lchar").define_as("wanderer")
-	party.get_node("mchar").define_as("warrior")
-	party.get_node("rchar").define_as("free")
+	party.get_node("mchar").define_as("healer")
+	party.get_node("rchar").define_as("mage")
 	pass # Replace with function body.
 
 

@@ -31,7 +31,9 @@ func define_as_random_option():
 # Define this item as something that can be hired
 func define_as_hire():
 	opact = "hire"
-	opname = "wanderer"
+	
+	opname = ["wanderer","cleric","warrior","mage"].pick_random()
+	
 	cost = 100
 	update_ui()
 
