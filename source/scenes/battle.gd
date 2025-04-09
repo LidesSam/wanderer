@@ -146,7 +146,7 @@ func set_commands():
 				command.disabled=true
 				
 		command.set_battle_room(self)
-		command.position.x=i*64
+		command.position.x=i*128
 		$comands.add_child(command)
 		i+=1
 		

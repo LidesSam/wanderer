@@ -3,6 +3,10 @@
 [ext_resource type="Script" path="res://source/elements/battle/command.gd" id="1_r8ej6"]
 
 [node name="Command" type="Button"]
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 56.0
+offset_bottom = 16.0
 text = "Atacar"
 script = ExtResource("1_r8ej6")
 
