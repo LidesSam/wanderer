@@ -7,6 +7,7 @@ var maxlp=3
 var actionEnd=false
 var selectCallback
 var foename="slime"
+var lvl=10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,7 +46,7 @@ func set_rand_foe():
 			maxlp=3
 			atk=1
 			print("slime")
-		
+	maxlp+=lvl
 	lp=maxlp
 	update_lp()
 	
@@ -64,6 +65,9 @@ func selection_mode(lpcon=0):
 				$select.show()
 		2:
 			$select.show()
+	
+func selection_off():
+	$select.hide()
 	
 func hurt(points):
 	$AnimEffect.play("impact")

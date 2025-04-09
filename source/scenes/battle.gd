@@ -114,7 +114,7 @@ func next_turn_is_foe():
 	
 
 func next_turn(nextTurn):
-	turn=nextTurn	
+		turn=nextTurn	
 #replace for:
 ## "load_commands"(load all party commands pre-batte.
 ## show_partymember_commands
@@ -227,7 +227,10 @@ func char_command(cmd):
 func heal_target():
 	for at in action_targets:
 		at.heal(1)
-	next_turn(FOE_TURN)
+	if(activeChar+1>3):
+		next_turn(FOE_TURN)
+	else:
+		$fsm/execute_action.endstate=true
 	
 func hurt_foe():
 	for at in action_targets:
@@ -236,7 +239,12 @@ func hurt_foe():
 			at.hurt(1+$critDice.currentValue-4)
 		else:
 			at.hurt(1)
-	next_turn(FOE_TURN)
+	
+	if(activeChar+1>3):
+		next_turn(FOE_TURN)
+	else:
+		$fsm/execute_action.endstate=true
+#	next_turn(FOE_TURN)
 	
 func atk_spell_on_foe(atrib="none",base=1, modifier=1):
 	var dmg=0
@@ -254,7 +262,11 @@ func atk_spell_on_foe(atrib="none",base=1, modifier=1):
 				dmg= base + modifier*0.5
 			
 		at.hurt(round(dmg))
-	next_turn(FOE_TURN)
+	
+	if(activeChar+1>3):
+		next_turn(FOE_TURN)
+	else:
+		$fsm/execute_action.endstate=true
 
 func roll_crit_dice(callback):
 	$critDice.endRollCallback=callback

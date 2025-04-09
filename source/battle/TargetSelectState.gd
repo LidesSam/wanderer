@@ -67,4 +67,10 @@ func state_ended():
 	return endstate;
 	
 func exit(actowner):
+	for char in actowner.party:
+		if(char):
+			char.selection_off()
+	for foe in actowner.foes:
+		if(foe):
+			foe.selection_off()
 	actowner.get_node("counterLbl").text=str(actowner.action_targets.size(),"/",toSelect)

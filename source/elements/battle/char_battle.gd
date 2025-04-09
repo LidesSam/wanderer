@@ -94,7 +94,12 @@ func start_turn():
 func atk_target(target):
 	target.hurt(atk)
 	actionEnd=true
-			
+
+func heal(points):
+	lp+=points
+	if lp>maxlp:
+		lp=maxlp
+					
 func hurt(point):
 	$AnimSprEffect.play("impact")
 	if(onDef):
@@ -121,11 +126,10 @@ func selection_mode(lpcon=0):
 				$select.show()
 		2:
 			$select.show()
-func heal(points):
-	lp+=points
-	if lp>maxlp:
-		lp=maxlp
-		
+func selection_off():
+	$select.hide()
+	
+
 func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()

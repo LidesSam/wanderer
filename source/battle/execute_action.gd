@@ -33,7 +33,7 @@ func enter(actowner):
 			action.call()
 	rollcrit = false
 func active_next_char_or_finalize(actowner):
-	print("act i:",actowner.activeChar)
+	
 	if(actowner.activeChar==0):
 		if actowner.party[1]!=null:
 			actowner.activeChar=1
@@ -50,7 +50,7 @@ func active_next_char_or_finalize(actowner):
 		actowner.activeChar=3
 	else:
 		actowner.activeChar=3
-	print("act f:",actowner.activeChar)
+	print("active char set on:",actowner.activeChar)
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,9 +58,12 @@ func _process(delta):
 	pass
 func state_ended():
 	return endstate
+
+	
 func trigger_action(actowner):
 	actowner.get_node("critDice").hide()
 	action.call()
+	
 func exit(actowner):
 	if actowner.activeChar>2:
 		actowner.activeChar=0
