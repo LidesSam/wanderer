@@ -60,7 +60,7 @@ libraries = {
 
 [node name="spr" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_1km75")
-animation = &"wanderer"
+animation = &"mage"
 
 [node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_vmud0")

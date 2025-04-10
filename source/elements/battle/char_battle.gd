@@ -27,13 +27,13 @@ func start__turn():
 
 func define_as(charname="wanderer"):
 	wanderclass=charname
+	
 	match charname:
 		"free":
 			$spr.hide()
 			$lpLabel.text="FREE"
 			
 		"wanderer":
-			$spr.play("wanderer")
 			$spr.show()
 			atk=1
 			def=1
@@ -43,7 +43,6 @@ func define_as(charname="wanderer"):
 			update_life()
 			
 		"warrior":
-			$spr.play("warrior")
 			$spr.show()
 			atk=2
 			def=3
@@ -52,7 +51,7 @@ func define_as(charname="wanderer"):
 			commands=["hit","item"]
 			update_life()
 		"healer":
-			$spr.play("warrior")
+			
 			$spr.show()
 			atk=1
 			def=1
@@ -71,6 +70,7 @@ func define_as(charname="wanderer"):
 			commands=["hit","thunder","item"]
 			update_life()
 	
+	$spr.play(charname)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_life()
