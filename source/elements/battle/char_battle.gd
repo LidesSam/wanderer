@@ -69,8 +69,8 @@ func define_as(charname="wanderer"):
 			maxlp=8
 			commands=["hit","thunder","item"]
 			update_life()
-	
 	$spr.play(charname)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_life()
@@ -99,6 +99,7 @@ func heal(points):
 	lp+=points
 	if lp>maxlp:
 		lp=maxlp
+	$AnimEffect.play("heal")
 					
 func hurt(point):
 	$AnimSprEffect.play("impact")
