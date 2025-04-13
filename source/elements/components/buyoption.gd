@@ -22,8 +22,11 @@ func update_ui():
 		$namelbl.text = opname
 
 # Define as a random option with random cost, action, and name
-func define_as_random_option():
-	match randi() % 3:
+func define_as_random_option(noHire=false):
+	var op=[0,1,2]
+	if(noHire):
+		op.pop_front()
+	match op.pick_random():
 		0:define_as_hire()
 		1:define_as_item()
 		2:define_as_service()
@@ -32,7 +35,7 @@ func define_as_random_option():
 func define_as_hire():
 	opact = "hire"
 	
-	opname = ["wanderer","cleric","warrior","mage"].pick_random()
+	opname = ["wanderer","healer","warrior","mage"].pick_random()
 	
 	cost = 100
 	update_ui()

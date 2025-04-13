@@ -118,6 +118,14 @@ func search_and_set_next_loc():
 		if(world.cursorIndex>=currentLoc.connectedLocs.size()):
 			world.cursorIndex=0
 
+
+func count_free_party_spots():
+	var freeCount=0
+	for char in party.get_children():
+		if char.wanderclass=="free":
+			freeCount+=1
+	return freeCount
+	
 func free_party_spot():
 	for char in party.get_children():
 		if char.wanderclass=="free":

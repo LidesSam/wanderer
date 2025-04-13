@@ -41,7 +41,7 @@ func inspect_loc(loc):
 		start_random_battle()
 	else:
 		player.wait()
-		$tavern.go_in()
+		$tavern.go_in(player)
 		
 func set_cursor_on_loc(loc):
 	$cursorLoc.global_position=loc.global_position
