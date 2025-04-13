@@ -192,7 +192,15 @@ func char_command(cmd):
 			$fsm/execute_action.rollcrit = false
 			#$fsm/execute_action.exitaction = hurt_foe
 			onTargetSelect=true
-		
+		"soda":
+			#$fsm/target_select.exitaction = execute_action()
+			$fsm/target_select.toSelect=1
+			$fsm/target_select.targetScope=$fsm/target_select.PARTY_SCOPE
+			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_SELECT_ALL
+			$fsm/execute_action.action = heal_target.bind(1)
+			$fsm/execute_action.rollcrit = false
+			#$fsm/execute_action.exitaction = hurt_foe
+			onTargetSelect=true
 		"thunder":
 			#$fsm/target_select.exitaction = execute_action()
 			$fsm/target_select.toSelect=1
@@ -299,11 +307,7 @@ func  act_on_target(target):
 	action_targets.push_back(target)
 	onTargetSelect=false
 	
-	
-	
 func gen_single_foe():
-	
-	print("cfoe gen")
 	$foes.get_children().clear()
 	for foe in $foes.get_children():
 		$foes.remove_child(foe)
@@ -323,11 +327,8 @@ func hurt_player(dmp =1):
 			if(target.can_be_targeted()):
 					targets.push_back(i) 
 		i+=1
-		
-	print("tgs",targets)
+	
 	var t = targets.pick_random()
-	print("i",i)
-	print("i",party[t])
 	party[t].hurt(dmp)
 	
 func char_start_turn(char=null):

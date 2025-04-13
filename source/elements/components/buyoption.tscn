@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://b24gqclc4i5rq"]
 
 [ext_resource type="Script" path="res://source/elements/components/buyoption.gd" id="1_52j0a"]
-[ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_nktrq"]
+[ext_resource type="SpriteFrames" uid="uid://br5j16ovov2p6" path="res://assets/sprites/heroes and char/wanderer.tres" id="2_pjjda"]
 
 [node name="buyop" type="Node2D"]
 script = ExtResource("1_52j0a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 40)
-texture = ExtResource("1_nktrq")
+[node name="spr" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_pjjda")
+animation = &"warrior"
 
 [node name="costlbl" type="Label" parent="."]
 offset_top = 64.0

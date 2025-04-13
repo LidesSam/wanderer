@@ -35,6 +35,7 @@ func set_foe():
 	
 func set_as_tavern():
 	hasEvent=true	
+	hasFoe=false
 	$type.text="tavern"
 	$type.show()
 	

@@ -63,7 +63,7 @@ func _on_move_btn_pressed():
 	$Camera2D/controls/inspectBtn.hide()
 	$Camera2D/controls.hide()
 	$Camera2D/controls.show()
-	if (currentLoc.hasEvent):
+	if (currentLoc.hasFoe):
 		$Camera2D/controls/moveBtn.hide()
 		$Camera2D/controls/inspectBtn.hide()
 		world.scape_roll()
