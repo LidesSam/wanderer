@@ -203,7 +203,7 @@ func char_command(cmd):
 			onTargetSelect=true
 		"thunder":
 			#$fsm/target_select.exitaction = execute_action()
-			$fsm/target_select.toSelect=1
+			$fsm/target_select.toSelect=randi()%3+1
 			$fsm/target_select.targetSelectMode=$fsm/target_select.AUTO_RANDOM_SELECT
 			$fsm/execute_action.action = atk_spell_on_foe.bind("thunder",1, 3)
 			$fsm/execute_action.rollcrit = false
@@ -313,11 +313,16 @@ func gen_single_foe():
 		$foes.remove_child(foe)
 		
 	foes=[]
-	var f = foeTemp.instantiate()
-	f.set_rand_foe()
-	f.selectCallback= act_on_target.bind(f)
-	foes.push_back(f)
-	$foes.add_child(f)
+	var r = randi()%3+1
+	r=3
+	for i in range(r):
+
+		var f = foeTemp.instantiate()
+		f.position.x= i *96
+		f.set_rand_foe()
+		f.selectCallback= act_on_target.bind(f)
+		foes.push_back(f)
+		$foes.add_child(f)
 
 func hurt_player(dmp =1):
 	var targets = []
