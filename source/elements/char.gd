@@ -9,6 +9,8 @@ var visitedLocs=[]
 var gold=0
 var onMove=false
 var moveSpeed=50
+var bag=[]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	dicePopup=$Camera2D/dicePopup
@@ -131,7 +133,13 @@ func free_party_spot():
 		if char.wanderclass=="free":
 			return true
 	return false
-	
+func	full_heal_party():
+	for char in party.get_children():
+		if char.wanderclass!="free":
+			char.lp= char.maxlp
+			
+func add_item(item="potion"):
+	bag.push_back(item)
 func add_to_party(opname):
 	for char in party.get_children():
 		if char.wanderclass=="free":

@@ -37,6 +37,7 @@ func define_as_hire():
 	
 	opname = ["wanderer","healer","warrior","mage"].pick_random()
 	
+	$spr.play("opname")
 	cost = 100
 	update_ui()
 
@@ -46,11 +47,13 @@ func define_as_item():
 	opname = "potion"
 	cost = 20
 	update_ui()
+	$spr.play("item")
 
 # Define this item as a service to be required
 func define_as_service():
 	opact = "require"
 	opname = "restore"
+	$spr.play("restore")
 	cost = 50
 	update_ui()
 # Called when the buy button is pressed
@@ -71,15 +74,27 @@ func can_afford(price: int) -> bool:
 
 # Function to handle the purchase logic
 func handle_purchase(buyer):
-	print(opact, opname, "completed successfully!")
 	match opact:
 		"hire" :
 			if buyer.free_party_spot():
 				buyer.add_to_party(opname)
-				get_parent().get_parent().buyer.gold  -= cost
-				player_money=get_parent().get_parent().buyer.gold
+				buyer.gold  -= cost
+				player_money=buyer.gold
+				$spr.play("sell-out")
+		
+		"buy" :
+			buyer.gold  -= cost
+			player_money=buyer.gold
+			$spr.play("sell-out")
+			
+		
+		"require" :
+			buyer.full_heal_party()
+			buyer.gold  -= cost
+			player_money=buyer.gold	
+			$spr.play("sell-out")
 	# Deduct the cost from the player's money
-	
-	print("Remaining funds:", get_parent().buyer.gold)
 	# Optional: Provide feedback to the player (e.g., show a message or update UI)
 	update_ui()
+	
+	print(opact, opname, "completed successfully!")

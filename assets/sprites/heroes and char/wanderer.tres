@@ -1,14 +1,29 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://br5j16ovov2p6"]
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://br5j16ovov2p6"]
 
 [ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_ew26b"]
+[ext_resource type="Texture2D" uid="uid://basi5vn7ko14i" path="res://assets/sprites/items/weapons/misc/misc0.png" id="2_msojt"]
+[ext_resource type="Texture2D" uid="uid://bu76nisdw3pi5" path="res://assets/sprites/items/weapons/misc/misc3.png" id="3_60r8g"]
+[ext_resource type="Texture2D" uid="uid://brgsa0u4l48cb" path="res://assets/sprites/items/weapons/misc/misc2.png" id="4_r7bkr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwp3o"]
 atlas = ExtResource("1_ew26b")
 region = Rect2(64, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_usacn"]
+atlas = ExtResource("2_msojt")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mu6r"]
 atlas = ExtResource("1_ew26b")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ky0"]
+atlas = ExtResource("3_60r8g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwd6a"]
+atlas = ExtResource("4_r7bkr")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clli2"]
 atlas = ExtResource("1_ew26b")
@@ -30,10 +45,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_usacn")
+}],
+"loop": true,
+"name": &"item",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1mu6r")
 }],
 "loop": true,
 "name": &"mage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ky0")
+}],
+"loop": true,
+"name": &"restore",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwd6a")
+}],
+"loop": true,
+"name": &"sell-out",
 "speed": 5.0
 }, {
 "frames": [{

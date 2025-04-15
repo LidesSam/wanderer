@@ -8,7 +8,7 @@ script = ExtResource("1_52j0a")
 
 [node name="spr" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_pjjda")
-animation = &"warrior"
+animation = &"sell-out"
 
 [node name="costlbl" type="Label" parent="."]
 offset_top = 64.0
