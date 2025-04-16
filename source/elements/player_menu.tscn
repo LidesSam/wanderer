@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwcmks3ondtog"]
+
+[ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
+[ext_resource type="Script" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
+[ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
+
+[node name="playerMenu" type="TextureRect"]
+offset_left = -304.0
+offset_top = -176.0
+offset_right = 304.0
+offset_bottom = 176.0
+texture = ExtResource("1_27mnp")
+stretch_mode = 1
+script = ExtResource("2_hsdjg")
+
+[node name="header" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 1)
+
+[node name="gold" type="Label" parent="header"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 528.0
+offset_bottom = 48.0
+text = "GOLD:0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="closeBtn" type="Button" parent="header"]
+layout_mode = 0
+offset_left = 496.0
+offset_right = 544.0
+offset_bottom = 48.0
+text = "close"
+
+[node name="main" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 576.0
+offset_bottom = 320.0
+color = Color(0, 0, 0, 1)
+
+[node name="btn" type="ColorRect" parent="main"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[node name="prevPbtn" type="Button" parent="main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 168.0
+offset_right = 456.0
+offset_bottom = 208.0
+text = "<--"
+
+[node name="prevPbtn2" type="Button" parent="main"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 168.0
+offset_right = 536.0
+offset_bottom = 208.0
+text = "-->"
+
+[node name="equipBtn" type="Button" parent="main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 16.0
+offset_right = 528.0
+offset_bottom = 56.0
+text = "skills"
+
+[node name="equipBtn2" type="Button" parent="main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 72.0
+offset_right = 528.0
+offset_bottom = 112.0
+text = "equip"
+
+[node name="itemsBtn" type="Button" parent="main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 120.0
+offset_right = 528.0
+offset_bottom = 160.0
+text = "items"
+
+[node name="party" type="Node2D" parent="."]
+position = Vector2(304, 112)
+
+[node name="lchar" parent="party" instance=ExtResource("3_plscc")]
+position = Vector2(-192, 48)
+
+[node name="mchar" parent="party" instance=ExtResource("3_plscc")]
+position = Vector2(-128, 48)
+
+[node name="rchar" parent="party" instance=ExtResource("3_plscc")]
+position = Vector2(-64, 48)
+
+[connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
