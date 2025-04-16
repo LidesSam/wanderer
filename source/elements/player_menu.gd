@@ -18,7 +18,7 @@ func update_gold(gold):
 
 func update_cursor_pos_on_party_char():
 	$cursor.global_position = $party.get_child(currentTarget).global_position+Vector2(32,32)
-	$party.get_child(currentTarget).modulate="#f00"
+	#$party.get_child(currentTarget).modulate="#f00"
 
 func _on_close_btn_pressed():
 	hide()
@@ -27,7 +27,7 @@ func _on_close_btn_pressed():
 
 func _on_prev_ptn_pressed() -> void:
 	
-	$party.get_child(currentTarget).modulate="#fff"
+	#$party.get_child(currentTarget).modulate="#fff"
 	currentTarget-=1
 	while   $party.get_child(currentTarget)==null or $party.get_child(currentTarget).wanderclass=="free":
 		currentTarget-=1
@@ -37,7 +37,7 @@ func _on_prev_ptn_pressed() -> void:
 
 
 func _on_next_btn_pressed() -> void:
-	$party.get_child(currentTarget).modulate="#fff"
+	#$party.get_child(currentTarget).modulate="#fff"
 	currentTarget+=1
 	while  $party.get_child(currentTarget)==null or $party.get_child(currentTarget).wanderclass=="free":
 		currentTarget+=1
