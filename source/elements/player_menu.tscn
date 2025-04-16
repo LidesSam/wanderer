@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=5 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
 [ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
+[ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
 
 [node name="playerMenu" type="TextureRect"]
 offset_left = -304.0
@@ -38,6 +39,23 @@ offset_right = 544.0
 offset_bottom = 48.0
 text = "close"
 
+[node name="partyBtn" type="Button" parent="header"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 56.0
+text = "party
+"
+
+[node name="bagbtn" type="Button" parent="header"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 56.0
+text = "bag"
+
 [node name="main" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 32.0
@@ -54,43 +72,49 @@ offset_right = 384.0
 offset_bottom = 216.0
 color = Color(0.376471, 0.376471, 0.376471, 1)
 
-[node name="prevPbtn" type="Button" parent="main"]
+[node name="main" type="Control" parent="main"]
+anchors_preset = 0
+offset_left = 384.0
+offset_right = 544.0
+offset_bottom = 224.0
+
+[node name="prevPtn" type="Button" parent="main/main"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 16.0
 offset_top = 168.0
-offset_right = 456.0
+offset_right = 72.0
 offset_bottom = 208.0
 text = "<--"
 
-[node name="prevPbtn2" type="Button" parent="main"]
+[node name="nextBtn" type="Button" parent="main/main"]
 layout_mode = 0
-offset_left = 472.0
+offset_left = 88.0
 offset_top = 168.0
-offset_right = 536.0
+offset_right = 144.0
 offset_bottom = 208.0
 text = "-->"
 
-[node name="equipBtn" type="Button" parent="main"]
+[node name="statebtn" type="Button" parent="main/main"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 16.0
 offset_top = 16.0
-offset_right = 528.0
+offset_right = 144.0
 offset_bottom = 56.0
-text = "skills"
+text = "state"
 
-[node name="equipBtn2" type="Button" parent="main"]
+[node name="equipbtn" type="Button" parent="main/main"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 16.0
 offset_top = 72.0
-offset_right = 528.0
+offset_right = 144.0
 offset_bottom = 112.0
 text = "equip"
 
-[node name="itemsBtn" type="Button" parent="main"]
+[node name="itemsBtn" type="Button" parent="main/main"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 16.0
 offset_top = 120.0
-offset_right = 528.0
+offset_right = 144.0
 offset_bottom = 160.0
 text = "items"
 
@@ -106,4 +130,17 @@ position = Vector2(-128, 48)
 [node name="rchar" parent="party" instance=ExtResource("3_plscc")]
 position = Vector2(-64, 48)
 
+[node name="cursor" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -8.0
+offset_right = 32.0
+offset_bottom = 40.0
+
+[node name="spr" type="Sprite2D" parent="cursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
+
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
+[connection signal="pressed" from="main/main/prevPtn" to="." method="_on_prev_ptn_pressed"]
+[connection signal="pressed" from="main/main/nextBtn" to="." method="_on_next_btn_pressed"]
