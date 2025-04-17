@@ -69,8 +69,8 @@ func selection_mode(lpcon=0):
 func selection_off():
 	$select.hide()
 	
-func hurt(points):
-	$AnimEffect.play("impact")
+func hurt(points,anim="impact"):
+	$AnimEffect.play(anim)
 	lp-=points
 	print("hurt lp left:",lp)
 	

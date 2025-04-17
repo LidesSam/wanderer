@@ -269,7 +269,7 @@ func atk_spell_on_foe(atrib="none",base=1, modifier=1):
 			"ice":
 				dmg= base + modifier*0.5
 			
-		at.hurt(round(dmg))
+		at.hurt(round(dmg),atrib)
 	
 	if(activeChar+1>3):
 		next_turn(FOE_TURN)
@@ -324,7 +324,7 @@ func gen_single_foe():
 		foes.push_back(f)
 		$foes.add_child(f)
 
-func hurt_player(dmp =1):
+func hurt_player(dmp =1, anim="impact"):
 	var targets = []
 	var i=0
 	for target in party:
@@ -334,7 +334,7 @@ func hurt_player(dmp =1):
 		i+=1
 	
 	var t = targets.pick_random()
-	party[t].hurt(dmp)
+	party[t].hurt(dmp,anim)
 	
 func char_start_turn(char=null):
 	party[activeChar].start_turn()

@@ -115,10 +115,10 @@ sprite_frames = ExtResource("1_1km75")
 animation = &"mage"
 
 [node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = ExtResource("3_vmud0")
-animation = &"impact"
-frame = 7
-frame_progress = 1.0
+animation = &"sparkling"
+frame_progress = 0.350314
 
 [node name="lpLabel" type="Label" parent="."]
 offset_top = 24.0
