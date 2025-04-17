@@ -64,7 +64,7 @@ offset_right = 576.0
 offset_bottom = 320.0
 color = Color(0, 0, 0, 1)
 
-[node name="btn" type="ColorRect" parent="main"]
+[node name="separator" type="ColorRect" parent="main"]
 layout_mode = 0
 offset_left = 368.0
 offset_top = 8.0
@@ -72,54 +72,71 @@ offset_right = 384.0
 offset_bottom = 216.0
 color = Color(0.376471, 0.376471, 0.376471, 1)
 
-[node name="main" type="Control" parent="main"]
+[node name="nav" type="Control" parent="main"]
+anchors_preset = 0
+offset_left = 392.0
+offset_top = 160.0
+offset_right = 536.0
+offset_bottom = 216.0
+
+[node name="prevPtn" type="Button" parent="main/nav"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 48.0
+text = "<--"
+
+[node name="nextBtn" type="Button" parent="main/nav"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 48.0
+text = "-->"
+
+[node name="party" type="Control" parent="main"]
 anchors_preset = 0
 offset_left = 384.0
 offset_right = 544.0
-offset_bottom = 224.0
+offset_bottom = 160.0
 
-[node name="prevPtn" type="Button" parent="main/main"]
+[node name="statebtn" type="Button" parent="main/party"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 168.0
-offset_right = 72.0
-offset_bottom = 208.0
-text = "<--"
-
-[node name="nextBtn" type="Button" parent="main/main"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 168.0
+offset_top = 8.0
 offset_right = 144.0
-offset_bottom = 208.0
-text = "-->"
-
-[node name="statebtn" type="Button" parent="main/main"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 144.0
-offset_bottom = 56.0
+offset_bottom = 48.0
 text = "state"
 
-[node name="equipbtn" type="Button" parent="main/main"]
+[node name="equipbtn" type="Button" parent="main/party"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 72.0
+offset_top = 64.0
 offset_right = 144.0
-offset_bottom = 112.0
+offset_bottom = 104.0
 text = "equip"
 
-[node name="itemsBtn" type="Button" parent="main/main"]
+[node name="itemsBtn" type="Button" parent="main/party"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 120.0
+offset_top = 112.0
 offset_right = 144.0
-offset_bottom = 160.0
+offset_bottom = 152.0
 text = "items"
 
-[node name="party" type="Node2D" parent="."]
-position = Vector2(304, 112)
+[node name="bag" type="Control" parent="main"]
+anchors_preset = 0
+offset_left = 384.0
+offset_right = 544.0
+offset_bottom = 160.0
+
+[node name="party" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 304.0
+offset_top = 112.0
+offset_right = 304.0
+offset_bottom = 112.0
 
 [node name="lchar" parent="party" instance=ExtResource("3_plscc")]
 position = Vector2(-192, 48)
@@ -141,6 +158,30 @@ position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
+[node name="bag" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 392.0
+offset_bottom = 312.0
+
+[node name="items" type="Control" parent="bag"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 344.0
+offset_bottom = 136.0
+pivot_offset = Vector2(-8, 8)
+
+[node name="itemDesc" type="Label" parent="bag"]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 352.0
+offset_bottom = 192.0
+text = "itemdesc......"
+
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
-[connection signal="pressed" from="main/main/prevPtn" to="." method="_on_prev_ptn_pressed"]
-[connection signal="pressed" from="main/main/nextBtn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
+[connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
+[connection signal="pressed" from="main/nav/prevPtn" to="." method="_on_prev_ptn_pressed"]
+[connection signal="pressed" from="main/nav/nextBtn" to="." method="_on_next_btn_pressed"]

@@ -9,7 +9,7 @@ var visitedLocs=[]
 var gold=0
 var onMove=false
 var moveSpeed=50
-var bag=[]
+var bag=["potion","soda"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
