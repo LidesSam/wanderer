@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5huq0pyf3is7"]
 
-[ext_resource type="Script" path="res://source/scenes/system/tavern.gd" id="1_jv2lc"]
+[ext_resource type="Script" uid="uid://ctrfu48kjedp4" path="res://source/scenes/system/tavern.gd" id="1_jv2lc"]
 [ext_resource type="PackedScene" uid="uid://b24gqclc4i5rq" path="res://source/elements/components/buyoption.tscn" id="2_5nw76"]
 
 [node name="tavern" type="Node2D"]

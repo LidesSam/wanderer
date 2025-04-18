@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://r4eqdsxw6k4t"]
 
 [ext_resource type="Texture2D" uid="uid://c71oxm286n832" path="res://assets/sprites/foes/foes.png" id="1_hnrjv"]
-[ext_resource type="Script" path="res://source/elements/battle/foe.gd" id="1_nujxv"]
+[ext_resource type="Script" uid="uid://bal74wmhr62uk" path="res://source/elements/battle/foe.gd" id="1_nujxv"]
 [ext_resource type="Texture2D" uid="uid://cy74p4twnfcc3" path="res://assets/sprites/foes/board-foe.png" id="3_gs117"]
 [ext_resource type="Texture2D" uid="uid://e5ql36xbnlac" path="res://assets/sprites/map/map-dot/map_dot_0.png" id="3_ocl6l"]
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_5w5ue"]

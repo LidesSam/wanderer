@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dc44vfu6qldjc"]
 
 [ext_resource type="SpriteFrames" uid="uid://br5j16ovov2p6" path="res://assets/sprites/heroes and char/wanderer.tres" id="1_1km75"]
-[ext_resource type="Script" path="res://source/elements/battle/char_battle.gd" id="1_u5c7p"]
+[ext_resource type="Script" uid="uid://criv3q2cxrele" path="res://source/elements/battle/char_battle.gd" id="1_u5c7p"]
 [ext_resource type="SpriteFrames" uid="uid://bmpohyhj4yaa4" path="res://assets/sprites/effects/battle_char_effect_sprr.tres" id="3_vmud0"]
 [ext_resource type="Texture2D" uid="uid://e5ql36xbnlac" path="res://assets/sprites/map/map-dot/map_dot_0.png" id="4_b1v83"]
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="5_rkp4u"]
@@ -89,9 +89,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83mvc"]
 _data = {
-"RESET": SubResource("Animation_7xigi"),
-"heal": SubResource("Animation_aqd6g"),
-"lp_shake": SubResource("Animation_g4uss")
+&"RESET": SubResource("Animation_7xigi"),
+&"heal": SubResource("Animation_aqd6g"),
+&"lp_shake": SubResource("Animation_g4uss")
 }
 
 [node name="char" type="Node2D"]

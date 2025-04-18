@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
-[ext_resource type="Script" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
+[ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
 [ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
 [ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
 

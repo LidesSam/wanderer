@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://vlffbuftu4r"]
 
-[ext_resource type="Script" path="res://source/global/screenTransition.gd" id="1"]
+[ext_resource type="Script" uid="uid://cgjgs4alcwpx6" path="res://source/global/screenTransition.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="2_7nxdg"]
 
 [sub_resource type="Animation" id="Animation_ya4bd"]
@@ -170,9 +170,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e16u0"]
 _data = {
-"RESET": SubResource("Animation_ya4bd"),
-"fade": SubResource("Animation_d274r"),
-"fill_up": SubResource("Animation_077ou")
+&"RESET": SubResource("Animation_ya4bd"),
+&"fade": SubResource("Animation_d274r"),
+&"fill_up": SubResource("Animation_077ou")
 }
 
 [node name="screenTransition" type="CanvasLayer"]

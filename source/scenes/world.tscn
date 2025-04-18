@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://hoxggrtkn87q"]
 
-[ext_resource type="Script" path="res://source/factory/mapGen.gd" id="1_dsx84"]
-[ext_resource type="Script" path="res://source/scenes/world.gd" id="1_m07vj"]
+[ext_resource type="Script" uid="uid://bqu7t55v1itbc" path="res://source/factory/mapGen.gd" id="1_dsx84"]
+[ext_resource type="Script" uid="uid://b0p5xxgd46ehy" path="res://source/scenes/world.gd" id="1_m07vj"]
 [ext_resource type="PackedScene" uid="uid://dnfw1epyp28ra" path="res://source/scenes/battle.tscn" id="3_kx475"]
 [ext_resource type="Texture2D" uid="uid://cyhqjqvxereep" path="res://assets/sprites/map/map-dot/map_dot_1.png" id="4_x345q"]
-[ext_resource type="Script" path="res://source/scenes/states/world/idleWorldState.gd" id="5_1nbhs"]
-[ext_resource type="Script" path="res://addons/fsmgear/source/Fsm.gd" id="5_557a5"]
+[ext_resource type="Script" uid="uid://wn4wt1mby6ln" path="res://source/scenes/states/world/idleWorldState.gd" id="5_1nbhs"]
+[ext_resource type="Script" uid="uid://df1vkc66o5aug" path="res://addons/fsmgear/source/Fsm.gd" id="5_557a5"]
 [ext_resource type="PackedScene" uid="uid://5huq0pyf3is7" path="res://source/scenes/system/tavern.tscn" id="5_u0vmh"]
-[ext_resource type="Script" path="res://source/scenes/states/world/worldGenState.gd" id="5_xnjlr"]
-[ext_resource type="Script" path="res://addons/fsmgear/source/FsmState.gd" id="6_fqkfx"]
-[ext_resource type="Script" path="res://source/scenes/states/world/moveCharWorldState.gd" id="8_at16l"]
+[ext_resource type="Script" uid="uid://cc4pa76r2myex" path="res://source/scenes/states/world/worldGenState.gd" id="5_xnjlr"]
+[ext_resource type="Script" uid="uid://ba6qcf5ogq6ru" path="res://addons/fsmgear/source/FsmState.gd" id="6_fqkfx"]
+[ext_resource type="Script" uid="uid://ddo10pl8kynsm" path="res://source/scenes/states/world/moveCharWorldState.gd" id="8_at16l"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_m07vj")

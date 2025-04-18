@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fanqjawhj3cp"]
 
-[ext_resource type="Script" path="res://source/elements/components/dice.gd" id="1_qnbtj"]
+[ext_resource type="Script" uid="uid://bx6p4maotprib" path="res://source/elements/components/dice.gd" id="1_qnbtj"]
 [ext_resource type="Texture2D" uid="uid://bts1sp0lp2ncs" path="res://assets/sprites/system/dices/dice_back_32.png" id="2_lsklx"]
 
 [node name="dice" type="Node2D"]

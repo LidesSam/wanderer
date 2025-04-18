@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b24gqclc4i5rq"]
 
-[ext_resource type="Script" path="res://source/elements/components/buyoption.gd" id="1_52j0a"]
+[ext_resource type="Script" uid="uid://duaym88hpni2p" path="res://source/elements/components/buyoption.gd" id="1_52j0a"]
 [ext_resource type="SpriteFrames" uid="uid://br5j16ovov2p6" path="res://assets/sprites/heroes and char/wanderer.tres" id="2_pjjda"]
 
 [node name="buyop" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyj61yybit3hc"]
 
-[ext_resource type="Script" path="res://source/elements/battle/command.gd" id="1_r8ej6"]
+[ext_resource type="Script" uid="uid://c1l0u5r0rvrui" path="res://source/elements/battle/command.gd" id="1_r8ej6"]
 
 [node name="Command" type="Button"]
 offset_left = -48.0
