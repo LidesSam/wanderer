@@ -2,6 +2,7 @@ extends TextureRect
 
 var currentTarget=0
 var currentTab="party"
+var currentTabMode="state"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_cursor_pos_on_party_char()
@@ -18,7 +19,16 @@ func update_gold(gold):
 	
 
 func update_cursor_pos_on_party_char():
-	$cursor.global_position = $party.get_child(currentTarget).global_position+Vector2(32,32)
+	var charSelected= $party.get_child(currentTarget)
+	$cursor.global_position = charSelected.global_position+Vector2(32,32)
+	match currentTabMode:
+		"state":
+			$main/sideData/classData.set_char(charSelected)
+		"equip-and-item":
+			pass
+		"actions":
+			pass
+			
 	
 
 func update_cursor_pos_on_item():

@@ -107,7 +107,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimEffect" type="AnimationPlayer" parent="."]
 root_node = NodePath("../lpLabel")
 libraries = {
-"": SubResource("AnimationLibrary_83mvc")
+&"": SubResource("AnimationLibrary_83mvc")
 }
 
 [node name="spr" type="AnimatedSprite2D" parent="."]
