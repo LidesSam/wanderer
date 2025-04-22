@@ -1,0 +1,122 @@
+[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://dc73fjntk0wx1"]
+
+[ext_resource type="Texture2D" uid="uid://g8tm8oyj0pg6" path="res://assets/sprites/items/weapons/sword/sword.png" id="1_cqcm7"]
+[ext_resource type="Texture2D" uid="uid://xc1jejdy0pan" path="res://assets/sprites/hud/eachframe/equip-only/equip_only0.png" id="1_fuh7v"]
+[ext_resource type="Texture2D" uid="uid://dgs2ee2r3dkbk" path="res://assets/sprites/hud/eachframe/equip-only/equip_only2.png" id="2_5hgwl"]
+[ext_resource type="Texture2D" uid="uid://cjjoy7j2j6b0q" path="res://assets/sprites/items/weapons/wand/wand.png" id="4_qjr0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2lbv"]
+atlas = ExtResource("1_fuh7v")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyqpy"]
+atlas = ExtResource("2_5hgwl")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mmql"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewfex"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv8qk"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt5xe"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd7rl"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2p5n"]
+atlas = ExtResource("1_cqcm7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs3ld"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwjsp"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0fjb"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q03r0"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emm6i"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6f26"]
+atlas = ExtResource("4_qjr0n")
+region = Rect2(64, 32, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2lbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyqpy")
+}],
+"loop": false,
+"name": &"free",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mmql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewfex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv8qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt5xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd7rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2p5n")
+}],
+"loop": true,
+"name": &"swords",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs3ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwjsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0fjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q03r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emm6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6f26")
+}],
+"loop": true,
+"name": &"wand",
+"speed": 5.0
+}]

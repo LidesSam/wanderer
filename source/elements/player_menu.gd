@@ -93,3 +93,16 @@ func _on_bagbtn_pressed() -> void:
 	$main/bag.show()
 	$party.hide()
 	$bag.show()
+
+
+func _on_equipbtn_pressed() -> void:
+	$main/sideData/classData.hide()
+	$main/sideData/equip.show()
+	pass # Replace with function body.
+
+
+func _on_statebtn_pressed() -> void:
+	$main/sideData/classData.show()
+	$main/sideData/equip.hide()
+	
+	pass # Replace with function body.

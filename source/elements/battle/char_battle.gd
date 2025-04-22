@@ -10,6 +10,11 @@ var actionEnd=false
 var commands=["hit","def","item"]#
 
 var items=["potion","bomb","SODA"]
+# Equipped items
+var equipped := {
+	"weapon": null,  # Should be an EquipableItem
+	"armor": null    # Should be an EquipableItem
+}
 
 var onDef=false
 var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()

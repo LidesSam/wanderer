@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=8 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
 [ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
+[ext_resource type="Texture2D" uid="uid://d3061jhxrthot" path="res://assets/sprites/hud/eachframe/inventory_square/inventory_square_0.png" id="3_s5que"]
 [ext_resource type="Script" uid="uid://cd6jscc66uhey" path="res://source/elements/playerMenu/classDataDisplay.gd" id="3_ynirl"]
+[ext_resource type="SpriteFrames" uid="uid://dc73fjntk0wx1" path="res://assets/sprites/items/equipableitems.tres" id="4_2h507"]
 [ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
 
 [node name="playerMenu" type="TextureRect"]
@@ -128,6 +130,7 @@ offset_bottom = 104.0
 text = "equip"
 
 [node name="bag" type="Control" parent="main"]
+visible = false
 anchors_preset = 0
 offset_left = 384.0
 offset_right = 544.0
@@ -166,10 +169,61 @@ offset_bottom = 144.0
 
 [node name="equip" type="Control" parent="main/sideData"]
 anchors_preset = 0
+offset_left = -16.0
 offset_right = 128.0
 offset_bottom = 128.0
 
+[node name="weapon" type="Control" parent="main/sideData/equip"]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+
+[node name="slot" type="Sprite2D" parent="main/sideData/equip/weapon"]
+position = Vector2(16, 16)
+texture = ExtResource("3_s5que")
+
+[node name="item" type="AnimatedSprite2D" parent="main/sideData/equip/weapon"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("4_2h507")
+animation = &"free"
+
+[node name="Label" type="Label" parent="main/sideData/equip/weapon"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "N/A"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="armor" type="Control" parent="main/sideData/equip"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 68.0
+offset_right = 128.0
+offset_bottom = 68.0
+
+[node name="slot" type="Sprite2D" parent="main/sideData/equip/armor"]
+position = Vector2(16, 16)
+texture = ExtResource("3_s5que")
+
+[node name="item" type="AnimatedSprite2D" parent="main/sideData/equip/armor"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("4_2h507")
+animation = &"free"
+frame = 1
+
+[node name="Label" type="Label" parent="main/sideData/equip/armor"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "N/A"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="classData" type="VBoxContainer" parent="main/sideData"]
+visible = false
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
@@ -220,6 +274,17 @@ position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
+[node name="equipCursor" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -8.0
+offset_right = 32.0
+offset_bottom = 40.0
+
+[node name="spr" type="Sprite2D" parent="equipCursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
+
 [node name="bag" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -248,3 +313,5 @@ text = "itemdesc......"
 [connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
 [connection signal="pressed" from="main/nav/prevPtn" to="." method="_on_prev_ptn_pressed"]
 [connection signal="pressed" from="main/nav/nextBtn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="main/party/statebtn" to="." method="_on_statebtn_pressed"]
+[connection signal="pressed" from="main/party/equipbtn" to="." method="_on_equipbtn_pressed"]
