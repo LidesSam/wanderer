@@ -37,10 +37,11 @@ vertical_alignment = 1
 
 [node name="closeBtn" type="Button" parent="header"]
 layout_mode = 0
-offset_left = 496.0
-offset_right = 544.0
-offset_bottom = 48.0
-text = "close"
+offset_left = 528.0
+offset_top = -16.0
+offset_right = 576.0
+offset_bottom = 32.0
+text = "X"
 
 [node name="partyBtn" type="Button" parent="header"]
 layout_mode = 0
@@ -85,24 +86,40 @@ offset_bottom = 216.0
 [node name="prevPtn" type="Button" parent="main/nav"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = -24.0
 offset_right = 64.0
-offset_bottom = 48.0
+offset_bottom = 8.0
 text = "<--"
 
 [node name="nextBtn" type="Button" parent="main/nav"]
 layout_mode = 0
 offset_left = 80.0
-offset_top = 8.0
+offset_top = -24.0
+offset_right = 136.0
+offset_bottom = 8.0
+text = "-->"
+
+[node name="upBtn" type="Button" parent="main/nav"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -63.0
+offset_right = 136.0
+offset_bottom = -32.0
+text = "/\\"
+
+[node name="downBtn" type="Button" parent="main/nav"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 17.0
 offset_right = 136.0
 offset_bottom = 48.0
-text = "-->"
+text = "\\/"
 
 [node name="party" type="Control" parent="main"]
 anchors_preset = 0
 offset_left = 384.0
 offset_right = 544.0
-offset_bottom = 160.0
+offset_bottom = 88.0
 
 [node name="statebtn" type="Button" parent="main/party"]
 layout_mode = 0
@@ -113,6 +130,7 @@ offset_bottom = 48.0
 text = "state"
 
 [node name="actionsbtn" type="Button" parent="main/party"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 112.0
@@ -124,9 +142,9 @@ text = "actions
 [node name="equipbtn" type="Button" parent="main/party"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 64.0
+offset_top = 56.0
 offset_right = 144.0
-offset_bottom = 104.0
+offset_bottom = 96.0
 text = "equip"
 
 [node name="bag" type="Control" parent="main"]
@@ -225,6 +243,7 @@ vertical_alignment = 1
 [node name="classData" type="VBoxContainer" parent="main/sideData"]
 visible = false
 layout_mode = 0
+offset_left = 16.0
 offset_right = 128.0
 offset_bottom = 128.0
 script = ExtResource("3_ynirl")
@@ -274,17 +293,6 @@ position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
-[node name="equipCursor" type="Control" parent="."]
-anchors_preset = 0
-offset_left = -8.0
-offset_right = 32.0
-offset_bottom = 40.0
-
-[node name="spr" type="Sprite2D" parent="equipCursor"]
-position = Vector2(8, 0)
-texture = ExtResource("4_ydh53")
-offset = Vector2(16, 16)
-
 [node name="bag" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -308,10 +316,23 @@ offset_right = 352.0
 offset_bottom = 192.0
 text = "itemdesc......"
 
+[node name="equipCursor" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -8.0
+offset_right = 32.0
+offset_bottom = 40.0
+
+[node name="spr" type="Sprite2D" parent="equipCursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
+
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
 [connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
 [connection signal="pressed" from="main/nav/prevPtn" to="." method="_on_prev_ptn_pressed"]
 [connection signal="pressed" from="main/nav/nextBtn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="main/nav/upBtn" to="." method="_on_up_btn_pressed"]
+[connection signal="pressed" from="main/nav/downBtn" to="." method="_on_down_btn_pressed"]
 [connection signal="pressed" from="main/party/statebtn" to="." method="_on_statebtn_pressed"]
 [connection signal="pressed" from="main/party/equipbtn" to="." method="_on_equipbtn_pressed"]

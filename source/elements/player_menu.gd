@@ -3,6 +3,7 @@ extends TextureRect
 var currentTarget=0
 var currentTab="party"
 var currentTabMode="state"
+var currentSlot=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_cursor_pos_on_party_char()
@@ -41,8 +42,6 @@ func _on_close_btn_pressed():
 
 
 func _on_prev_ptn_pressed() -> void:
-	
-	#$party.get_child(currentTarget).modulate="#fff"
 	currentTarget-=1
 	match currentTab:
 		"party":
@@ -93,16 +92,40 @@ func _on_bagbtn_pressed() -> void:
 	$main/bag.show()
 	$party.hide()
 	$bag.show()
+	
+	currentTab="state"
 
 
 func _on_equipbtn_pressed() -> void:
 	$main/sideData/classData.hide()
 	$main/sideData/equip.show()
+	$cursor/spr.show()
+	currentTab="equip"
 	pass # Replace with function body.
 
 
 func _on_statebtn_pressed() -> void:
 	$main/sideData/classData.show()
 	$main/sideData/equip.hide()
+	$cursor/spr.hide()
+	currentTab="state"
 	
 	pass # Replace with function body.
+
+
+func _on_down_btn_pressed() -> void:
+	if currentTab=="equip":
+		currentSlot+=1
+		if currentSlot> $main/sideData/equip.get_child_count()+1:
+			currentSlot=0
+		
+		$equipCursor.global_position =$main/sideData/equip.get_child(currentTarget).global_position+Vector2(32,32)
+
+
+func _on_up_btn_pressed() -> void:
+	if currentTab=="equip":
+		currentSlot-=1
+		if currentSlot< 0:
+			currentSlot=$main/sideData/equip.get_child_count()+1
+			
+		$equipCursor.global_position =$main/sideData/equip.get_child(currentTarget).global_position+Vector2(32,32)
