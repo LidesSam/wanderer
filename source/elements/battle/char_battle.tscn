@@ -118,7 +118,6 @@ animation = &"mage"
 visible = false
 sprite_frames = ExtResource("3_vmud0")
 animation = &"sparkling"
-frame_progress = 0.350314
 
 [node name="lpLabel" type="Label" parent="."]
 offset_top = 24.0

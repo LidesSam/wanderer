@@ -104,10 +104,11 @@ func heal(points):
 	lp+=points
 	if lp>maxlp:
 		lp=maxlp
-	$AnimEffect.play("heal")
+	$AnimSprEffect.play("sparkling")
 					
-func hurt(point):
-	$AnimSprEffect.play("impact")
+func hurt(point, anim:String = "impact"):
+	$AnimSprEffect.show()
+	$AnimSprEffect.play(anim)
 	if(onDef):
 		point-=def
 		if(point<0):
@@ -117,7 +118,7 @@ func hurt(point):
 		$AnimEffect.play("lp_shake")
 		
 func animation_is_running():
-	return $AnimEffect.is_playing()
+	return $AnimSprEffect.is_playing()
 	
 func can_be_targeted():
 	return wanderclass!="free" and lp>0

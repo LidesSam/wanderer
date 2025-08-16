@@ -332,7 +332,7 @@ func hurt_player(dmp =1, anim="impact"):
 			if(target.can_be_targeted()):
 					targets.push_back(i) 
 		i+=1
-	
+	print("hurt-p:",anim)
 	var t = targets.pick_random()
 	party[t].hurt(dmp,anim)
 	
