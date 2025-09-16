@@ -60,21 +60,20 @@ offset_right = 224.0
 offset_bottom = 56.0
 text = "bag"
 
-[node name="main" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 32.0
+[node name="main2" type="ColorRect" parent="."]
+offset_left = 424.0
 offset_top = 96.0
 offset_right = 576.0
 offset_bottom = 320.0
 color = Color(0, 0, 0, 1)
 
-[node name="separator" type="ColorRect" parent="main"]
+[node name="main" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 368.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 216.0
-color = Color(0.376471, 0.376471, 0.376471, 1)
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 408.0
+offset_bottom = 320.0
+color = Color(0, 0, 0, 1)
 
 [node name="nav" type="Control" parent="main"]
 anchors_preset = 0

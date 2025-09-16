@@ -11,19 +11,19 @@ var step = 64  # Step distance between locations
 @onready var chunkTemp = load("res://source/elements/chunk.tscn")  # Load the chunk scene
 
 var starChunk = null  # Variable to store the first chunk
-var maxChunks = 4  # Maximum number of chunks
+var  maxLocsChunks = 4  #  maxLocsimum number of chunks
 var chunks = []  # List to store all chunks
 
 # Function to generate a linear map
-func gen_linear_map(min=5, max=10):
+func gen_linear_map(minLocs=5,  maxLocs=10):
 	# Define the size of the first chunk
-	var chunksize = randi() % (max - min) + min
+	var chunksize = randi() % ( maxLocs - minLocs) + minLocs
 	var lastLoc = null  # Last location to connect new locations to
 
 	# Generate chunks and connect locations
-	for i in range(maxChunks):
+	for i in range( maxLocsChunks):
 		lastLoc = gen_chunk(chunksize, lastLoc)
-		chunksize = randi() % (max - min) + min
+		chunksize = randi() % ( maxLocs - minLocs) + minLocs
 		
 	# Create the end location and connect it to the last location
 	var endloc = locTemp.instantiate()

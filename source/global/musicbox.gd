@@ -20,8 +20,8 @@ func start():
 	musicPlayer.play()
 	altMusicPlayer.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass	
+#func _process(delta):
+#	pass	
 
 func enter_battle():
 	fade_music(musicPlayer, altMusicPlayer, battleMusic)
