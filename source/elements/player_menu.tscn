@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=11 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
+[ext_resource type="Script" uid="uid://df1vkc66o5aug" path="res://addons/fsmgear/source/Fsm.gd" id="3_ewfex"]
 [ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
 [ext_resource type="Texture2D" uid="uid://d3061jhxrthot" path="res://assets/sprites/hud/eachframe/inventory_square/inventory_square_0.png" id="3_s5que"]
 [ext_resource type="Script" uid="uid://cd6jscc66uhey" path="res://source/elements/playerMenu/classDataDisplay.gd" id="3_ynirl"]
 [ext_resource type="SpriteFrames" uid="uid://dc73fjntk0wx1" path="res://assets/sprites/items/equipableitems.tres" id="4_2h507"]
+[ext_resource type="Script" uid="uid://3dmvhq1g3xxe" path="res://source/elements/playerMenu/bagState.gd" id="4_pv8qk"]
 [ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
+[ext_resource type="Script" uid="uid://b584rx7ek275n" path="res://source/elements/playerMenu/partyState.gd" id="5_qt5xe"]
 
 [node name="playerMenu" type="TextureRect"]
 offset_left = -304.0
@@ -16,6 +19,17 @@ offset_bottom = 176.0
 texture = ExtResource("1_27mnp")
 stretch_mode = 1
 script = ExtResource("2_hsdjg")
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("3_ewfex")
+
+[node name="bagState" type="Node" parent="fsm"]
+script = ExtResource("4_pv8qk")
+metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
+
+[node name="partyState" type="Node" parent="fsm"]
+script = ExtResource("5_qt5xe")
+metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
 
 [node name="header" type="ColorRect" parent="."]
 layout_mode = 0
@@ -61,6 +75,7 @@ offset_bottom = 56.0
 text = "bag"
 
 [node name="main2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 424.0
 offset_top = 96.0
 offset_right = 576.0
@@ -75,45 +90,6 @@ offset_right = 408.0
 offset_bottom = 320.0
 color = Color(0, 0, 0, 1)
 
-[node name="nav" type="Control" parent="main"]
-anchors_preset = 0
-offset_left = 392.0
-offset_top = 160.0
-offset_right = 536.0
-offset_bottom = 216.0
-
-[node name="prevPtn" type="Button" parent="main/nav"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = -24.0
-offset_right = 64.0
-offset_bottom = 8.0
-text = "<--"
-
-[node name="nextBtn" type="Button" parent="main/nav"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = -24.0
-offset_right = 136.0
-offset_bottom = 8.0
-text = "-->"
-
-[node name="upBtn" type="Button" parent="main/nav"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = -63.0
-offset_right = 136.0
-offset_bottom = -32.0
-text = "/\\"
-
-[node name="downBtn" type="Button" parent="main/nav"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 17.0
-offset_right = 136.0
-offset_bottom = 48.0
-text = "\\/"
-
 [node name="party" type="Control" parent="main"]
 anchors_preset = 0
 offset_left = 384.0
@@ -127,16 +103,6 @@ offset_top = 8.0
 offset_right = 144.0
 offset_bottom = 48.0
 text = "state"
-
-[node name="actionsbtn" type="Button" parent="main/party"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 112.0
-offset_right = 144.0
-offset_bottom = 152.0
-text = "actions
-"
 
 [node name="equipbtn" type="Button" parent="main/party"]
 layout_mode = 0
@@ -329,9 +295,5 @@ offset = Vector2(16, 16)
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
 [connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
-[connection signal="pressed" from="main/nav/prevPtn" to="." method="_on_prev_ptn_pressed"]
-[connection signal="pressed" from="main/nav/nextBtn" to="." method="_on_next_btn_pressed"]
-[connection signal="pressed" from="main/nav/upBtn" to="." method="_on_up_btn_pressed"]
-[connection signal="pressed" from="main/nav/downBtn" to="." method="_on_down_btn_pressed"]
 [connection signal="pressed" from="main/party/statebtn" to="." method="_on_statebtn_pressed"]
 [connection signal="pressed" from="main/party/equipbtn" to="." method="_on_equipbtn_pressed"]

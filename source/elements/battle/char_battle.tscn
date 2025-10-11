@@ -98,6 +98,7 @@ _data = {
 script = ExtResource("1_u5c7p")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0

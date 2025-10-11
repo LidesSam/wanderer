@@ -4,15 +4,23 @@ var currentTarget=0
 var currentTab="party"
 var currentTabMode="state"
 var currentSlot=0
+var state = "state"
+@onready var fsm =$fsm
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	fsm.autoload(self)
+	fsm.addStateTransition("bagState","partState",dummy)
+	fsm.addStateTransition("partState","bagState",dummy)
+	fsm.startState()
 	update_cursor_pos_on_party_char()
 	gen_display_items()
-
+	
+func dummy():
+	return false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	fsm.fsmUpdate(delta)
 
 func update_gold(gold):
 	$header/gold.text= str("GOLD:",gold)
@@ -38,7 +46,7 @@ func gen_display_items():
 		var ditem = Label.new()
 		ditem.text=item
 		$bag/items.add_child(ditem)
-		ditem.position= Vector2(i*48,16)
+		ditem.position= Vector2(i*64,16)
 		i+=1	
 	
 func _on_close_btn_pressed():
@@ -50,14 +58,16 @@ func _on_party_btn_pressed() -> void:
 	$main/bag.hide()
 	$party.show()
 	$bag.hide()
+	$cursor.show()
+	$main/sideData.show()
 	
 func _on_bagbtn_pressed() -> void:
 	$main/party.hide()
 	$main/bag.show()
 	$party.hide()
 	$bag.show()
-	
-	currentTab="state"
+	$cursor.hide()
+	$main/sideData.hide()
 
 func _on_equipbtn_pressed() -> void:
 	$main/sideData/classData.hide()
@@ -69,7 +79,6 @@ func _on_statebtn_pressed() -> void:
 	$main/sideData/classData.show()
 	$main/sideData/equip.hide()
 	currentTab="state"
-
 
 #submenu navigation.
 func _on_prev_ptn_pressed() -> void:
