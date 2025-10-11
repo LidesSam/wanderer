@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://hv4fwyihccgi"]
+
+[ext_resource type="Texture2D" uid="uid://d3061jhxrthot" path="res://assets/sprites/hud/eachframe/inventory_square/inventory_square_0.png" id="1_nykqm"]
+[ext_resource type="SpriteFrames" uid="uid://dc73fjntk0wx1" path="res://assets/sprites/items/equipableitems.tres" id="2_6dohk"]
+
+[node name="equip" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="weapon" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 128.0
+
+[node name="slot" type="Sprite2D" parent="weapon"]
+position = Vector2(16, 16)
+texture = ExtResource("1_nykqm")
+
+[node name="item" type="AnimatedSprite2D" parent="weapon"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("2_6dohk")
+animation = &"free"
+
+[node name="Label" type="Label" parent="weapon"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "N/A"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="armor" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 68.0
+offset_right = 128.0
+offset_bottom = 68.0
+
+[node name="slot" type="Sprite2D" parent="armor"]
+position = Vector2(16, 16)
+texture = ExtResource("1_nykqm")
+
+[node name="item" type="AnimatedSprite2D" parent="armor"]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("2_6dohk")
+animation = &"free"
+frame = 1
+
+[node name="Label" type="Label" parent="armor"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 128.0
+offset_bottom = 32.0
+text = "N/A"
+horizontal_alignment = 2
+vertical_alignment = 1

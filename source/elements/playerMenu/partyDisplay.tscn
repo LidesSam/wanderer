@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk6swixq8cxch"]
+
+[ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="1_5vmv2"]
+
+[node name="party" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 112.0
+
+[node name="lchar" parent="." instance=ExtResource("1_5vmv2")]
+position = Vector2(8, 40)
+
+[node name="mchar" parent="." instance=ExtResource("1_5vmv2")]
+position = Vector2(72, 40)
+
+[node name="rchar" parent="." instance=ExtResource("1_5vmv2")]
+position = Vector2(136, 40)

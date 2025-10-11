@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhv75uhrgw500"]
+
+[ext_resource type="Script" uid="uid://cd6jscc66uhey" path="res://source/elements/playerMenu/classDataDisplay.gd" id="1_a8ham"]
+
+[node name="classData" type="VBoxContainer"]
+visible = false
+offset_left = 16.0
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_a8ham")
+
+[node name="classnamelbl" type="Label" parent="."]
+layout_mode = 2
+text = "data: xxx"
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="atklbl" type="Label" parent="."]
+layout_mode = 2
+text = "data: xxx"
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="deflbl" type="Label" parent="."]
+layout_mode = 2
+text = "data: xxx"
+horizontal_alignment = 3
+vertical_alignment = 3
