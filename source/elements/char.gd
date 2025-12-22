@@ -4,7 +4,7 @@ extends Area2D
 var world=null
 var currentLoc=null
 @onready var dicePopup=$Camera2D/dicePopup
-@onready var party=$Camera2D/playerMenu/party
+@onready var party=$Camera2D/playerMenu/party/display
 var visitedLocs=[]
 var gold=0
 var onMove=false
