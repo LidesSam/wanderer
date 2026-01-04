@@ -4,7 +4,10 @@ var currentTarget=0
 var currentTab="party"
 var currentTabMode="state"
 var currentSlot=0
-var state = "state"
+var state = 0
+
+static var PARTYSTATE=0
+static var BAGSTATE=1
 
 @onready var fsm =$fsm
 
@@ -13,35 +16,25 @@ var state = "state"
 
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	fsm.set_debug_on($Label)
 	fsm.autoload(self)
-	fsm.addStateTransition("bagState","partState",dummy)
-	fsm.addStateTransition("partState","bagState",dummy)
+	fsm.addStateTransition("bagState","partyState",is_party_state)
+	fsm.addStateTransition("partyState","bagState",is_bag_state)
 	fsm.startState()
-#	update_cursor_pos_on_party_char()
-#	gen_display_items()
+
+
+func is_party_state():
+	return state==PARTYSTATE
 	
-func dummy():
-	return false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func is_bag_state():
+	return state==BAGSTATE
+	
 func _process(delta):
 	fsm.fsmUpdate(delta)
 
 func update_gold(gold):
 	$header/gold.text= str("GOLD:",gold)
-
-#func update_cursor_pos_on_party_char():
-#	var charSelected= $partyScreen.get_child(currentTarget)
-#	cursor.global_position = charSelected.global_position+Vector2(32,32)
-#	match currentTabMode:
-		#"state":
-#			$sideData/classData.set_char(charSelected)
-		#	pass
-		#"equip-and-item":
-		#	pass
-		#"actions":
-		#	pass
 			
 #mover to bag screen
 func gen_display_items():
@@ -56,50 +49,9 @@ func gen_display_items():
 	
 func _on_close_btn_pressed():
 	hide()
-	pass # Replace with function body.
 
 func _on_party_btn_pressed() -> void:
-	bagScreen.hide()
-	partyScreen.show()
+	state=PARTYSTATE
 	
 func _on_bagbtn_pressed() -> void:
-	bagScreen.show()
-	partyScreen.hide()
-
-func _on_equipbtn_pressed() -> void:
-	$sideData/classData.hide()
-	$sideData/equip.show()
-	$cursor/spr.show()
-	currentTab="equip"
-
-func _on_statebtn_pressed() -> void:
-	$sideData/classData.show()
-	$sideData/equip.hide()
-	currentTab="state"
-
-#submenu navigation.
-func _on_prev_ptn_pressed() -> void:
-	currentTarget-=1
-	match currentTab:
-		"party":
-			while  $partyScreen.get_child(currentTarget)==null or $partyScreen.get_child(currentTarget).wanderclass=="free":
-				currentTarget-=1
-				if(currentTarget<0):
-					currentTarget=0
-#			update_cursor_pos_on_party_char()
-		"bag":
-			pass
-
-func _on_next_btn_pressed() -> void:
-	#$partyScreen.get_child(currentTarget).modulate="#fff"
-	currentTarget+=1
-	match currentTab:
-		"party":
-			while  $partyScreen.get_child(currentTarget)==null or $partyScreen.get_child(currentTarget).wanderclass=="free":
-				currentTarget+=1
-				if(currentTarget>2):
-					currentTarget=0
-#			update_cursor_pos_on_party_char()
-		
-		"bag":
-			pass		
+	state=BAGSTATE

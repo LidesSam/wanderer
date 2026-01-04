@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=12 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://3dmvhq1g3xxe" path="res://source/elements/playerMenu/bagState.gd" id="4_pv8qk"]
 [ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
 [ext_resource type="Script" uid="uid://b584rx7ek275n" path="res://source/elements/playerMenu/partyState.gd" id="5_qt5xe"]
+[ext_resource type="Script" uid="uid://dhepuax3ckb4e" path="res://source/elements/playerMenu/partyScreen.gd" id="6_qt5xe"]
 
 [node name="playerMenu" type="TextureRect"]
 offset_left = -304.0
@@ -117,9 +118,9 @@ offset_left = 32.0
 offset_top = 104.0
 offset_right = 576.0
 offset_bottom = 328.0
+script = ExtResource("6_qt5xe")
 
 [node name="cursor" type="Control" parent="party"]
-visible = false
 anchors_preset = 0
 offset_left = -40.0
 offset_top = -96.0
@@ -237,6 +238,13 @@ anchors_preset = 0
 offset_left = 392.0
 offset_right = 544.0
 offset_bottom = 224.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 120.0
+offset_right = 560.0
+offset_bottom = 160.0
 
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
