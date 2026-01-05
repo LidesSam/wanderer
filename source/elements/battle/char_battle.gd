@@ -92,12 +92,22 @@ func set_on_def():
 	
 func set_on_wait():
 	pass
+
+func get_atk():
+	if equipped["weapon"]!=null:
+		return atk+equipped["weapon"].atk
+	return atk
+	
+func get_def():
+	if equipped["armor"]!=null:
+		return def + equipped["armor"].def
+	return def
 	
 func start_turn():
 	onDef=false
 	
 func atk_target(target):
-	target.hurt(atk)
+	target.hurt(get_atk())
 	actionEnd=true
 
 func heal(points):
@@ -110,7 +120,7 @@ func hurt(point, anim:String = "impact"):
 	$AnimSprEffect.show()
 	$AnimSprEffect.play(anim)
 	if(onDef):
-		point-=def
+		point-=get_def()
 		if(point<0):
 			point=0
 	lp-=point
