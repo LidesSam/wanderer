@@ -208,7 +208,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="classData" type="VBoxContainer" parent="party"]
-visible = false
 layout_mode = 0
 offset_left = 224.0
 offset_right = 336.0
@@ -233,11 +232,40 @@ text = "data: xxx"
 horizontal_alignment = 3
 vertical_alignment = 3
 
-[node name="Control" type="Control" parent="party"]
+[node name="button" type="Button" parent="party"]
+offset_left = 400.0
+offset_top = 72.0
+offset_right = 528.0
+offset_bottom = 136.0
+
+[node name="selector" type="Control" parent="party"]
 anchors_preset = 0
 offset_left = 392.0
 offset_right = 544.0
 offset_bottom = 224.0
+
+[node name="prev" type="Button" parent="party/selector"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 72.0
+offset_bottom = 216.0
+text = "<"
+
+[node name="next" type="Button" parent="party/selector"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 168.0
+offset_right = 144.0
+offset_bottom = 216.0
+text = ">"
+
+[node name="equip" type="Button" parent="party/selector"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 72.0
+offset_bottom = 216.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -249,3 +277,6 @@ offset_bottom = 160.0
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
 [connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
+[connection signal="pressed" from="party/selector/prev" to="party" method="_on_prev_pressed"]
+[connection signal="pressed" from="party/selector/next" to="party" method="_on_next_pressed"]
+[connection signal="pressed" from="party/selector/equip" to="party" method="_on_equip_pressed"]

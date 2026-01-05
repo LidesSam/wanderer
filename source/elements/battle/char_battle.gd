@@ -10,8 +10,8 @@ var actionEnd=false
 var commands=["hit","def","item"]#
 
 var items=["potion","bomb","SODA"]
-# Equipped items
-var equipped := {
+# equiped items
+var equiped := {
 	"weapon": null,  # Should be an EquipableItem
 	"armor": null    # Should be an EquipableItem
 }
@@ -93,14 +93,24 @@ func set_on_def():
 func set_on_wait():
 	pass
 
+func equip_weapon(weapon):	
+	var previous= equiped["weapon"]
+	equiped["weapon"]=weapon
+	return previous
+	
+func equip_armor(armor):
+	var previous= equiped["armor"]
+	equiped["armor"]=armor
+	return previous
+
 func get_atk():
-	if equipped["weapon"]!=null:
-		return atk+equipped["weapon"].atk
+	if equiped["weapon"]!=null:
+		return atk+equiped["weapon"].atk
 	return atk
 	
 func get_def():
-	if equipped["armor"]!=null:
-		return def + equipped["armor"].def
+	if equiped["armor"]!=null:
+		return def + equiped["armor"].def
 	return def
 	
 func start_turn():
