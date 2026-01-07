@@ -17,7 +17,8 @@ func _ready():
 	party.get_node("lchar").define_as("wanderer")
 	party.get_node("mchar").define_as("healer")
 	party.get_node("rchar").define_as("mage")
-	pass # Replace with function body.
+	$Camera2D/playerMenu.party=self
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

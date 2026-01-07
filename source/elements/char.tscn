@@ -123,6 +123,7 @@ offset_bottom = -120.0
 text = "!"
 
 [node name="playerMenu" parent="Camera2D" instance=ExtResource("5_jmfdj")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

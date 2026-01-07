@@ -13,7 +13,7 @@ static var BAGSTATE=1
 
 @onready var bagScreen= $bag
 @onready var partyScreen= $party
-
+var party =null
 
 
 func _ready():
@@ -22,6 +22,9 @@ func _ready():
 	fsm.addStateTransition("bagState","partyState",is_party_state)
 	fsm.addStateTransition("partyState","bagState",is_bag_state)
 	fsm.startState()
+	bagScreen.parentMenu= self
+	
+
 
 
 func is_party_state():
