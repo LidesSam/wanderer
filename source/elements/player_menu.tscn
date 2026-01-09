@@ -93,13 +93,24 @@ offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
 [node name="bag" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = 40.0
 offset_top = 104.0
 offset_right = 392.0
 offset_bottom = 312.0
 script = ExtResource("6_rd7rl")
+
+[node name="cursor" type="Control" parent="bag"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -96.0
+offset_bottom = -56.0
+
+[node name="spr" type="Sprite2D" parent="bag/cursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
 
 [node name="items" type="ItemList" parent="bag"]
 layout_mode = 0
@@ -113,6 +124,29 @@ offset_top = 144.0
 offset_right = 352.0
 offset_bottom = 208.0
 text = "itemdesc......"
+
+[node name="selector" type="Control" parent="bag"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 392.0
+offset_right = 544.0
+offset_bottom = 224.0
+
+[node name="prev" type="Button" parent="bag/selector"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 72.0
+offset_bottom = 216.0
+text = "<"
+
+[node name="next" type="Button" parent="bag/selector"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 168.0
+offset_right = 144.0
+offset_bottom = 216.0
+text = ">"
 
 [node name="party" type="Control" parent="."]
 anchors_preset = 0
@@ -280,6 +314,8 @@ offset_bottom = 160.0
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
 [connection signal="pressed" from="header/bagbtn" to="." method="_on_bagbtn_pressed"]
+[connection signal="pressed" from="bag/selector/prev" to="bag" method="_on_prev_pressed"]
+[connection signal="pressed" from="bag/selector/next" to="bag" method="_on_next_pressed"]
 [connection signal="pressed" from="party/selector/prev" to="party" method="_on_prev_pressed"]
 [connection signal="pressed" from="party/selector/next" to="party" method="_on_next_pressed"]
 [connection signal="pressed" from="party/selector/equip" to="party" method="_on_equip_pressed"]

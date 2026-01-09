@@ -9,7 +9,7 @@ var visitedLocs=[]
 var gold=0
 var onMove=false
 var moveSpeed=50
-var bag=["potion","soda"]
+var bag=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,8 +18,17 @@ func _ready():
 	party.get_node("mchar").define_as("healer")
 	party.get_node("rchar").define_as("mage")
 	$Camera2D/playerMenu.party=self
-	
+	gen_items()
 
+func gen_items():
+	var def = ["potion","bomb","soda"]
+	var item = load("res://source/elements/item.tscn")
+	for i in def:
+		var nitem= item.instantiate()
+		nitem.define_as(i)
+		bag.push_back(nitem)
+		
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -38,17 +38,6 @@ func _process(delta):
 
 func update_gold(gold):
 	$header/gold.text= str("GOLD:",gold)
-			
-#mover to bag screen
-func gen_display_items():
-	var items= get_parent().get_parent().bag
-	var i =0
-	for item in items:
-		var ditem = Label.new()
-		ditem.text=item
-		$bag/items.add_child(ditem)
-		ditem.position= Vector2(i*64,16)
-		i+=1	
 	
 func _on_close_btn_pressed():
 	hide()

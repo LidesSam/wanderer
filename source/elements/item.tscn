@@ -24,9 +24,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7gyq8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_vesp6")
 }],
 "loop": true,
@@ -36,5 +33,6 @@ animations = [{
 
 [node name="item" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1dx48")
-animation = &"bomb"
+animation = &"potion"
+centered = false
 script = ExtResource("3_yyyra")
