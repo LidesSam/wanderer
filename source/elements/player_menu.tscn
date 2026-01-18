@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=14 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
@@ -9,6 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dc73fjntk0wx1" path="res://assets/sprites/items/equipableitems.tres" id="4_2h507"]
 [ext_resource type="Script" uid="uid://3dmvhq1g3xxe" path="res://source/elements/playerMenu/bagState.gd" id="4_pv8qk"]
 [ext_resource type="Texture2D" uid="uid://8ie110om715o" path="res://assets/sprites/items/weapons/misc/misc5.png" id="4_ydh53"]
+[ext_resource type="Script" uid="uid://dpnmnf0g0j0vh" path="res://source/elements/playerMenu/partyEquipState.gd" id="5_a2p5n"]
 [ext_resource type="Script" uid="uid://b584rx7ek275n" path="res://source/elements/playerMenu/partyState.gd" id="5_qt5xe"]
 [ext_resource type="Script" uid="uid://dhepuax3ckb4e" path="res://source/elements/playerMenu/partyScreen.gd" id="6_qt5xe"]
 [ext_resource type="Script" uid="uid://d2co0y0dlrord" path="res://source/elements/bagScreen.gd" id="6_rd7rl"]
@@ -27,6 +28,10 @@ script = ExtResource("3_ewfex")
 
 [node name="bagState" type="Node" parent="fsm"]
 script = ExtResource("4_pv8qk")
+metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
+
+[node name="partyEquipState" type="Node" parent="fsm"]
+script = ExtResource("5_a2p5n")
 metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
 
 [node name="partyState" type="Node" parent="fsm"]
@@ -93,6 +98,7 @@ offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
 [node name="bag" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 40.0
 offset_top = 104.0
@@ -155,6 +161,20 @@ offset_top = 104.0
 offset_right = 576.0
 offset_bottom = 328.0
 script = ExtResource("6_qt5xe")
+
+[node name="equipCursor" type="Control" parent="party"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = -192.0
+offset_right = -40.0
+offset_bottom = -152.0
+
+[node name="spr" type="Sprite2D" parent="party/equipCursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
 
 [node name="cursor" type="Control" parent="party"]
 anchors_preset = 0
@@ -300,16 +320,66 @@ text = ">"
 [node name="equip" type="Button" parent="party/selector"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 168.0
+offset_top = 80.0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="equipOptions" type="Control" parent="party"]
+visible = false
+anchors_preset = 0
+offset_left = 392.0
+offset_right = 544.0
+offset_bottom = 224.0
+
+[node name="equipUp" type="Button" parent="party/equipOptions"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 128.0
+offset_right = 144.0
+offset_bottom = 168.0
+text = "/\\"
+
+[node name="equipDown" type="Button" parent="party/equipOptions"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 176.0
+offset_right = 144.0
+offset_bottom = 216.0
+text = "\\/"
+
+[node name="equipBack" type="Button" parent="party/equipOptions"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 136.0
+offset_bottom = 120.0
+text = "back
+"
+
+[node name="equipRemove" type="Button" parent="party/equipOptions"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 64.0
+text = "remove
+"
+
+[node name="equipChange" type="Button" parent="party/equipOptions"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
 offset_right = 72.0
 offset_bottom = 216.0
+text = "change
+"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 448.0
-offset_top = 120.0
-offset_right = 560.0
-offset_bottom = 160.0
+offset_left = 264.0
+offset_top = 40.0
+offset_right = 376.0
+offset_bottom = 80.0
 
 [connection signal="pressed" from="header/closeBtn" to="." method="_on_close_btn_pressed"]
 [connection signal="pressed" from="header/partyBtn" to="." method="_on_party_btn_pressed"]
@@ -318,4 +388,6 @@ offset_bottom = 160.0
 [connection signal="pressed" from="bag/selector/next" to="bag" method="_on_next_pressed"]
 [connection signal="pressed" from="party/selector/prev" to="party" method="_on_prev_pressed"]
 [connection signal="pressed" from="party/selector/next" to="party" method="_on_next_pressed"]
-[connection signal="pressed" from="party/selector/equip" to="party" method="_on_equip_pressed"]
+[connection signal="pressed" from="party/selector/equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="party/equipOptions/equipUp" to="party" method="_on_equip_up_pressed"]
+[connection signal="pressed" from="party/equipOptions/equipDown" to="party" method="_on_equip_down_pressed"]

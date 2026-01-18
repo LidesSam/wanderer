@@ -8,6 +8,7 @@ var state = 0
 
 static var PARTYSTATE=0
 static var BAGSTATE=1
+static var PARTYEQUIPSTATE=2
 
 @onready var fsm =$fsm
 
@@ -21,9 +22,13 @@ func _ready():
 	fsm.autoload(self)
 	fsm.addStateTransition("bagState","partyState",is_party_state)
 	fsm.addStateTransition("partyState","bagState",is_bag_state)
+	fsm.addStateTransition("partyEquipState","partyState",is_party_state)
+	fsm.addStateTransition("partyState","partyEquipState",is_party_equip_state)
+	fsm.addStateTransition("partyEquipState","bagState",is_bag_state)
+	
 	fsm.startState()
 	bagScreen.parentMenu= self
-	
+	partyScreen.parentMenu= self
 
 
 
@@ -32,6 +37,9 @@ func is_party_state():
 	
 func is_bag_state():
 	return state==BAGSTATE
+
+func is_party_equip_state():
+	return state==PARTYEQUIPSTATE
 	
 func _process(delta):
 	fsm.fsmUpdate(delta)
@@ -47,3 +55,6 @@ func _on_party_btn_pressed() -> void:
 	
 func _on_bagbtn_pressed() -> void:
 	state=BAGSTATE
+
+func _on_equip_pressed() -> void:
+	state=PARTYEQUIPSTATE
