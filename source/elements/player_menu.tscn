@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=16 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://b584rx7ek275n" path="res://source/elements/playerMenu/partyState.gd" id="5_qt5xe"]
 [ext_resource type="Script" uid="uid://dhepuax3ckb4e" path="res://source/elements/playerMenu/partyScreen.gd" id="6_qt5xe"]
 [ext_resource type="Script" uid="uid://d2co0y0dlrord" path="res://source/elements/bagScreen.gd" id="6_rd7rl"]
+[ext_resource type="Texture2D" uid="uid://i3nmbm7umxv3" path="res://assets/sprites/items/weapons/misc/misc1.png" id="10_ibiqj"]
+[ext_resource type="Script" uid="uid://ccfwfe08wuv2f" path="res://source/elements/playerMenu/equipDataDisplay.gd" id="12_jy55s"]
 
 [node name="playerMenu" type="TextureRect"]
 offset_left = -304.0
@@ -163,7 +165,7 @@ offset_bottom = 328.0
 script = ExtResource("6_qt5xe")
 
 [node name="equipCursor" type="Control" parent="party"]
-visible = false
+z_index = 13
 layout_mode = 3
 anchors_preset = 0
 offset_left = -80.0
@@ -173,10 +175,11 @@ offset_bottom = -152.0
 
 [node name="spr" type="Sprite2D" parent="party/equipCursor"]
 position = Vector2(8, 0)
-texture = ExtResource("4_ydh53")
+texture = ExtResource("10_ibiqj")
 offset = Vector2(16, 16)
 
 [node name="cursor" type="Control" parent="party"]
+z_index = 13
 anchors_preset = 0
 offset_left = -40.0
 offset_top = -96.0
@@ -209,6 +212,7 @@ anchors_preset = 0
 offset_left = 208.0
 offset_right = 376.0
 offset_bottom = 136.0
+script = ExtResource("12_jy55s")
 
 [node name="weapon" type="Control" parent="party/equipData"]
 layout_mode = 2
@@ -230,7 +234,7 @@ animation = &"free"
 [node name="Label" type="Label" parent="party/equipData/weapon"]
 layout_mode = 2
 offset_left = 32.0
-offset_right = 128.0
+offset_right = 149.0
 offset_bottom = 32.0
 text = "N/A----------MAX"
 horizontal_alignment = 2
@@ -289,6 +293,7 @@ horizontal_alignment = 3
 vertical_alignment = 3
 
 [node name="button" type="Button" parent="party"]
+visible = false
 layout_mode = 0
 offset_left = 400.0
 offset_top = 72.0
@@ -323,6 +328,7 @@ offset_left = 8.0
 offset_top = 80.0
 offset_right = 136.0
 offset_bottom = 136.0
+text = "equip"
 
 [node name="equipOptions" type="Control" parent="party"]
 visible = false

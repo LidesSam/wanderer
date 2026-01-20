@@ -19,3 +19,6 @@ enum Attribute { NONE, FIRE, THUNDER, ICE }
 # Optional metadata
 @export var description: String = ""
 @export var icon: Texture2D
+
+func get_display_text():
+	return str(name," atk:",atk," def:",def)

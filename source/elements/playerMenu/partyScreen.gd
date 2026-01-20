@@ -16,14 +16,10 @@ func set_cursor_on_char():
 	var char = $display.get_children()[charIdx]
 	cursor.position=$display.get_children()[charIdx].position+Vector2(16,64)
 	classData.set_char(char)
-	pass
+	equipData.set_char(char)
 	
 func set_equip_cursor_on_item():
-	var char = $display.get_children()[charIdx]
-	cursor.position=$display.get_children()[charIdx].position+Vector2(16,64)
-	classData.set_char(char)
-	pass
-
+	equipCursor.global_position=equipData.get_children()[equipIdx].global_position-Vector2(32,0)
 
 func _on_prev_pressed() -> void:	
 	charIdx -=1
@@ -37,18 +33,14 @@ func _on_next_pressed() -> void:
 		charIdx=0 
 	set_cursor_on_char()
 
-
-
-
 func _on_equip_up_pressed() -> void:
-	equipIdx +=1
-	if equipIdx>=$display.get_children().size():
-		equipIdx=0 
+	equipIdx -=1
+	if equipIdx<0:
+		equipIdx=equipData.get_children().size()-1 
 	set_equip_cursor_on_item()
-
 
 func _on_equip_down_pressed() -> void:
 	equipIdx +=1
-	if equipIdx>=$display.get_children().size():
+	if equipIdx>=equipData.get_children().size():
 		equipIdx=0 
 	set_equip_cursor_on_item()
