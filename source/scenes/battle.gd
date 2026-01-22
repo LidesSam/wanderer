@@ -4,6 +4,7 @@ extends Control
 var charTemp=load("res://source/elements/battle/char_battle.tscn")
 var foeTemp=load("res://source/elements/battle/foe.tscn")
 var cmdTemp=load("res://source/elements/battle/command.tscn")
+
 @onready var fsm = $fsm
 
 #hold the current turn index
@@ -29,6 +30,9 @@ var action_targets=[]
 
 var quickAction=false
 var submenu=""
+
+#world player ref
+var player=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,7 +62,6 @@ func _ready():
 	
 	fsm.addGlobalTransition("await_battle",out_battle)
 	fsm.startState()
-	pass # Replace with function body.
 	
 func start_battle():
 	$actleft.text="0"
@@ -68,8 +71,6 @@ func start_battle():
 func _process(delta):
 	fsm.fsmUpdate(delta)
 	$TurnLbl/at.text=str("Act:",activeChar)
-	pass
-
 
 #fsm conditions
 func execute_action_now():
@@ -127,16 +128,9 @@ func set_commands():
 		$comands.remove_child(cmd)
 	$comands.show()
 	var i =0
-	#party[0]: replace for active partymember
 	
 	for cmd in party[activeChar].commands:
 		var command = cmdTemp.instantiate()
-		match cmd:
-			"item":
-				if(party[activeChar].has_items()):
-					pass
-			_:
-				pass
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner(party[0])
 		command.def_as(cmd)
@@ -158,11 +152,11 @@ func set_commands_submenu():
 	var i =0
 	#party[0]: replace for active partymember
 	
-	for cmd in party[activeChar].items:
+	for cmd in player.bag:
 		var command = cmdTemp.instantiate()
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner(party[0])
-		command.def_as_item(cmd)
+		command.def_as_item(cmd.itemName)
 		command.set_battle_room(self)
 		command.position.x=i*64
 		$comands.add_child(command)
@@ -245,7 +239,6 @@ func heal_target():
 	else:
 		$fsm/execute_action.endstate=true
 	
-	
 func hurt_foe():
 	for at in action_targets:
 		at.hurt(1)
@@ -308,6 +301,9 @@ func set_party(cparty):
 			party[i]=null
 		i+=1
 	pass
+func set_player(p):
+	player=p
+	set_party(player.party)
 	
 func  act_on_target(target):
 	action_targets.push_back(target)

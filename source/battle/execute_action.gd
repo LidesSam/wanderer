@@ -16,8 +16,6 @@ func enter(actowner):
 	active_next_char_or_finalize(actowner)
 	if(actowner.quickAction):
 		actowner.quickAction=false
-
-				
 		if(actowner.activeChar>2):
 			actowner.activeChar=0
 			actowner.next_turn(actowner.FOE_TURN)

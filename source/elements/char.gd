@@ -10,6 +10,7 @@ var gold=0
 var onMove=false
 var moveSpeed=50
 var bag=[]
+var equip=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +28,6 @@ func gen_items():
 		var nitem= item.instantiate()
 		nitem.define_as(i)
 		bag.push_back(nitem)
-		
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -143,6 +142,7 @@ func free_party_spot():
 		if char.wanderclass=="free":
 			return true
 	return false
+	
 func	full_heal_party():
 	for char in party.get_children():
 		if char.wanderclass!="free":
@@ -150,6 +150,7 @@ func	full_heal_party():
 			
 func add_item(item="potion"):
 	bag.push_back(item)
+	
 func add_to_party(opname):
 	for char in party.get_children():
 		if char.wanderclass=="free":

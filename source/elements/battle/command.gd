@@ -37,7 +37,7 @@ func def_as_item(action_type="potion"):
 			action= "heal";
 		"bomb":
 			action= "bomb";
-		"SODA":
+		"soda":
 			action= "heal";	
 
 	text=action_type

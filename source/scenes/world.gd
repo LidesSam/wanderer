@@ -50,7 +50,9 @@ func start_random_battle():
 	Musicbox.enter_battle()
 	player.on_battle()
 	
-	$top/battle.set_party(player.party)
+	
+	$top/battle.set_player(player)
+	
 	$top.show()
 	$top/Camera2D.show()
 	$top/Camera2D.enabled=true

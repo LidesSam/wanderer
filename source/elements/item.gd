@@ -19,6 +19,12 @@ func define_as(item:String="FREE"):
 			description= ""
 			action= "bomb"
 			play(item)
+		"soda":
+			itemName=item
+			points = 3
+			description= ""
+			action= "heal"
+			play("potion")
 		_:
 			itemName= "Free"
 			points = 0
