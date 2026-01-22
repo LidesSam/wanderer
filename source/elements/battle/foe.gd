@@ -19,7 +19,7 @@ func _process(delta):
 	pass
 	
 func  update_lp():
-	$lpLabel.text=str(lp,"/",maxlp)
+	$lpLabel.text=str(int(round(lp)),"/",maxlp)
 	
 func set_rand_foe():
 	var r=randi()%6

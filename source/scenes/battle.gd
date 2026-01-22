@@ -29,6 +29,7 @@ var action_targets=[]
 
 var quickAction=false
 var submenu=""
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fsm.autoload(self)
@@ -168,9 +169,13 @@ func set_commands_submenu():
 		i+=1
 	
 func char_command(cmd):
+	#DEFAULT SELEC MODE
 	$fsm/target_select.targetScope=$fsm/target_select.FOE_SCOPE
+	$fsm/target_select.targetSelectMode=$fsm/target_select.MANUAL_SELECT
+	
 	match cmd.action:
 		"hit":
+			
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
@@ -239,6 +244,7 @@ func heal_target():
 		next_turn(FOE_TURN)
 	else:
 		$fsm/execute_action.endstate=true
+	
 	
 func hurt_foe():
 	for at in action_targets:
