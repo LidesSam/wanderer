@@ -257,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w5u58")
 }],
-"loop": true,
+"loop": false,
 "name": &"sparkling",
 "speed": 5.0
 }, {

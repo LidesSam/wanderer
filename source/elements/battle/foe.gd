@@ -70,7 +70,9 @@ func selection_off():
 	$select.hide()
 	
 func hurt(points,anim="impact"):
+	$AnimEffect.show()
 	$AnimEffect.play(anim)
+	
 	lp-=points
 	print("hurt lp left:",lp)
 	
@@ -78,6 +80,7 @@ func hurt(points,anim="impact"):
 		lp=0
 		$spr.play(str(foename,"-die"))
 	update_lp()
+	
 
 func heal(points):
 	lp+=points
@@ -92,3 +95,6 @@ func animation_is_running():
 		return $AnimEffect.is_playing()  and $spr.is_playing()
 	else:
 		return $AnimEffect.is_playing()
+
+func _on_anim_effect_animation_finished() -> void:
+	$AnimEffect.hide()

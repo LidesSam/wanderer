@@ -161,3 +161,7 @@ func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()
 	
+
+
+func _on_anim_spr_effect_animation_finished() -> void:
+	$AnimEffect.play("default")

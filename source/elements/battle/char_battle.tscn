@@ -118,7 +118,6 @@ animation = &"mage"
 [node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = ExtResource("3_vmud0")
-animation = &"sparkling"
 
 [node name="lpLabel" type="Label" parent="."]
 offset_top = 24.0
@@ -142,4 +141,5 @@ offset_bottom = -16.0
 texture_normal = ExtResource("4_b1v83")
 texture_pressed = ExtResource("5_rkp4u")
 
+[connection signal="animation_finished" from="AnimSprEffect" to="." method="_on_anim_spr_effect_animation_finished"]
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]

@@ -160,8 +160,8 @@ animation = &"slime-die"
 [node name="lpLabel" type="Label" parent="."]
 offset_left = -16.0
 offset_top = 16.0
-offset_right = 24.0
-offset_bottom = 39.0
+offset_right = 16.0
+offset_bottom = 48.0
 
 [node name="select" type="TextureButton" parent="."]
 visible = false
@@ -174,5 +174,7 @@ texture_pressed = ExtResource("4_5w5ue")
 
 [node name="AnimEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("5_v72su")
+animation = &"thunder"
 
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]
+[connection signal="animation_finished" from="AnimEffect" to="." method="_on_anim_effect_animation_finished"]
