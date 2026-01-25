@@ -16,6 +16,8 @@ func exit(actowner):
 	actowner.partyScreen.classData.show()
 	actowner.partyScreen.selector.show()
 	
+	actowner.partyScreen.equipList.hide()
+	actowner.partyScreen.selectingEquip=false
 	actowner.partyScreen.equipCursor.hide()
 	actowner.partyScreen.equipOptions.hide()
 	actowner.partyScreen.equipData.hide()

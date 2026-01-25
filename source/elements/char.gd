@@ -11,10 +11,9 @@ var onMove=false
 var moveSpeed=50
 var bag = {
 	"items": [],
-	"equip": []
+	"weapons": [],
+	"armors": []
 }
-
-var equip=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

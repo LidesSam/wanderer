@@ -61,6 +61,10 @@ func _on_equip_change_pressed() -> void:
 		equipList.hide()
 		cursor.show()
 	else:
+		if(equipIdx==0):
+			equipList.set_list(get_parent().party.bag["weapons"])
+		else:
+			equipList.set_list(get_parent().party.bag["armors"])
 		selectingEquip=true
 		equipList.show()
 		cursor.hide()
