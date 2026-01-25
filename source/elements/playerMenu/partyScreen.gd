@@ -7,10 +7,13 @@ extends Control
 @onready var equipData=$equipData
 @onready var equipOptions= $equipOptions
 @onready var selector= $selector
+@onready var equipList= $equipList
 
 var charIdx =0
 var equipIdx=0
 var parentMenu=null
+
+var selectingEquip=false
 
 func set_cursor_on_char():
 	var char = $display.get_children()[charIdx]
@@ -34,13 +37,31 @@ func _on_next_pressed() -> void:
 	set_cursor_on_char()
 
 func _on_equip_up_pressed() -> void:
-	equipIdx -=1
-	if equipIdx<0:
-		equipIdx=equipData.get_children().size()-1 
-	set_equip_cursor_on_item()
+	if(selectingEquip):
+		equipList.equip_up()
+	else:
+		equipIdx -=1
+		if equipIdx<0:
+			equipIdx=equipData.get_children().size()-1 
+		set_equip_cursor_on_item()
 
 func _on_equip_down_pressed() -> void:
-	equipIdx +=1
-	if equipIdx>=equipData.get_children().size():
-		equipIdx=0 
-	set_equip_cursor_on_item()
+	if(selectingEquip):
+		equipList.equip_down()
+	else:
+		equipIdx +=1
+		if equipIdx>=equipData.get_children().size():
+			equipIdx=0 
+		set_equip_cursor_on_item()
+
+
+func _on_equip_change_pressed() -> void:
+	if(selectingEquip):
+		selectingEquip=false
+		equipList.hide()
+		cursor.show()
+	else:
+		selectingEquip=true
+		equipList.show()
+		cursor.hide()
+	pass # Replace with function body.

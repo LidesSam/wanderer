@@ -152,7 +152,7 @@ func set_commands_submenu():
 	var i =0
 	#party[0]: replace for active partymember
 	
-	for cmd in player.bag:
+	for cmd in player.bag["items"]:
 		var command = cmdTemp.instantiate()
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner(party[0])

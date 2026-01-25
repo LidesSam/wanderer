@@ -14,7 +14,7 @@ func display_item_data():
 	var x = 0
 	var y = 0
 	if(parentMenu):
-		for i in parentMenu.party.bag:
+		for i in parentMenu.party.bag["items"]:
 			var ni = item.instantiate()
 			ni.position.x=x*32
 			ni.position.y=y*32

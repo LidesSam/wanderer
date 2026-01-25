@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene load_steps=17 format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://d2co0y0dlrord" path="res://source/elements/bagScreen.gd" id="6_rd7rl"]
 [ext_resource type="Texture2D" uid="uid://i3nmbm7umxv3" path="res://assets/sprites/items/weapons/misc/misc1.png" id="10_ibiqj"]
 [ext_resource type="Script" uid="uid://ccfwfe08wuv2f" path="res://source/elements/playerMenu/equipDataDisplay.gd" id="12_jy55s"]
+[ext_resource type="Script" uid="uid://qagqxf2tjej5" path="res://source/elements/playerMenu/equipListSelector.gd" id="16_03nas"]
 
 [node name="playerMenu" type="TextureRect"]
 offset_left = -304.0
@@ -380,6 +381,36 @@ offset_bottom = 216.0
 text = "change
 "
 
+[node name="equipList" type="ColorRect" parent="party"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 208.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+script = ExtResource("16_03nas")
+
+[node name="cursor" type="Control" parent="party/equipList"]
+z_index = 13
+layout_mode = 3
+anchors_preset = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 176.0
+offset_bottom = 48.0
+
+[node name="spr" type="Sprite2D" parent="party/equipList/cursor"]
+position = Vector2(8, 0)
+texture = ExtResource("4_ydh53")
+offset = Vector2(16, 16)
+
+[node name="equip" type="Control" parent="party/equipList"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 192.0
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 264.0
@@ -397,3 +428,4 @@ offset_bottom = 80.0
 [connection signal="pressed" from="party/selector/equip" to="." method="_on_equip_pressed"]
 [connection signal="pressed" from="party/equipOptions/equipUp" to="party" method="_on_equip_up_pressed"]
 [connection signal="pressed" from="party/equipOptions/equipDown" to="party" method="_on_equip_down_pressed"]
+[connection signal="pressed" from="party/equipOptions/equipChange" to="party" method="_on_equip_change_pressed"]

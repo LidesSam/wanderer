@@ -9,7 +9,11 @@ var visitedLocs=[]
 var gold=0
 var onMove=false
 var moveSpeed=50
-var bag=[]
+var bag = {
+	"items": [],
+	"equip": []
+}
+
 var equip=[]
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +31,7 @@ func gen_items():
 	for i in def:
 		var nitem= item.instantiate()
 		nitem.define_as(i)
-		bag.push_back(nitem)
+		bag["items"].push_back(nitem)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
