@@ -38,7 +38,10 @@ func set_list(equipList):
 	for slot in $equip.get_children():
 		if(e<list.size()):
 			slot.text=list[e].get_display_text()
+		else:
+			slot.text=str("slot:",e)
 		e+=1
 
 func get_equip_selected():
-	return list[idx]
+	var e=list.pop_at(idx)
+	return e

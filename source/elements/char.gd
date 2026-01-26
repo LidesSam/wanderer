@@ -21,6 +21,11 @@ func _ready():
 	party.get_node("lchar").define_as("wanderer")
 	party.get_node("mchar").define_as("healer")
 	party.get_node("rchar").define_as("mage")
+	
+	party.get_node("lchar").party=self
+	party.get_node("mchar").party=self
+	party.get_node("rchar").party=self
+	
 	$Camera2D/playerMenu.party=self
 	gen_items()
 

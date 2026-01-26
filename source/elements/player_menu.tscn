@@ -429,4 +429,6 @@ offset_bottom = 80.0
 [connection signal="pressed" from="party/selector/equip" to="." method="_on_equip_pressed"]
 [connection signal="pressed" from="party/equipOptions/equipUp" to="party" method="_on_equip_up_pressed"]
 [connection signal="pressed" from="party/equipOptions/equipDown" to="party" method="_on_equip_down_pressed"]
+[connection signal="pressed" from="party/equipOptions/equipBack" to="." method="_on_equip_back_pressed"]
+[connection signal="pressed" from="party/equipOptions/equipRemove" to="party" method="_on_equip_remove_pressed"]
 [connection signal="pressed" from="party/equipOptions/equipChange" to="party" method="_on_equip_change_pressed"]

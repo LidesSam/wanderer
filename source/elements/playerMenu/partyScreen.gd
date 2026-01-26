@@ -77,3 +77,12 @@ func _on_equip_change_pressed() -> void:
 		selectingEquip=true
 		equipList.show()
 		cursor.hide()
+
+
+func _on_equip_remove_pressed() -> void:
+	if(equipIdx==0):
+		parentMenu.party.party.get_children()[charIdx].set_weapon(null)
+	else:
+		parentMenu.party.party.get_children()[charIdx].set_armor(null)
+	set_equip_cursor_on_item()
+	equipData.update_display()

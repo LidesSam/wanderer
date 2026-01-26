@@ -16,6 +16,7 @@ var equiped := {
 	"armor": null    # Should be an EquipableItem
 }
 
+var party=null
 
 var onDef=false
 var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()
@@ -23,7 +24,6 @@ var criticalDice = load("res://source/elements/components/dice.tscn").instantiat
 var wanderclass="free"
 
 var selectCallback
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -78,12 +78,14 @@ func define_as(charname="wanderer"):
 	$spr.play(charname)
 
 func set_weapon(weapon=null):
-	if(weapon):
-		equiped["weapon"]=weapon
+	if(equiped["weapon"]):
+		party.bag["weapons"].push_back(equiped["weapon"])
+	equiped["weapon"]=weapon
 		
 func set_armor(armor=null):
-	if(armor):
-		equiped["armor"]=armor
+	if(equiped["armor"]):
+		party.bag["armors"].push_back(equiped["armor"])
+	equiped["armor"]=armor
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
