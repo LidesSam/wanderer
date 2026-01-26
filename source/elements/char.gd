@@ -26,11 +26,27 @@ func _ready():
 
 func gen_items():
 	var def = ["potion","bomb","soda"]
+	var weapons=["stick","sword","stick"]
+	var armors=["coat","coat","heavy coat"]
+	
 	var item = load("res://source/elements/item.tscn")
+	var equipTemp = load("res://source/elements/equipableItem.tscn")
+	
 	for i in def:
 		var nitem= item.instantiate()
 		nitem.define_as(i)
 		bag["items"].push_back(nitem)
+		
+	for i in weapons:
+		var nitem= equipTemp.instantiate()
+		nitem.define_as_weapon(i)
+		bag["weapons"].push_back(nitem)
+	
+	for i in armors:
+		var nitem= equipTemp.instantiate()
+		nitem.define_as_armor(i)
+		bag["armors"].push_back(nitem)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -67,7 +83,6 @@ func set_current_loc(loc):
 			world.set_cursor_on_loc(currentLoc.connectedLocs[world.cursorIndex])
 		visitedLocs.push_back(loc)
 	currentLoc=loc
-
 
 func on_battle():
 	$Camera2D.enabled=false
@@ -110,7 +125,6 @@ func reacivate():
 func add_gold(g):
 		gold+=g
 
-
 func _on_menu_btn_pressed():
 	$Camera2D/playerMenu.show()
 	$Camera2D/playerMenu.update_gold(gold)
@@ -146,7 +160,7 @@ func free_party_spot():
 			return true
 	return false
 	
-func	full_heal_party():
+func full_heal_party():
 	for char in party.get_children():
 		if char.wanderclass!="free":
 			char.lp= char.maxlp

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://du5kwtjvhknvu"]
+
+[ext_resource type="Texture2D" uid="uid://basi5vn7ko14i" path="res://assets/sprites/items/weapons/misc/misc0.png" id="1_e8nfv"]
+[ext_resource type="Texture2D" uid="uid://bu76nisdw3pi5" path="res://assets/sprites/items/weapons/misc/misc3.png" id="2_62k4k"]
+[ext_resource type="Script" uid="uid://ssxshmt011ay" path="res://source/elements/equipable_item.gd" id="3_e8nfv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gyq8"]
+atlas = ExtResource("1_e8nfv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vesp6"]
+atlas = ExtResource("2_62k4k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dx48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gyq8")
+}],
+"loop": true,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vesp6")
+}],
+"loop": true,
+"name": &"potion",
+"speed": 5.0
+}]
+
+[node name="equip" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1dx48")
+animation = &"potion"
+centered = false
+script = ExtResource("3_e8nfv")

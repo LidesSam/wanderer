@@ -3,9 +3,12 @@ extends Control
 var currentChar=null
 func set_char(char=null):
 	currentChar=char
-	var equiped = char.equiped
-	var weapon = char.equiped["weapon"]
-	var armor = char.equiped["armor"]
+	update_display()
+	
+func update_display():
+	var equiped = currentChar.equiped
+	var weapon = currentChar.equiped["weapon"]
+	var armor = currentChar.equiped["armor"]
 	
 	if weapon:
 		$weapon/Label.text=weapon.get_display_text()
@@ -16,3 +19,4 @@ func set_char(char=null):
 		$armor/Label.text=armor.get_display_text()
 	else:
 		$armor/Label.text="FREE"
+	

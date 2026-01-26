@@ -16,6 +16,7 @@ var equiped := {
 	"armor": null    # Should be an EquipableItem
 }
 
+
 var onDef=false
 var criticalDice = load("res://source/elements/components/dice.tscn").instantiate()
 
@@ -75,6 +76,14 @@ func define_as(charname="wanderer"):
 			commands=["hit","thunder","item"]
 			update_life()
 	$spr.play(charname)
+
+func set_weapon(weapon=null):
+	if(weapon):
+		equiped["weapon"]=weapon
+		
+func set_armor(armor=null):
+	if(armor):
+		equiped["armor"]=armor
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -153,15 +162,13 @@ func selection_mode(lpcon=0):
 				$select.show()
 		2:
 			$select.show()
+
 func selection_off():
 	$select.hide()
-	
 
 func _on_select_pressed():
 	$select.hide()
 	selectCallback.call()
-	
-
 
 func _on_anim_spr_effect_animation_finished() -> void:
 	$AnimEffect.play("default")

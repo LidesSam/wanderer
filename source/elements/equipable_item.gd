@@ -1,7 +1,5 @@
 # EquipableItem.gd
-extends Resource
-class_name EquipableItem
-
+extends AnimatedSprite2D
 # Attack type options
 enum AttackType { HIT, SLASH, MAGIC }
 
@@ -12,7 +10,6 @@ enum Attribute { NONE, FIRE, THUNDER, ICE }
 enum Type {WEAPON, ARMOR }
 
 # Editable in the Inspector (Godot 4.x)
-@export var name: String = "Free"
 @export var atk: int = 0
 @export var def: int = 0
 
@@ -57,6 +54,10 @@ func define_as_armor( armorName = "coat" ):
 		"coat":
 			atk=0
 			def=2
+			description="cloth coard"
+		"heavy coat":
+			atk=0
+			def=2
 			description="clotc coard"
 		"raincoat":
 			atk=0
@@ -75,4 +76,3 @@ func define_as_armor( armorName = "coat" ):
 			description="Warm coat"
 		_:
 			define_as_armor()
-		

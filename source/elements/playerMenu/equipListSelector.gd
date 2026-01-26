@@ -4,6 +4,7 @@ var idx=0
 var list = null
 @onready var cursor=$cursor
 var displayItems=5
+@onready var slots= $equip
 
 
 func _ready() -> void:
@@ -13,6 +14,7 @@ func _ready() -> void:
 		slot.position.y=40*i
 		$equip.add_child(slot)
 	set_cursor_on_pos()
+	
 func equip_up():
 	if(idx>0):
 		idx-=1
@@ -31,4 +33,12 @@ func set_cursor_on_pos():
 	cursor.position.y=16+40*idx
 	
 func set_list(equipList):
-	list= equipList
+	list = equipList
+	var e =0
+	for slot in $equip.get_children():
+		if(e<list.size()):
+			slot.text=list[e].get_display_text()
+		e+=1
+
+func get_equip_selected():
+	return list[idx]

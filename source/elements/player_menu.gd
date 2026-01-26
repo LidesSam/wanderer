@@ -58,3 +58,4 @@ func _on_bagbtn_pressed() -> void:
 
 func _on_equip_pressed() -> void:
 	state=PARTYEQUIPSTATE
+	

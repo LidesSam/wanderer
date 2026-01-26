@@ -54,9 +54,18 @@ func _on_equip_down_pressed() -> void:
 			equipIdx=0 
 		set_equip_cursor_on_item()
 
+func change_equip():
+	#select party char
+	if(equipIdx==0):
+		parentMenu.party.party.get_children()[charIdx].set_weapon(equipList.get_equip_selected())
+	else:
+		parentMenu.party.party.get_children()[charIdx].set_armor(equipList.get_equip_selected())
+	set_equip_cursor_on_item()
+	equipData.update_display()
 
 func _on_equip_change_pressed() -> void:
 	if(selectingEquip):
+		change_equip()
 		selectingEquip=false
 		equipList.hide()
 		cursor.show()
@@ -68,4 +77,3 @@ func _on_equip_change_pressed() -> void:
 		selectingEquip=true
 		equipList.show()
 		cursor.hide()
-	pass # Replace with function body.
