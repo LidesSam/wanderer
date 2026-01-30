@@ -1,0 +1,29 @@
+{
+	"potion":{
+		"action": "heal",
+		"desc":"heal 1 hp",
+		"points":1,
+		},
+		
+	"soda":{
+		"action": "heal",
+		"desc":"heal 3 hp",
+		"points":3,
+		},
+		
+	"bomb":{
+		"action":"bomb",
+		"desc":"hurt all foes",
+		"points":1,
+		},
+	"dart":{	
+		"action":"poison",
+		"desc":"poison 1 foe",
+		"points":100,
+		},
+	"shuriken":{	
+		"action":"poison",
+		"desc":" hurt 1 to all foes",
+		"points":1,
+		},
+}		

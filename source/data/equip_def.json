@@ -1,0 +1,60 @@
+{
+  "weapon": {
+	"stick": {
+	  "atk": 2,
+	  "def": 0,
+	  "attack type": "HIT",
+	  "description": "Wood stick, simple, cheap, effective"
+	},
+	"gauntlet": {
+	  "atk": 1,
+	  "def": 1,
+	  "attack type": "HIT",
+	  "description": "Reinforced glove, used to block and punch"
+	},
+	"sword": {
+	  "atk": 3,
+	  "def": 0,
+	  "attack type": "SLASH",
+	  "description": "Basic sword, quite sharp"
+	},
+	"wand": {
+	  "atk": 2,
+	  "def": 0,
+	  "attack type": "MAGIC",
+	  "description": "Magic imbued in this chunk of wood, can damage non-corporeal entities"
+	}
+  },
+  "armor": {
+	"coat": {
+	  "atk": 0,
+	  "def": 2,
+	  "attribute": null,
+	  "description": "Cloth coat"
+	},
+	"heavy coat": {
+	  "atk": 0,
+	  "def": 2,
+	  "attribute": null,
+	  "description": "Thick cloth coat"
+	},
+	"raincoat": {
+	  "atk": 0,
+	  "def": 1,
+	  "attribute": "THUNDER",
+	  "description": "Insulated, ideal for thunderstorms"
+	},
+	"thin jacket": {
+	  "atk": 1,
+	  "def": 0,
+	  "attribute": "FIRE",
+	  "description": "Oddly refreshing, you feel stronger"
+	},
+	"winter coat": {
+	  "atk": 0,
+	  "def": 1,
+	  "attribute": "ICE",
+	  "description": "Warm winter coat"
+	}
+  }
+}

@@ -1,0 +1,18 @@
+{
+	"cost":{
+	  "hires": {"wanderer":50, "mage":100, "warrior":80, "healer":200},
+	  "items": {"potion":10, "soda":25, "bomb":50, "dart":10, "shuriken":30},
+	  "weapons": {"stick":20, "wand":30, "sword":50},
+	  "armor": {"cloth":30, "heavy cloth":50},
+	},
+  "tavern": {
+	"0": {"item":"potion", "item":"potion"},
+	"1": {"item":"potion", "item":"potion", "item":"bomb"},
+	"2": 
+	  {
+		"item": "soda",
+		"require": "restore all",
+		"hire": "wanderer"
+	  }
+  }
+}
