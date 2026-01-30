@@ -28,8 +28,6 @@ func gen_choices(max_hire=0):
 	# Clear existing children safely
 	for op in options.get_children():
 		op.queue_free()
-		
-	
 
 	# Generate a random number of choices between 1 and 3
 	var num_choices = randi() % 3 + 1

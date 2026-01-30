@@ -7,7 +7,7 @@ var def=1
 var lp=10
 var maxlp=10
 var actionEnd=false
-var commands=["hit","def","item"]#
+var commands=["weapon","def","item"]#
 
 var items=["potion","bomb","SODA"]
 # equiped items
@@ -45,7 +45,7 @@ func define_as(charname="wanderer"):
 			def=1
 			lp=10
 			maxlp=10
-			commands=["hit","def","item"]
+			commands=["weapon","def","item"]
 			update_life()
 			
 		"warrior":
@@ -54,7 +54,7 @@ func define_as(charname="wanderer"):
 			def=3
 			lp=15
 			maxlp=15
-			commands=["hit","item"]
+			commands=["weapon","item"]
 			update_life()
 		"healer":
 			
@@ -73,7 +73,7 @@ func define_as(charname="wanderer"):
 			def=1
 			lp=8
 			maxlp=8
-			commands=["hit","thunder","item"]
+			commands=["weapon","thunder","item"]
 			update_life()
 	$spr.play(charname)
 
@@ -174,3 +174,6 @@ func _on_select_pressed():
 
 func _on_anim_spr_effect_animation_finished() -> void:
 	$AnimEffect.play("default")
+
+func get_weapon():
+	return equiped["weapon"]

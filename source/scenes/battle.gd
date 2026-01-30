@@ -132,8 +132,29 @@ func set_commands():
 	for cmd in party[activeChar].commands:
 		var command = cmdTemp.instantiate()
 		command.actFunc=char_command.bind(command)
-		command.set_char_owner(party[0])
-		command.def_as(cmd)
+		command.set_char_owner(party[activeChar])
+		party[0].modulate="#ff0000"
+		print("setCommand:",cmd)
+		if cmd=="weapon":
+			var weapon=party[0].equiped["weapon"]
+			print("setCommand:",weapon)
+			if weapon!=null:
+				print("setCommand:",weapon.attack_type)
+				match weapon.attack_type:
+					weapon.AttackType.HIT:
+						command.def_as("hit")
+					weapon.AttackType.SLASH:
+						command.def_as("slash")
+					weapon.AttackType.MAGIC:
+						command.def_as("magic")
+					_:
+						command.def_as("hit")
+					
+			else:
+				command.def_as("hit")
+				
+		else:
+			command.def_as(cmd)
 		if cmd=="item":
 			if party[activeChar].has_items():
 				command.disabled=false
@@ -170,6 +191,17 @@ func char_command(cmd):
 	match cmd.action:
 		"hit":
 			
+			$fsm/target_select.toSelect=1
+			$fsm/execute_action.action = hurt_foe
+			$fsm/execute_action.rollcrit = true
+			onTargetSelect=true
+		"slash":
+			
+			$fsm/target_select.toSelect=1
+			$fsm/execute_action.action = hurt_foe
+			$fsm/execute_action.rollcrit = true
+			onTargetSelect=true
+		"magic":
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
@@ -243,9 +275,9 @@ func hurt_foe():
 	for at in action_targets:
 		at.hurt(1)
 		if($critDice.currentValue>=5):
-			at.hurt(1+$critDice.currentValue-4)
+			at.hurt(player.get_atk()+$critDice.currentValue-4)
 		else:
-			at.hurt(1)
+			at.hurt(player.get_atk())
 	
 	if(activeChar+1>3):
 		next_turn(FOE_TURN)
@@ -285,7 +317,7 @@ func set_party(cparty):
 		$party.remove_child(c)
 	
 	var i =0
-	print(cparty)
+	
 	for pchar in cparty.get_children() :
 		var charTemp = charTemp.instantiate()
 		
@@ -295,6 +327,7 @@ func set_party(cparty):
 			party[i].define_as(pchar.wanderclass)
 			party[i].lp = pchar.lp
 			party[i].maxlp = pchar.maxlp
+			party[i].equiped=pchar.equiped
 			$party.add_child(charTemp)
 			party[i].selectCallback= act_on_target.bind(party[i])
 		else:

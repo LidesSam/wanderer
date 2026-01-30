@@ -3,6 +3,8 @@ extends Node2D
 # Variables to store the cost, operation action, and operation name
 var cost = 20
 var opact = "none"
+var itemType = 0
+
 var opname = "none"
 
 # Simulate player money (you can replace this with your actual game's player money system)
@@ -44,10 +46,23 @@ func define_as_hire():
 # Define this item as something that can be bought
 func define_as_item():
 	opact = "buy"
-	opname = "potion"
-	cost = 20
+	var itemType = randi()%3
+	var list= ["potion","potion","potion","soda","bomb"]
+	var price= [20,20,40,50]
+	match itemType:
+		1:
+			list= ["stick","stick","sword"]
+			price= [20,20,40]
+		2:
+			list= ["coat","coat","heavy coat"]
+			price= [20,20,40]
+	
+	var r = randi()%list.size()-1
+	opname = list[r]
+	cost = price[r]
 	update_ui()
 	$spr.play("item")
+	
 
 # Define this item as a service to be required
 func define_as_service():
@@ -85,8 +100,30 @@ func handle_purchase(buyer):
 		"buy" :
 			buyer.gold  -= cost
 			player_money=buyer.gold
+			print(buyer.bag)
+			if(itemType==0):
+				
+				print("---------item----------")
+				var item = load("res://source/elements/item.tscn").instantiate()
+				item.define_as(opname)
+				buyer.bag["items"].push_back(item)
+				print(buyer.bag)
+			else:
+				var equip = load("res://source/elements/equipableItem.tscn").instantiate()
+				if(itemType==1):
+					equip.define_as_weapon(opname)
+					
+					print("---------weapon----------")
+					print(buyer.bag["weapons"].size())
+					buyer.bag["weapons"].push_back(equip)
+					print(buyer.bag["weapons"].size())
+					print(buyer.bag)
+				else:
+					print("---------armor----------")
+					equip.define_as_armor(opname)
+					buyer.bag["armors"].push_back(equip)
+					print(buyer.bag)
 			$spr.play("sell-out")
-			
 		
 		"require" :
 			buyer.full_heal_party()
