@@ -133,7 +133,7 @@ func set_commands():
 		var command = cmdTemp.instantiate()
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner(party[activeChar])
-		party[0].modulate="#ff0000"
+		#party[0].modulate="#ff0000"
 		print("setCommand:",cmd)
 		if cmd=="weapon":
 			var weapon=party[0].equiped["weapon"]
@@ -275,10 +275,9 @@ func hurt_foe():
 	for at in action_targets:
 		at.hurt(1)
 		if($critDice.currentValue>=5):
-			at.hurt(player.get_atk()+$critDice.currentValue-4)
+			at.hurt(party[activeChar-1].get_atk()+$critDice.currentValue-4)
 		else:
-			at.hurt(player.get_atk())
-	
+			at.hurt(party[activeChar-1].get_atk())
 	if(activeChar+1>3):
 		next_turn(FOE_TURN)
 	else:

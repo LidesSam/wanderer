@@ -17,7 +17,7 @@ func _process(delta):
 	if(onRoll):
 		currentValue=randi()%maxValue+minValue
 		$Label.text=str(currentValue)
-	pass
+	
 func set_dice_range(MinValue=1,MaxValue=6):
 	minValue=MinValue
 	maxValue=MaxValue
@@ -26,14 +26,11 @@ func set_dice_range(MinValue=1,MaxValue=6):
 func stop():
 	onRoll=false
 	$Timer.stop()
-	if(endRollCallback):
-		endRollCallback.call()
-	pass
+	$AnimationPlayer.play("critical")
 	
 func roll():
 	onRoll=true
 	$Timer.start()
-	pass
 	
 func autoroll():
 	roll()
@@ -44,3 +41,10 @@ func _on_timer_timeout():
 	print("timeOut")
 	stop()
 	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	
+	if(endRollCallback):
+		endRollCallback.call()
+	$AnimationPlayer.play("reset")
