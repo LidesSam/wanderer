@@ -110,10 +110,10 @@ text = "!"
 
 [node name="dicePopup" parent="Camera2D" instance=ExtResource("4_0ji8d")]
 visible = false
-offset_left = -256.0
+offset_left = -192.0
 offset_top = -128.0
-offset_right = -128.0
-offset_bottom = 0.0
+offset_right = -64.0
+offset_bottom = -48.0
 
 [node name="menuBtn" type="Button" parent="Camera2D"]
 offset_left = 224.0
