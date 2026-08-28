@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hoxggrtkn87q"]
+[gd_scene format=3 uid="uid://hoxggrtkn87q"]
 
 [ext_resource type="Script" uid="uid://bqu7t55v1itbc" path="res://source/factory/mapGen.gd" id="1_dsx84"]
 [ext_resource type="Script" uid="uid://b0p5xxgd46ehy" path="res://source/scenes/world.gd" id="1_m07vj"]
@@ -11,44 +11,44 @@
 [ext_resource type="Script" uid="uid://ba6qcf5ogq6ru" path="res://addons/fsmgear/source/FsmState.gd" id="6_fqkfx"]
 [ext_resource type="Script" uid="uid://ddo10pl8kynsm" path="res://source/scenes/states/world/moveCharWorldState.gd" id="8_at16l"]
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" unique_id=231720718]
 script = ExtResource("1_m07vj")
 
-[node name="mapGen" type="Node2D" parent="." node_paths=PackedStringArray("locations")]
+[node name="mapGen" type="Node2D" parent="." unique_id=1885359803 node_paths=PackedStringArray("locations")]
 script = ExtResource("1_dsx84")
 locations = NodePath("../locations")
 
-[node name="locations" type="Node2D" parent="."]
+[node name="locations" type="Node2D" parent="." unique_id=1609631204]
 
-[node name="cursorLoc" type="Sprite2D" parent="."]
+[node name="cursorLoc" type="Sprite2D" parent="." unique_id=487733152]
 modulate = Color(1, 0, 0.341176, 1)
 texture = ExtResource("4_x345q")
 
-[node name="actors" type="Node2D" parent="."]
+[node name="actors" type="Node2D" parent="." unique_id=911214365]
 
-[node name="top" type="Node2D" parent="."]
+[node name="top" type="Node2D" parent="." unique_id=959586626]
 
-[node name="Camera2D" type="Camera2D" parent="top"]
+[node name="Camera2D" type="Camera2D" parent="top" unique_id=1628887485]
 anchor_mode = 0
 enabled = false
 
-[node name="battle" parent="top" instance=ExtResource("3_kx475")]
+[node name="battle" parent="top" unique_id=52838834 instance=ExtResource("3_kx475")]
 visible = false
 
-[node name="Label2" type="Label" parent="top/battle"]
+[node name="Label2" type="Label" parent="top/battle" unique_id=920461501]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Battle on"
 
-[node name="popup" type="ColorRect" parent="top"]
+[node name="popup" type="ColorRect" parent="top" unique_id=133541973]
 visible = false
 top_level = true
 offset_right = 576.0
 offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
-[node name="gameover" type="Control" parent="top/popup"]
+[node name="gameover" type="Control" parent="top/popup" unique_id=282844707]
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -57,9 +57,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="top/popup/gameover"]
+[node name="Label" type="Label" parent="top/popup/gameover" unique_id=2080076487]
 top_level = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 65.0
 offset_top = 41.0
 offset_right = 512.0
@@ -69,33 +69,33 @@ text = "Adventure end
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mainMenuBtn" type="Button" parent="top/popup/gameover"]
+[node name="mainMenuBtn" type="Button" parent="top/popup/gameover" unique_id=985286112]
 top_level = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 129.0
 offset_top = 169.0
 offset_right = 448.0
 offset_bottom = 233.0
 text = "Go to Title"
 
-[node name="tavern" parent="." instance=ExtResource("5_u0vmh")]
+[node name="tavern" parent="." unique_id=102087571 instance=ExtResource("5_u0vmh")]
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=703625083]
 script = ExtResource("5_557a5")
 
-[node name="genworld" type="Node" parent="fsm"]
+[node name="genworld" type="Node" parent="fsm" unique_id=1610961679]
 script = ExtResource("5_xnjlr")
 
-[node name="idle" type="Node" parent="fsm"]
+[node name="idle" type="Node" parent="fsm" unique_id=854927981]
 script = ExtResource("5_1nbhs")
 
-[node name="movechar" type="Node" parent="fsm"]
+[node name="movechar" type="Node" parent="fsm" unique_id=886300352]
 script = ExtResource("8_at16l")
 
-[node name="battle" type="Node" parent="fsm"]
+[node name="battle" type="Node" parent="fsm" unique_id=661386785]
 script = ExtResource("6_fqkfx")
 
-[node name="roll" type="Node" parent="fsm"]
+[node name="roll" type="Node" parent="fsm" unique_id=837298962]
 script = ExtResource("6_fqkfx")
 
 [connection signal="pressed" from="top/popup/gameover/mainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

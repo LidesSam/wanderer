@@ -5,7 +5,7 @@ extends ColorRect
 @export var goodResult:Callable
 @export var badResult:Callable
 @export var goodMsg = "Run!"
-@export var badMsg = "Encounter!♠!"
+@export var badMsg = "!!♠!!"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,4 +38,3 @@ func _on_close_btn_pressed():
 	else:
 		if(badResult):
 			badResult.call()
-	pass # Replace with function body.

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://csddgb304nyvr"]
+
+[ext_resource type="Script" uid="uid://bp5cvprd3mlcm" path="res://source/scenes/system/dicePopup.gd" id="1_oqs5u"]
+[ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="2_b2hxc"]
+
+[node name="dicePopup" type="ColorRect" unique_id=231746627]
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 192.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+script = ExtResource("1_oqs5u")
+
+[node name="closeBtn" type="Button" parent="." unique_id=293842755]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 120.0
+text = "!!♠!!"
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1342059328]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 64.0
+color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+
+[node name="titleLbl" type="Label" parent="." unique_id=1163176541]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dice" parent="." unique_id=1677537549 instance=ExtResource("2_b2hxc")]
+position = Vector2(64, 40)
+
+[connection signal="pressed" from="closeBtn" to="." method="_on_close_btn_pressed"]
