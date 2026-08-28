@@ -9,7 +9,7 @@ var maxlp=10
 var actionEnd=false
 var commands=["weapon","def","item"]#
 
-var items=["potion","bomb","SODA"]
+#var items=["potion","bomb","SODA"]
 # equiped items
 var equiped := {
 	"weapon": null,  # Should be an EquipableItem
@@ -95,8 +95,8 @@ func update_life():
 	if wanderclass!="free":
 		$lpLabel.text=str(lp,"/",maxlp)
 	
-func has_items():
-	return items.size()>0
+#func has_items():
+#	return items.size()>0
 	
 func set_on_def():
 	onDef=true

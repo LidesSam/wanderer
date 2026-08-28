@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://br5j16ovov2p6"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://br5j16ovov2p6"]
 
 [ext_resource type="Texture2D" uid="uid://dsfq5tt8yki2y" path="res://assets/sprites/heroes and char/wanderer.png" id="1_ew26b"]
 [ext_resource type="Texture2D" uid="uid://basi5vn7ko14i" path="res://assets/sprites/items/weapons/misc/misc0.png" id="2_msojt"]

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://dc73fjntk0wx1"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dc73fjntk0wx1"]
 
 [ext_resource type="Texture2D" uid="uid://g8tm8oyj0pg6" path="res://assets/sprites/items/weapons/sword/sword.png" id="1_cqcm7"]
 [ext_resource type="Texture2D" uid="uid://xc1jejdy0pan" path="res://assets/sprites/hud/eachframe/equip-only/equip_only0.png" id="1_fuh7v"]

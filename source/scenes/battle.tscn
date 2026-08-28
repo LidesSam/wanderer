@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnfw1epyp28ra"]
+[gd_scene format=3 uid="uid://dnfw1epyp28ra"]
 
 [ext_resource type="Script" uid="uid://1765qqrrlkji" path="res://source/scenes/battle.gd" id="1_sayp3"]
 [ext_resource type="Script" uid="uid://df1vkc66o5aug" path="res://addons/fsmgear/source/Fsm.gd" id="2_1asjr"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://c3lciuovmpvi4" path="res://source/battle/battleEndState.gd" id="10_dhpa6"]
 [ext_resource type="PackedScene" uid="uid://fanqjawhj3cp" path="res://source/elements/components/dice.tscn" id="14_w5aya"]
 
-[node name="battle" type="Control"]
+[node name="battle" type="Control" unique_id=1765910409]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,13 +25,13 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 script = ExtResource("1_sayp3")
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="Panel" type="ColorRect" parent="." unique_id=543041088]
 layout_mode = 0
 offset_right = 576.0
 offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
-[node name="counterLbl" type="Label" parent="."]
+[node name="counterLbl" type="Label" parent="." unique_id=1676072288]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 16.0
@@ -43,7 +43,7 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="stateDebug" type="Label" parent="."]
+[node name="stateDebug" type="Label" parent="." unique_id=1197566351]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 128.0
@@ -55,7 +55,7 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="TurnLbl" type="Label" parent="."]
+[node name="TurnLbl" type="Label" parent="." unique_id=382258748]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 64.0
@@ -66,62 +66,62 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="at" type="Label" parent="TurnLbl"]
+[node name="at" type="Label" parent="TurnLbl" unique_id=804027822]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 112.0
 offset_bottom = 55.0
 
-[node name="foes" type="Node2D" parent="."]
+[node name="foes" type="Node2D" parent="." unique_id=1299126405]
 position = Vector2(129, 64)
 
-[node name="party" type="Node2D" parent="."]
+[node name="party" type="Node2D" parent="." unique_id=2043430208]
 position = Vector2(192, 192)
 
-[node name="char" parent="party" instance=ExtResource("2_biw0w")]
+[node name="char" parent="party" unique_id=682324797 instance=ExtResource("2_biw0w")]
 
-[node name="comands" type="Node2D" parent="."]
+[node name="comands" type="Node2D" parent="." unique_id=1525290102]
 position = Vector2(192, 256)
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=89130765]
 script = ExtResource("2_1asjr")
 
-[node name="await_battle" type="Node" parent="fsm"]
+[node name="await_battle" type="Node" parent="fsm" unique_id=802602884]
 script = ExtResource("4_th2kj")
 
-[node name="battle_start" type="Node" parent="fsm"]
+[node name="battle_start" type="Node" parent="fsm" unique_id=1702957767]
 script = ExtResource("3_36856")
 
-[node name="player_turn" type="Node" parent="fsm"]
+[node name="player_turn" type="Node" parent="fsm" unique_id=1550485790]
 script = ExtResource("6_lq740")
 
-[node name="target_select" type="Node" parent="fsm"]
+[node name="target_select" type="Node" parent="fsm" unique_id=1646338473]
 script = ExtResource("7_abill")
 
-[node name="foe_turn" type="Node" parent="fsm"]
+[node name="foe_turn" type="Node" parent="fsm" unique_id=1766793055]
 script = ExtResource("4_rwdoe")
 
-[node name="item_select" type="Node" parent="fsm"]
+[node name="item_select" type="Node" parent="fsm" unique_id=2051897596]
 script = ExtResource("9_4l7wh")
 
-[node name="execute_action" type="Node" parent="fsm"]
+[node name="execute_action" type="Node" parent="fsm" unique_id=62833050]
 script = ExtResource("10_88630")
 
-[node name="battle_end" type="Node" parent="fsm"]
+[node name="battle_end" type="Node" parent="fsm" unique_id=2026688344]
 script = ExtResource("10_dhpa6")
 
-[node name="cursor" type="Sprite2D" parent="."]
+[node name="cursor" type="Sprite2D" parent="." unique_id=671120678]
 visible = false
 position = Vector2(224, 168)
 texture = ExtResource("6_8d8kp")
 
-[node name="actleft" type="Label" parent="."]
+[node name="actleft" type="Label" parent="." unique_id=535949241]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 232.0
 offset_right = 384.0
 offset_bottom = 255.0
 
-[node name="critDice" parent="." instance=ExtResource("14_w5aya")]
+[node name="critDice" parent="." unique_id=1695898384 instance=ExtResource("14_w5aya")]
 visible = false
 position = Vector2(192, 128)

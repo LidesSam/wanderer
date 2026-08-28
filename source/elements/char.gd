@@ -171,7 +171,17 @@ func full_heal_party():
 			char.lp= char.maxlp
 			
 func add_item(item="potion"):
-	bag.push_back(item)
+	bag["items"].push_back(item)
+	
+func item_was_used(item="potion"):
+	#for now all items are 1 use if have multple use should reduce the balue instead-
+	bag["items"].remove_at(bag["items"].find(item))
+
+func has_items():
+	return bag["items"].size()>0	
+	
+func get_items_bag():
+	return bag["items"]
 	
 func add_to_party(opname):
 	for char in party.get_children():

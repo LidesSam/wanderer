@@ -5,6 +5,8 @@ var charOwner
 var action
 var actFunc:Callable
 var quickFunc:Callable
+var item = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +17,7 @@ func _process(delta):
 	pass
 
 func def_as(action_type="hit"):
+	item=null
 	match action_type:
 		"hit":
 			pass
@@ -29,8 +32,7 @@ func def_as(action_type="hit"):
 	action= action_type;
 	text=action_type
 
-func def_as_item(action_type="potion"):
-	
+func def_as_item(action_type="potion", itemOnBag=null):
 	action= action_type;
 	match action_type:
 		"potion":
@@ -39,8 +41,8 @@ func def_as_item(action_type="potion"):
 			action= "bomb";
 		"soda":
 			action= "heal";	
-
 	text=action_type
+	item=itemOnBag
 	
 func heal():
 	pass
@@ -63,3 +65,5 @@ func execute_quick_action():
 
 func _on_pressed():
 	actFunc.call()
+		
+		

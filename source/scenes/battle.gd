@@ -149,35 +149,32 @@ func set_commands():
 						command.def_as("magic")
 					_:
 						command.def_as("hit")
-					
 			else:
 				command.def_as("hit")
-				
 		else:
 			command.def_as(cmd)
 		if cmd=="item":
-			if party[activeChar].has_items():
+			if player.has_items():
 				command.disabled=false
 			else:
 				command.disabled=true
-				
 		command.set_battle_room(self)
 		command.position.x=i*128
 		$comands.add_child(command)
 		i+=1
 		
 func set_commands_submenu():
+	
 	for cmd in $comands.get_children():
 		$comands.remove_child(cmd)
 	$comands.show()
-	var i =0
-	#party[0]: replace for active partymember
 	
+	var i =0
 	for cmd in player.bag["items"]:
 		var command = cmdTemp.instantiate()
 		command.actFunc=char_command.bind(command)
 		command.set_char_owner(party[0])
-		command.def_as_item(cmd.itemName)
+		command.def_as_item(cmd.itemName,cmd)
 		command.set_battle_room(self)
 		command.position.x=i*64
 		$comands.add_child(command)
@@ -190,13 +187,11 @@ func char_command(cmd):
 	
 	match cmd.action:
 		"hit":
-			
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
 			onTargetSelect=true
 		"slash":
-			
 			$fsm/target_select.toSelect=1
 			$fsm/execute_action.action = hurt_foe
 			$fsm/execute_action.rollcrit = true
@@ -214,7 +209,6 @@ func char_command(cmd):
 			onTargetSelect=true
 		"item":
 			submenu="item"
-		
 		"bomb":
 			#$fsm/target_select.exitaction = execute_action()
 			$fsm/target_select.toSelect=1
@@ -260,9 +254,17 @@ func char_command(cmd):
 			print("cmd:quick action. ",cmd.action)
 			quickAction=true
 			$fsm/execute_action.action =cmd.execute_quick_action
+		
+	#if is an item
+	if cmd.item!=null:
+		#reduce item used 
+		player.item_was_used(cmd.item)
+		#
+		set_commands_submenu()
 
-	pass
+
 	
+
 func heal_target():
 	for at in action_targets:
 		at.heal(1)
@@ -282,7 +284,6 @@ func hurt_foe():
 		next_turn(FOE_TURN)
 	else:
 		$fsm/execute_action.endstate=true
-#	next_turn(FOE_TURN)
 	
 func atk_spell_on_foe(atrib="none",base=1, modifier=1):
 	var dmg=0
@@ -291,14 +292,12 @@ func atk_spell_on_foe(atrib="none",base=1, modifier=1):
 		match atrib:
 			"none":
 				dmg= base + modifier
-				break
 			"thunder": 
 				dmg= 1+randi()%(base+modifier)*0.5
 			"fire":
 				dmg=  base *randi()%modifier*0.5
 			"ice":
 				dmg= base + modifier*0.5
-			
 		at.hurt(round(dmg),atrib)
 	
 	if(activeChar+1>3):

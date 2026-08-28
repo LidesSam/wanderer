@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc44vfu6qldjc"]
+[gd_scene format=3 uid="uid://dc44vfu6qldjc"]
 
 [ext_resource type="SpriteFrames" uid="uid://br5j16ovov2p6" path="res://assets/sprites/heroes and char/wanderer.tres" id="1_1km75"]
 [ext_resource type="Script" uid="uid://criv3q2cxrele" path="res://source/elements/battle/char_battle.gd" id="1_u5c7p"]
@@ -94,34 +94,31 @@ _data = {
 &"lp_shake": SubResource("Animation_g4uss")
 }
 
-[node name="char" type="Node2D"]
+[node name="char" type="Node2D" unique_id=444482729]
 script = ExtResource("1_u5c7p")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1537592865]
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0
 offset_bottom = 24.0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimEffect" type="AnimationPlayer" parent="."]
+[node name="AnimEffect" type="AnimationPlayer" parent="." unique_id=1780691281]
 root_node = NodePath("../lpLabel")
-libraries = {
-&"": SubResource("AnimationLibrary_83mvc")
-}
+libraries/ = SubResource("AnimationLibrary_83mvc")
 
-[node name="spr" type="AnimatedSprite2D" parent="."]
+[node name="spr" type="AnimatedSprite2D" parent="." unique_id=926332326]
 sprite_frames = ExtResource("1_1km75")
 animation = &"mage"
 
-[node name="AnimSprEffect" type="AnimatedSprite2D" parent="."]
+[node name="AnimSprEffect" type="AnimatedSprite2D" parent="." unique_id=1975468299]
 sprite_frames = ExtResource("3_vmud0")
 animation = &"slash"
 frame = 4
 frame_progress = 1.0
 
-[node name="lpLabel" type="Label" parent="."]
+[node name="lpLabel" type="Label" parent="." unique_id=968665461]
 offset_top = 24.0
 offset_right = 48.0
 offset_bottom = 50.0
@@ -130,12 +127,12 @@ text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="selected" type="Sprite2D" parent="."]
+[node name="selected" type="Sprite2D" parent="." unique_id=171689240]
 visible = false
 position = Vector2(0, -32)
 texture = ExtResource("4_b1v83")
 
-[node name="select" type="TextureButton" parent="."]
+[node name="select" type="TextureButton" parent="." unique_id=1082789866]
 visible = false
 offset_left = -32.0
 offset_top = -48.0
