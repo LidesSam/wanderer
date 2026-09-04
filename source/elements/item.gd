@@ -9,26 +9,28 @@ func define_as(item:String="FREE"):
 	match item:
 		"potion":
 			itemName=item
-			points = 1
-			description= ""
+			points = 2
+			description= "Heal HP"
 			action= "heal"
 			play(item)
 		"bomb":
 			itemName= item
 			points = 1
-			description= ""
+			description= "Explode on all foes"
 			action= "bomb"
 			play(item)
 		"soda":
 			itemName=item
-			points = 3
-			description= ""
+			points = 4
+			description= " Heal HP"
 			action= "heal"
 			play("potion")
 		_:
 			itemName= "Free"
 			points = 0
-			description= ""
+			description= "Empty slot"
 			action= "None"
 			hide()
-		
+			
+func get_item_desc():
+	return str(itemName,":",description)

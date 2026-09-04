@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwcmks3ondtog"]
+[gd_scene format=3 uid="uid://dwcmks3ondtog"]
 
 [ext_resource type="Texture2D" uid="uid://o2i3amyqryfo" path="res://assets/sprites/effects/diamond-curtain.png" id="1_27mnp"]
 [ext_resource type="Script" uid="uid://dmpk7dflmrypr" path="res://source/elements/player_menu.gd" id="2_hsdjg"]
 [ext_resource type="Script" uid="uid://df1vkc66o5aug" path="res://addons/fsmgear/source/Fsm.gd" id="3_ewfex"]
-[ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="3_plscc"]
 [ext_resource type="Texture2D" uid="uid://d3061jhxrthot" path="res://assets/sprites/hud/eachframe/inventory_square/inventory_square_0.png" id="3_s5que"]
 [ext_resource type="Script" uid="uid://cd6jscc66uhey" path="res://source/elements/playerMenu/classDataDisplay.gd" id="3_ynirl"]
 [ext_resource type="SpriteFrames" uid="uid://dc73fjntk0wx1" path="res://assets/sprites/items/equipableitems.tres" id="4_2h507"]
@@ -14,10 +13,11 @@
 [ext_resource type="Script" uid="uid://dhepuax3ckb4e" path="res://source/elements/playerMenu/partyScreen.gd" id="6_qt5xe"]
 [ext_resource type="Script" uid="uid://d2co0y0dlrord" path="res://source/elements/bagScreen.gd" id="6_rd7rl"]
 [ext_resource type="Texture2D" uid="uid://i3nmbm7umxv3" path="res://assets/sprites/items/weapons/misc/misc1.png" id="10_ibiqj"]
+[ext_resource type="PackedScene" uid="uid://dc44vfu6qldjc" path="res://source/elements/battle/char_battle.tscn" id="11_03nas"]
 [ext_resource type="Script" uid="uid://ccfwfe08wuv2f" path="res://source/elements/playerMenu/equipDataDisplay.gd" id="12_jy55s"]
 [ext_resource type="Script" uid="uid://qagqxf2tjej5" path="res://source/elements/playerMenu/equipListSelector.gd" id="16_03nas"]
 
-[node name="playerMenu" type="TextureRect"]
+[node name="playerMenu" type="TextureRect" unique_id=1150965533]
 offset_left = -304.0
 offset_top = -176.0
 offset_right = 304.0
@@ -26,22 +26,22 @@ texture = ExtResource("1_27mnp")
 stretch_mode = 1
 script = ExtResource("2_hsdjg")
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=812623763]
 script = ExtResource("3_ewfex")
 
-[node name="bagState" type="Node" parent="fsm"]
+[node name="bagState" type="Node" parent="fsm" unique_id=1927705283]
 script = ExtResource("4_pv8qk")
 metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
 
-[node name="partyEquipState" type="Node" parent="fsm"]
+[node name="partyEquipState" type="Node" parent="fsm" unique_id=1085563133]
 script = ExtResource("5_a2p5n")
 metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
 
-[node name="partyState" type="Node" parent="fsm"]
+[node name="partyState" type="Node" parent="fsm" unique_id=1501508839]
 script = ExtResource("5_qt5xe")
 metadata/_custom_type_script = "uid://ba6qcf5ogq6ru"
 
-[node name="header" type="ColorRect" parent="."]
+[node name="header" type="ColorRect" parent="." unique_id=2087841060]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 24.0
@@ -49,7 +49,7 @@ offset_right = 576.0
 offset_bottom = 96.0
 color = Color(0, 0, 0, 1)
 
-[node name="gold" type="Label" parent="header"]
+[node name="gold" type="Label" parent="header" unique_id=1262218909]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 16.0
@@ -59,15 +59,15 @@ text = "GOLD:0000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="closeBtn" type="Button" parent="header"]
+[node name="closeBtn" type="Button" parent="header" unique_id=729814895]
 layout_mode = 0
-offset_left = 528.0
+offset_left = 536.0
 offset_top = -16.0
-offset_right = 576.0
-offset_bottom = 32.0
+offset_right = 568.0
+offset_bottom = 16.0
 text = "X"
 
-[node name="partyBtn" type="Button" parent="header"]
+[node name="partyBtn" type="Button" parent="header" unique_id=555928164]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -76,7 +76,7 @@ offset_bottom = 56.0
 text = "party
 "
 
-[node name="bagbtn" type="Button" parent="header"]
+[node name="bagbtn" type="Button" parent="header" unique_id=561356554]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 16.0
@@ -84,7 +84,7 @@ offset_right = 224.0
 offset_bottom = 56.0
 text = "bag"
 
-[node name="mainBGR" type="ColorRect" parent="."]
+[node name="mainBGR" type="ColorRect" parent="." unique_id=1297523790]
 layout_mode = 0
 offset_left = 424.0
 offset_top = 104.0
@@ -92,7 +92,7 @@ offset_right = 576.0
 offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
-[node name="mainBgL" type="ColorRect" parent="."]
+[node name="mainBgL" type="ColorRect" parent="." unique_id=96170316]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 104.0
@@ -100,7 +100,7 @@ offset_right = 408.0
 offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
-[node name="bag" type="Control" parent="."]
+[node name="bag" type="Control" parent="." unique_id=308277649]
 visible = false
 anchors_preset = 0
 offset_left = 40.0
@@ -109,55 +109,52 @@ offset_right = 392.0
 offset_bottom = 312.0
 script = ExtResource("6_rd7rl")
 
-[node name="cursor" type="Control" parent="bag"]
-layout_mode = 3
+[node name="cursor" type="Control" parent="bag" unique_id=801361372]
 anchors_preset = 0
 offset_left = -40.0
 offset_top = -96.0
 offset_bottom = -56.0
 
-[node name="spr" type="Sprite2D" parent="bag/cursor"]
+[node name="spr" type="Sprite2D" parent="bag/cursor" unique_id=761880709]
 position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
-[node name="items" type="ItemList" parent="bag"]
+[node name="items" type="ItemList" parent="bag" unique_id=436802859]
 layout_mode = 0
 offset_top = 8.0
 offset_right = 360.0
 offset_bottom = 136.0
 
-[node name="itemDesc" type="Label" parent="bag"]
+[node name="itemDesc" type="Label" parent="bag" unique_id=1107713432]
 layout_mode = 0
 offset_top = 144.0
 offset_right = 352.0
 offset_bottom = 208.0
 text = "itemdesc......"
 
-[node name="selector" type="Control" parent="bag"]
-layout_mode = 3
+[node name="selector" type="Control" parent="bag" unique_id=1896052519]
 anchors_preset = 0
 offset_left = 392.0
 offset_right = 544.0
 offset_bottom = 224.0
 
-[node name="prev" type="Button" parent="bag/selector"]
+[node name="prev" type="Button" parent="bag/selector" unique_id=775556080]
 layout_mode = 0
-offset_left = 8.0
 offset_top = 168.0
-offset_right = 72.0
+offset_right = 64.0
 offset_bottom = 216.0
 text = "<"
 
-[node name="next" type="Button" parent="bag/selector"]
+[node name="next" type="Button" parent="bag/selector" unique_id=400809971]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 72.0
 offset_top = 168.0
-offset_right = 144.0
+offset_right = 136.0
 offset_bottom = 216.0
 text = ">"
 
-[node name="party" type="Control" parent="."]
+[node name="party" type="Control" parent="." unique_id=920988732]
 anchors_preset = 0
 offset_left = 32.0
 offset_top = 104.0
@@ -165,149 +162,157 @@ offset_right = 576.0
 offset_bottom = 328.0
 script = ExtResource("6_qt5xe")
 
-[node name="equipCursor" type="Control" parent="party"]
+[node name="equipCursor" type="Control" parent="party" unique_id=1033359820]
 z_index = 13
-layout_mode = 3
 anchors_preset = 0
 offset_left = -80.0
 offset_top = -192.0
 offset_right = -40.0
 offset_bottom = -152.0
 
-[node name="spr" type="Sprite2D" parent="party/equipCursor"]
+[node name="spr" type="Sprite2D" parent="party/equipCursor" unique_id=1323292651]
 position = Vector2(8, 0)
 texture = ExtResource("10_ibiqj")
 offset = Vector2(16, 16)
 
-[node name="cursor" type="Control" parent="party"]
+[node name="cursor" type="Control" parent="party" unique_id=694428910]
 z_index = 13
 anchors_preset = 0
 offset_left = -40.0
 offset_top = -96.0
 offset_bottom = -56.0
 
-[node name="spr" type="Sprite2D" parent="party/cursor"]
+[node name="spr" type="Sprite2D" parent="party/cursor" unique_id=941082515]
 position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
-[node name="display" type="Control" parent="party"]
+[node name="display" type="Control" parent="party" unique_id=1749315407]
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="lchar" parent="party/display" instance=ExtResource("3_plscc")]
-position = Vector2(8, 40)
+[node name="lchar" parent="party/display" unique_id=1917384482 instance=ExtResource("11_03nas")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
 
-[node name="mchar" parent="party/display" instance=ExtResource("3_plscc")]
-position = Vector2(72, 40)
+[node name="mchar" parent="party/display" unique_id=1700196949 instance=ExtResource("11_03nas")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 16.0
 
-[node name="rchar" parent="party/display" instance=ExtResource("3_plscc")]
-position = Vector2(136, 40)
+[node name="rchar" parent="party/display" unique_id=1306528205 instance=ExtResource("11_03nas")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 16.0
 
-[node name="equipData" type="Control" parent="party"]
-visible = false
+[node name="equipData" type="Control" parent="party" unique_id=2010140170]
 anchors_preset = 0
-offset_left = 208.0
-offset_right = 376.0
-offset_bottom = 136.0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 368.0
+offset_bottom = 128.0
 script = ExtResource("12_jy55s")
 
-[node name="weapon" type="Control" parent="party/equipData"]
-layout_mode = 2
+[node name="weapon" type="Control" parent="party/equipData" unique_id=121499119]
 anchors_preset = 0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 144.0
-offset_bottom = 24.0
+offset_left = 8.0
+offset_right = 160.0
+offset_bottom = 32.0
 
-[node name="slot" type="Sprite2D" parent="party/equipData/weapon"]
+[node name="slot" type="Sprite2D" parent="party/equipData/weapon" unique_id=933704208]
 position = Vector2(16, 16)
 texture = ExtResource("3_s5que")
 
-[node name="item" type="AnimatedSprite2D" parent="party/equipData/weapon"]
+[node name="item" type="AnimatedSprite2D" parent="party/equipData/weapon" unique_id=1619437718]
 position = Vector2(16, 16)
 sprite_frames = ExtResource("4_2h507")
 animation = &"free"
 
-[node name="Label" type="Label" parent="party/equipData/weapon"]
-layout_mode = 2
-offset_left = 32.0
-offset_right = 149.0
-offset_bottom = 32.0
-text = "N/A----------MAX"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="Label" type="RichTextLabel" parent="party/equipData/weapon" unique_id=368144167]
+layout_mode = 0
+anchor_left = 0.21052632
+anchor_right = 1.2105263
+anchor_bottom = 1.75
+theme_override_font_sizes/normal_font_size = 8
+text = "N/A----------MAX "
+metadata/_edit_use_anchors_ = true
 
-[node name="armor" type="Control" parent="party/equipData"]
-layout_mode = 2
+[node name="armor" type="Control" parent="party/equipData" unique_id=546447127]
 anchors_preset = 0
-offset_left = 16.0
-offset_top = 92.0
-offset_right = 144.0
-offset_bottom = 92.0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 200.0
+offset_bottom = 128.0
 
-[node name="slot" type="Sprite2D" parent="party/equipData/armor"]
+[node name="slot" type="Sprite2D" parent="party/equipData/armor" unique_id=584399580]
 position = Vector2(16, 16)
 texture = ExtResource("3_s5que")
 
-[node name="item" type="AnimatedSprite2D" parent="party/equipData/armor"]
+[node name="item" type="AnimatedSprite2D" parent="party/equipData/armor" unique_id=1103829499]
 position = Vector2(16, 16)
 sprite_frames = ExtResource("4_2h507")
 animation = &"free"
 frame = 1
 
-[node name="Label" type="Label" parent="party/equipData/armor"]
-layout_mode = 2
-offset_left = 32.0
-offset_right = 128.0
-offset_bottom = 32.0
-text = "N/A----------MAX"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="classData" type="VBoxContainer" parent="party"]
+[node name="Label" type="RichTextLabel" parent="party/equipData/armor" unique_id=1466095608]
 layout_mode = 0
-offset_left = 224.0
-offset_right = 336.0
-offset_bottom = 128.0
-script = ExtResource("3_ynirl")
+anchor_left = 0.16666667
+anchor_right = 0.9583333
+anchor_bottom = 0.875
+theme_override_font_sizes/normal_font_size = 8
+text = "N/A----------MAX "
+metadata/_edit_use_anchors_ = true
 
-[node name="classnamelbl" type="Label" parent="party/classData"]
-layout_mode = 2
-text = "data: xxx"
-horizontal_alignment = 3
-vertical_alignment = 3
-
-[node name="atklbl" type="Label" parent="party/classData"]
-layout_mode = 2
-text = "data: xxx"
-horizontal_alignment = 3
-vertical_alignment = 3
-
-[node name="deflbl" type="Label" parent="party/classData"]
-layout_mode = 2
-text = "data: xxx"
-horizontal_alignment = 3
-vertical_alignment = 3
-
-[node name="button" type="Button" parent="party"]
+[node name="classData" type="VBoxContainer" parent="party" unique_id=1024171485]
 visible = false
 layout_mode = 0
-offset_left = 400.0
-offset_top = 72.0
-offset_right = 528.0
-offset_bottom = 136.0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 376.0
+offset_bottom = 200.0
+script = ExtResource("3_ynirl")
 
-[node name="selector" type="Control" parent="party"]
+[node name="classnamelbl" type="Label" parent="party/classData" unique_id=1688003414]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "CLASS: WANDERER"
+horizontal_alignment = 3
+vertical_alignment = 3
+uppercase = true
+
+[node name="atklbl" type="Label" parent="party/classData" unique_id=1677033842]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ATK: 10"
+horizontal_alignment = 3
+vertical_alignment = 3
+uppercase = true
+
+[node name="deflbl" type="Label" parent="party/classData" unique_id=400172134]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Def: 5"
+horizontal_alignment = 3
+vertical_alignment = 3
+uppercase = true
+
+[node name="selector" type="Control" parent="party" unique_id=1446080420]
 anchors_preset = 0
 offset_left = 392.0
 offset_right = 544.0
 offset_bottom = 224.0
 
-[node name="prev" type="Button" parent="party/selector"]
+[node name="prev" type="Button" parent="party/selector" unique_id=803030268]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 168.0
@@ -315,7 +320,7 @@ offset_right = 72.0
 offset_bottom = 216.0
 text = "<"
 
-[node name="next" type="Button" parent="party/selector"]
+[node name="next" type="Button" parent="party/selector" unique_id=150123841]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 168.0
@@ -323,7 +328,7 @@ offset_right = 144.0
 offset_bottom = 216.0
 text = ">"
 
-[node name="equip" type="Button" parent="party/selector"]
+[node name="equip" type="Button" parent="party/selector" unique_id=641552280]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 80.0
@@ -331,88 +336,85 @@ offset_right = 136.0
 offset_bottom = 136.0
 text = "equip"
 
-[node name="equipOptions" type="Control" parent="party"]
+[node name="equipOptions" type="Control" parent="party" unique_id=2116217825]
 visible = false
 anchors_preset = 0
 offset_left = 392.0
 offset_right = 544.0
 offset_bottom = 224.0
 
-[node name="equipUp" type="Button" parent="party/equipOptions"]
+[node name="equipUp" type="Button" parent="party/equipOptions" unique_id=237070826]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 88.0
 offset_top = 128.0
 offset_right = 144.0
 offset_bottom = 168.0
 text = "/\\"
 
-[node name="equipDown" type="Button" parent="party/equipOptions"]
+[node name="equipDown" type="Button" parent="party/equipOptions" unique_id=1011675400]
 layout_mode = 0
-offset_left = 72.0
+offset_left = 88.0
 offset_top = 176.0
 offset_right = 144.0
 offset_bottom = 216.0
 text = "\\/"
 
-[node name="equipBack" type="Button" parent="party/equipOptions"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 136.0
-offset_bottom = 120.0
-text = "back
-"
-
-[node name="equipRemove" type="Button" parent="party/equipOptions"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 144.0
-offset_bottom = 64.0
-text = "remove
-"
-
-[node name="equipChange" type="Button" parent="party/equipOptions"]
+[node name="equipBack" type="Button" parent="party/equipOptions" unique_id=921956500]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 128.0
-offset_right = 72.0
+offset_right = 80.0
 offset_bottom = 216.0
-text = "change
+text = "<-
 "
 
-[node name="equipList" type="ColorRect" parent="party"]
+[node name="equipRemove" type="Button" parent="party/equipOptions" unique_id=963405340]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 144.0
+offset_bottom = 64.0
+text = "REMOVE"
+
+[node name="equipChange" type="Button" parent="party/equipOptions" unique_id=1424883080]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 144.0
+offset_bottom = 120.0
+text = "EQUIP"
+
+[node name="equipList" type="ColorRect" parent="party" unique_id=281164095]
 visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 200.0
+offset_right = 360.0
 offset_bottom = 208.0
 color = Color(0.12549, 0.12549, 0.12549, 1)
 script = ExtResource("16_03nas")
 
-[node name="cursor" type="Control" parent="party/equipList"]
+[node name="cursor" type="Control" parent="party/equipList" unique_id=2108701310]
 z_index = 13
-layout_mode = 3
 anchors_preset = 0
 offset_left = 136.0
 offset_top = 8.0
 offset_right = 176.0
 offset_bottom = 48.0
 
-[node name="spr" type="Sprite2D" parent="party/equipList/cursor"]
+[node name="spr" type="Sprite2D" parent="party/equipList/cursor" unique_id=69067378]
 position = Vector2(8, 0)
 texture = ExtResource("4_ydh53")
 offset = Vector2(16, 16)
 
-[node name="equip" type="Control" parent="party/equipList"]
+[node name="equip" type="Control" parent="party/equipList" unique_id=790230304]
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 184.0
+offset_right = 344.0
 offset_bottom = 192.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=908996663]
 layout_mode = 0
 offset_left = 264.0
 offset_top = 40.0

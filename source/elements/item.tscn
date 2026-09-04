@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ocoigbdo5ir1"]
+[gd_scene format=3 uid="uid://ocoigbdo5ir1"]
 
 [ext_resource type="Texture2D" uid="uid://basi5vn7ko14i" path="res://assets/sprites/items/weapons/misc/misc0.png" id="1_uqqsc"]
 [ext_resource type="Texture2D" uid="uid://bu76nisdw3pi5" path="res://assets/sprites/items/weapons/misc/misc3.png" id="2_4tqio"]
@@ -31,7 +31,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="item" type="AnimatedSprite2D"]
+[node name="item" type="AnimatedSprite2D" unique_id=811056533]
 sprite_frames = SubResource("SpriteFrames_1dx48")
 animation = &"potion"
 centered = false

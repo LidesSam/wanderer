@@ -94,18 +94,31 @@ _data = {
 &"lp_shake": SubResource("Animation_g4uss")
 }
 
-[node name="char" type="Node2D" unique_id=444482729]
+[node name="char" type="Control" unique_id=1917384482]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_u5c7p")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1537592865]
+layout_mode = 0
 offset_left = -24.0
 offset_top = -24.0
 offset_right = 24.0
-offset_bottom = 24.0
+offset_bottom = 40.0
+color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=867975786]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimEffect" type="AnimationPlayer" parent="." unique_id=1780691281]
-root_node = NodePath("../lpLabel")
+root_node = NodePath("")
 libraries/ = SubResource("AnimationLibrary_83mvc")
 
 [node name="spr" type="AnimatedSprite2D" parent="." unique_id=926332326]
@@ -118,15 +131,20 @@ animation = &"slash"
 frame = 4
 frame_progress = 1.0
 
-[node name="lpLabel" type="Label" parent="." unique_id=968665461]
-offset_top = 24.0
-offset_right = 86.0
-offset_bottom = 50.0
-pivot_offset = Vector2(24, 12)
+[node name="lpLabel" type="Label" parent="." unique_id=1947156259]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -24.0
+offset_top = 16.0
+offset_right = 24.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_font_sizes/font_size = 8
 text = "00/00"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="selected" type="Sprite2D" parent="." unique_id=171689240]
 visible = false
@@ -135,6 +153,7 @@ texture = ExtResource("4_b1v83")
 
 [node name="select" type="TextureButton" parent="." unique_id=1082789866]
 visible = false
+layout_mode = 0
 offset_left = -32.0
 offset_top = -48.0
 offset_bottom = -16.0

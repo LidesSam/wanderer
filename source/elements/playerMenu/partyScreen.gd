@@ -15,6 +15,8 @@ var parentMenu=null
 
 var selectingEquip=false
 
+func _ready() -> void:
+	selector= $selector
 func set_cursor_on_char():
 	var char = $display.get_children()[charIdx]
 	cursor.position=$display.get_children()[charIdx].position+Vector2(16,64)
